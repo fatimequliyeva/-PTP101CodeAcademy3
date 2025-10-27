@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <title>Form</title>
+</head>
+<body>
+  <form action="#" method="post" enctype="multipart/form-data">
+    <label>
+      Name:
+      <input type="text" name="name" placeholder="Adınızı daxil edin" maxlength="5" required>
+    </label>
+    <br>
+
+    <label>
+      Fav number:
+      <input type="number" name="fav_number" placeholder="7 ilə 29 arasında" min="7" max="29" required>
+    </label>
+    <br>
+
+    <label>
+      Email:
+      <input type="email" name="email" placeholder="example.com" required>
+    </label>
+    <br>
+
+    <label>
+      Password:
+      <input type="password" name="password" placeholder="Şifrə daxil edin" required>
+    </label>
+    <br>
+
+    <label>
+      Gender:
+      <input type="radio" name="gender" value="male" placeholder="Kişi" checked required> Male
+      <input type="radio" name="gender" value="female" placeholder="Qadın"> Female
+    </label>
+    <br>
+
+    <label>
+      Country:
+      <select name="country" required placeholder="Ölkə seçin">
+        <option value="USA" selected>USA</option>
+        <option value="AZE">Azerbaijan</option>
+        <option value="TR">Turkey</option>
+        <option value="OTHER">Other</option>
+      </select>
+    </label>
+    <br>
+
+    <label>
+      Message:
+      <textarea name="message" placeholder="Mesajınızı yazın" rows="5" cols="40" required></textarea>
+    </label>
+    <br>
+
+    <label>
+      Subscribe to newsletter:
+      <input type="checkbox" name="subscribe" value="yes" placeholder="Abunə olun" required>
+    </label>
+    <br>
+
+    <label>
+      Upload file:
+      <input type="file" name="files[]" placeholder="Faylları seçin" multiple required>
+    </label>
+    <br>
+
+    <label>
+      Birthdate:
+      <input type="date" name="birthdate" placeholder="mm/dd/yyyy" required>
+    </label>
+    <br>
+
+    <label>
+      Favorite Color:
+      <input type="color" name="fav_color" placeholder="Sevdiyiniz rəngi seçin" value="#000000" required>
+    </label>
+    <br>
+
+    <label>
+      Personal Website:
+      <input type="url" name="website" placeholder="https://your-site.example" required>
+    </label>
+    <br>
+    <br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees Data Table</title>
+</head>
+<body>
+  <h2>Employees Data Table</h2>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Employee ID</th>
+        <th>Full Name</th>
+        <th>Position</th>
+        <th>Salary</th>
+        <th colspan="2">Department</th>
+        <th>Join Date</th>
+      </tr>
+      <tr>
+        <th colspan="4"></th>
+        <th>Department Name</th>
+        <th>Location</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>John Doe</td>
+        <td>Manager</td>
+        <td>$60,000</td>
+        <td>HR</td>
+        <td>New York</td>
+        <td>2020-01-15</td>
+      </tr>
+
+      <tr>
+        <td>002</td>
+        <td>Jane Smith</td>
+        <td>Developer</td>
+        <td>$50,000</td>
+        <td>IT</td>
+        <td>San Francisco</td>
+        <td>2019-11-22</td>
+      </tr>
+
+      <tr>
+        <td>003</td>
+        <td>Mary Johnson</td>
+        <td>Designer</td>
+        <td>$45,000</td>
+        <td>Design</td>
+        <td>Los Angeles</td>
+        <td>2020-03-10</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <title>Yazılım Kursları</title>
+</head>
+<body>
+  <h2>Yazılım Kursları</h2>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Resim</th>
+        <th>Kurs Adı</th>
+        <th>Açıqlama</th>
+        <th>Kategori</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <img src="./assest/image/dream-job-web-designer-1.jpg" alt="Sekilin tesviri" width="100" height="80">
+        </td>
+        <td>
+          Komple Uygulamalı Web Geliştirme Eğitimi
+        </td>
+        <td>
+          Sıfırdan ileri səviyyəyə Web Geliştirme: HTML, CSS, JavaScript, Bootstrap, React və s. praktiki layihələrlə.
+        </td>
+        <td>Web Geliştirme</td>
+        <td><a href="#" title="Kursu İncele">Kursu İncele</a></td>
+      </tr>
+
+      <tr>
+        <td>
+          <img src="assest/image/images (1).jpg" alt="sekilin tesviri" width="100" height="80">
+        </td>
+        <td>
+          PHP ile Sıfırdan İleri Seviye Web Programlama
+        </td>
+        <td>
+          Sıfırdan PHP dersleri və dinamik web tətbiqləri yaratma, MySQL ilə işləmə və layihə praktikasları.
+        </td>
+        <td>Web Geliştirme</td>
+        <td><a href="#" title="Kursu İncele">Kursu İncele</a></td>
+      </tr>
+
+      <tr>
+        <td>
+          <img src="assest/image/images.jpg" alt="Sekilin tesviri" width="100" height="80">
+        </td>
+        <td>
+          Python ilə İleri Seviye Programlama
+        </td>
+        <td>
+          Python dərsləri: Veri analizi, avtomatlaşdırma, web tətbiqləri (Django/Flask) və real layihə nümunələri.
+        </td>
+        <td>Programlama</td>
+        <td><a href="#" title="Kursu İncele">Kursu İncele</a></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
