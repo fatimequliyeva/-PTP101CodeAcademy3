@@ -1,0 +1,53 @@
+/* 1 */
+/* .container p.text:nth-of-type(2){
+    color: blue;
+}
+
+2
+#menu .item.item.active{
+    color: brown;
+}
+
+
+3
+section .card:first-of-type h3{
+color: blueviolet;
+}
+4
+.wrapper .content span.highlight {
+    color: aqua
+}
+5
+nav ul li:nth-of-type(2) a {
+    color: green
+}
+
+6
+tbody tr:nth-of-type(2) td:nth-of-type(2){
+    color: brown;
+}
+
+
+7
+div span:last-of-type {
+    color: salmon;
+}
+  */
+
+/* 
+8
+.parent .child:last-of-type span:last-of-type {
+    color:blue;
+} */
+
+/* 9
+ol li:nth-of-type(odd) {
+    background-color: lightgreen;
+    color: darkgreen;
+    font-weight: bold;
+  } */
+
+/* 
+  .outer .inner p:nth-of-type(2) {
+    color: yellowgreen;
+} */
