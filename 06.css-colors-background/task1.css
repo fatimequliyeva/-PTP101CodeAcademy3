@@ -21,14 +21,12 @@ color: white;
  #twohead{
     border: 2px solid rgb(2, 32, 2);
     background-color: greenyellow;
-    width: 600px; 
-    /* position: absolute; */
-    /* top:20%;
-    left: 27%; */
+    width: 700px; 
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 25px;
+    margin: 20px auto; 
+    flex-direction: column;
+
  }
 
 
@@ -36,10 +34,74 @@ color: white;
 
 .title-2{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; 
 }
 
 #click{
     background-color: red;
+width: 350px; 
+text-align: center;
+margin: 20px auto;
+border-radius: 10px;
+padding: 25px;
+color: white;
 
 }
+
+
+ .btn {
+    color: white;
+    margin-top: 10px;
+    display: inline-block; 
+    font-size: 25px;
+}
+
+#foot{
+    background-color: rgb(14, 50, 85);
+    padding: 50px; 
+    color: white;
+   
+}
+.finish-text{
+    margin-top: 20px;
+   color: white;
+}
+.finish-head{
+    margin-bottom: 20px;
+
+}
+
+
+
+
+ #finish{
+    background-color: rgb(2, 2, 36);
+   height: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 20px;
+ }
+
+
+
+
+ #finish a{
+    color: white;
+    text-decoration:none;
+    
+
+ }
+ 
+
+ #finish a::after{
+    content: " /";
+    color: white;
+    margin-left: 4px;
+    margin-right: 4px;
+
+ }
+ #finish a:last-child::after{
+    content:"";
+
+ }
