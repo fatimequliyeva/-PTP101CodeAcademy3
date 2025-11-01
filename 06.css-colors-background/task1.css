@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding:0px;   
+    box-sizing:border-box;
+}
+
+
+ #first{
+    background-color: blue; 
+   
+    height: 15vh;
+    padding: 25px;
+color: white;
+ }
+ 
+ #first .small-text{
+   margin-top: 7px;
+ }
+
+
+ #twohead{
+    border: 2px solid rgb(2, 32, 2);
+    background-color: greenyellow;
+    width: 600px; 
+    /* position: absolute; */
+    /* top:20%;
+    left: 27%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+ }
+
+
+/* saq kuncun asaqidan olan textni saqa cekdim */
+
+.title-2{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#click{
+    background-color: red;
+
+}
