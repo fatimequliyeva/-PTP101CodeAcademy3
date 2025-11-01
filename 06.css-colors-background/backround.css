@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+
+section{
+    border: 2px solid;
+    height: 100vh;
+}
+
+
+
+#firts{
+    background-image: url(./assest/image/firstphoto.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#second{
+    background-image: url(./assest/image/beforephoto.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#thered{
+    background-image: url(./assest/image/black.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.photo-text1{
+    position: relative;
+    top: 50%;
+    left: 40%;
+   
+    font-size: 3rem;
+    font-weight: bold;
+   padding: 15px;
+   border-radius: 20px;
+   color: white;
+}
+
+
+
+.photo-text2{
+    position: relative;
+    top: 50%;
+    left: 40%;
+ 
+    font-size: 3rem;
+    font-weight: bold;
+   padding: 15px;
+   border-radius: 20px;
+   color: white;
+}
+
+.photo-text3{
+    position: relative;
+    top: 50%;
+    left: 40%;
+
+    font-size: 3rem;
+    font-weight: bold;
+   padding: 15px;
+   border-radius: 20px;
+   color: white;
+}
+
+#gradient{
+    background: linear-gradient(to right bottom, red, orange, green, blue, violet, purple, yellow);
+}
+.colorgradient{
+     position: relative;
+    top: 50%;
+    left: 40%;
+
+    font-size: 3rem;
+    font-weight: bold;
+   padding: 15px;
+   border-radius: 20px;
+   color: white;
+}
