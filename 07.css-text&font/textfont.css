@@ -1,0 +1,48 @@
+ /* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}  */
+
+
+
+body {
+    background-color: rgb(205, 221, 161);
+}
+
+.first {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 28px;
+
+}
+
+.second {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 28px;
+    font-variant: small-caps;
+}
+
+.title1 {
+    font-style: italic;
+    line-height: 2.0;
+    text-indent: 40px;
+}
+
+.title2 {
+    text-align: center;
+    font-style: normal;
+
+}
+
+.title3{
+    text-align: right;
+    font-style: normal;
+    letter-spacing:2px;
+    word-spacing: 6px;
+}
