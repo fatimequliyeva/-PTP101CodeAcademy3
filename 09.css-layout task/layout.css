@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background-color: #e8ebc0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 900px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .left, .right {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .left {
+    text-align: center;
+    border-right: 1px solid #000000;
+    background-color: rgb(252, 242, 255);
+  }
+  
+  .left img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  .left h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  
+  .left span {
+    font-weight: 400;
+    color: #555;
+  }
+  
+  .job {
+    color: gray;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #444;
+  }
+  
+  .socials  a img {
+    width: 25px;
+    height: 25px;
+    margin: 0 8px;
+    margin-top: 40px;
+  }
+  
+  .socials a {
+    margin: 0 10px;
+    color: #333;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  
+  .socials a:hover {
+    color: #0073e6;
+  }
+  
+  .right h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+  
+  .right p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }

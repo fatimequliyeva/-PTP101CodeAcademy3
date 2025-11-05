@@ -1,0 +1,146 @@
+/* Ümumi səhifə dizaynı */
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Kart konteyneri */
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  /* Kart dizaynı */
+  .credit-card {
+    position: relative;
+    background: linear-gradient(135deg, #3b77c4, #4fa2db);
+    width: 340px;
+    height: 200px;
+    border-radius: 15px;
+    color: white;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Kartdakı chip (gümüş hissə) */
+  .card-chip {
+    width: 40px;
+    height: 30px;
+    background: silver;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-top: 50px;
+  }
+  
+  /* Kart nömrəsi */
+  .card-number {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-align: left;
+  }
+  
+  /* Kart sahibinin adı */
+  .card-holder {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  
+  /* Tarix (12/12) */
+  .card-date {
+    position: absolute;
+    bottom: 30px;
+    right: 25px;
+    font-size: 14px;
+    text-align: left;
+   
+  }
+  
+  /* MasterCard loqosu */
+  .card-logo {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 60px;
+  }
+  
+  /* Alt yazı */
+  .instruction {
+    font-size: 14px;
+    color: gray;
+    margin-right: 40%;
+    
+  }
+  
+  /* Form hissəsi */
+  .card-form {
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  /* Geniş inputlar (kart nömrəsi və ad) */
+  .card-input {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+  
+  }
+  
+  /* Son sətirdəki input və düymələr */
+  .bottom-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    margin-top: 10px;
+  
+  }
+  
+  /* Kiçik inputlar (tarix və CVV) */
+  .small-input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Submit düyməsi */
+  .btn {
+    background-color: #3b77c4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    
+  }
+  
+  /* Hover effekti */
+  .btn:hover {
+    background-color: #2f5f9d;
+  }
+
+.basa{
+    margin-left: 70%;
+}
+.card-input{
+    margin-right: 60%;
+}
