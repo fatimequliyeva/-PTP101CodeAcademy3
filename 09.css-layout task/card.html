@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card Form</title>
-  <link rel="stylesheet" href="card.css">
+  <link rel="stylesheet" href="./card.css">
+  <title>Document</title>
 </head>
+
 <body>
-  <div class="card-container">
-    <div class="credit-card">
-      <div class="card-chip"></div>
-      <div class="card-number">5423</div>
-      <div class="card-holder">JONDOE DONJOE</div>
-      <div class="card-date">12/12</div>
-      <img src="./assest/image/logo.png" alt="MasterCard" class="card-logo">
+  <div class="container">
+    <div class="card">
+      <div class="card-top">
+        <img class="chip-img" src="./assest/image/6e38fe6f-0081-474e-a23b-5691622a390c-removebg-preview.png"
+          alt="chip-img">
+        <img class="master-img" src="./assest/image/97a9dc73-5fad-4286-89dd-f609106f96d6-removebg-preview.png"
+          alt="master-img">
+      </div>
+      <div>
+        <p class="cr-num">5423</p>
+        <div class="cr-bottom">
+          <p class="cr-name">Quliyeva Fatime</p>
+          <p class="cr-date">12/12</p>
+        </div>
+      </div>
+
+
     </div>
-
-    <p class="instruction">Start typing in here to take over and try it out</p>
-
-    <form class="card-form">
-      <input type="text" placeholder="5423" class="card-input">
-      <div class="basa">
-      <input type="text" placeholder="Jondoe Donjoe" class="card-input"></div>
-      <div class="bottom-row">
-        <input type="text" placeholder="12 / 12" class="small-input">
-        <input type="text" placeholder="121" class="small-input">
-        <button type="submit" class="btn">Submit</button>
+    <form>
+      <div class="child">
+        <input type="text" placeholder="5423" required>
+        <input type="text" placeholder="Quliyeva Fatime" required>
+      </div>
+      <div class="box">
+        <input type="text" placeholder="12/12" required>
+        <input type="text" placeholder="121" required>
+        <button class="btn">Submit</button>
       </div>
     </form>
+
+
+
+
+
   </div>
+
+
+
+
+
+
 </body>
+
 </html>

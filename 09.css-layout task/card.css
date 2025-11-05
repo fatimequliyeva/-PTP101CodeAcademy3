@@ -1,146 +1,112 @@
-/* Ümumi səhifə dizaynı */
-body {
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  /* Kart konteyneri */
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 40px;
-  }
-  
-  /* Kart dizaynı */
-  .credit-card {
-    position: relative;
-    background: linear-gradient(135deg, #3b77c4, #4fa2db);
-    width: 340px;
-    height: 200px;
-    border-radius: 15px;
-    color: white;
-    padding: 20px;
-    margin: 20px auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Kartdakı chip (gümüş hissə) */
-  .card-chip {
-    width: 40px;
-    height: 30px;
-    background: silver;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    margin-left: 5px;
-    margin-top: 50px;
-  }
-  
-  /* Kart nömrəsi */
-  .card-number {
-    font-size: 22px;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    text-align: left;
-  }
-  
-  /* Kart sahibinin adı */
-  .card-holder {
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-align: left;
-  }
-  
-  /* Tarix (12/12) */
-  .card-date {
-    position: absolute;
-    bottom: 30px;
-    right: 25px;
-    font-size: 14px;
-    text-align: left;
-   
-  }
-  
-  /* MasterCard loqosu */
-  .card-logo {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 60px;
-  }
-  
-  /* Alt yazı */
-  .instruction {
-    font-size: 14px;
-    color: gray;
-    margin-right: 40%;
-    
-  }
-  
-  /* Form hissəsi */
-  .card-form {
- 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-  
-  /* Geniş inputlar (kart nömrəsi və ad) */
-  .card-input {
-    width: 100px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 5px;
-  
-  }
-  
-  /* Son sətirdəki input və düymələr */
-  .bottom-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-    margin-top: 10px;
-  
-  }
-  
-  /* Kiçik inputlar (tarix və CVV) */
-  .small-input {
-    width: 80px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Submit düyməsi */
-  .btn {
-    background-color: #3b77c4;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    
-  }
-  
-  /* Hover effekti */
-  .btn:hover {
-    background-color: #2f5f9d;
-  }
-
-.basa{
-    margin-left: 70%;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
-.card-input{
-    margin-right: 60%;
+
+
+.container{
+  background-color: #f3f4f6;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.card{
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  width: 400px;
+  height: 220px;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 50px;
+  color: white;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.25);
+}
+
+.card-top{
+  display:flex ;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chip-img{
+  width: 110px;
+  height: 65px;
+  margin-top: 30px;
+  margin-left: -25px;
+
+}
+.master-img{
+  width: 110px;
+  margin-top: -20px;
+
+}
+.cr-num{
+  font-size: 22px;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+
+}
+.cr-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cr-name{
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.cr-date{
+  font-size: 14px;
+
+}
+.child{
+  display: flex;
+}
+.child input{
+  padding: 10px 15px;
+  width: 200px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3;
+
+}
+.child input:focus{
+border-color: #3b82f6;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+}
+.box{
+  display: flex;
+  margin-top: 10px;
+}
+.box input{
+  padding: 10px 15px;
+  width: 100px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3;
+
+}
+.box input:focus{
+  border-color: #3b82f6;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+}
+.btn{
+  width: 200px;
+  background-color: #3b82f6;
+  border: 1px solid #3b82f6;
+ color: white;
+ cursor: pointer;
+ padding: 10px;
+ transition: 0.3;
+}
+.btn:hover{
+background-color: #2563eb;
 }
