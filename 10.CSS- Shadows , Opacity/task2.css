@@ -1,0 +1,109 @@
+/* Ümumi dizayn */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #9be2fe, #80aaff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  
+}
+
+/* Kartların konteyneri */
+.container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Kart stili */
+.kart {
+  background: #fff;
+  width: 320px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.kart:hover {
+  transform: translateY(-10px);
+}
+
+/* Şəkil */
+.sekil-qutu {
+  width: 100%;
+  height: 260px;
+ 
+}
+
+.sekil {
+  width: 100%;
+  height: 100%;
+ 
+ object-fit:cover
+}
+
+/* Etiketlər */
+.etiket-qutu {
+  padding: 15px 20px 0 20px;
+}
+
+.etiket {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #fff;
+  cursor: default;
+}
+
+.mavi { background: #3b82f6; }
+.narinci { background: #f59e0b; }
+.qirmizi { background: #ef4444; }
+
+/* Başlıq və mətn */
+.metn-qutu {
+  padding: 15px 20px;
+}
+
+.basliq {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.metn {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Profil hissəsi */
+.profil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px 20px 20px;
+  border-top: 1px solid #eee;
+}
+
+.profil-sekil {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ad {
+  font-size: 14px;
+  display: block;
+}
+
+.vezife {
+  font-size: 12px;
+  color: #777;
+  margin: 3px 0 0 0;
+}
