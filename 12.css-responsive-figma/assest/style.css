@@ -77,7 +77,6 @@ body {
     gap: 0.75rem;
 }
 
-.img-size {}
 
 .search-box {
     display: flex;
@@ -221,13 +220,7 @@ body {
     right: 601px;
 }
 
-#footer-1 {
-    background-color: #645555;
-    border-radius: 20px;
-    margin-top: 50px;
-    margin-left: 30px;
-    margin-right: 30px;
-}
+
 
 .first-sec {
     width: 1240;
