@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.wrapper {
+    width: 80%;
+    height: 500px;
+    border: 2px solid;
+    border-radius: 50px;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.box {
+    width: 90px;
+    height: 90px;
+    background-color: rgb(58, 45, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.5s;
+
+
+}
+
+.box-1 {
+    width: 90px;
+    height: 90px;
+    background-color: rgb(221, 15, 176);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.3s;
+
+
+}
+
+.box-1::after {
+    content: "Nefes";
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.box-1:hover {
+    transform: translate(100px, -100px);
+}
+
+.box-1:hover::after {
+    content: "Nefesi sevirem";
+    text-align: center;
+}
+
+
+.box-2 {
+    width: 90px;
+    height: 90px;
+    background-color: greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+
+.box-2::after {
+    content: "Nergiz";
+    font-size: 20px;
+
+
+}
+
+.box-2:hover {
+    transform: skew(30deg);
+}
+
+
+.box-2:hover::after {
+    content: "Ismiyeva";
+}
+
+
+
+.box-3 {
+    width: 90px;
+    height: 90px;
+    background-color: violet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.box-3::after {
+    content: "Jasmin";
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.box-3:hover::after {
+    content: "Jasmini sevirem";
+    text-align: center;
+}
+
+.box-3:hover {
+    transform: rotateY(360deg);
+}
+
+.box::after {
+    content: "Fatime";
+    font-size: 20px;
+    transition: .3s;
+
+}
+
+
+.box:hover {
+    transform: scale(1.5);
+}
+
+
+.box:hover::after {
+    content: "Quliyeva";
+}
