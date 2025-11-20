@@ -11,7 +11,7 @@
 }
 
 header {
-    position: fixed;
+    background-color: #FFAB00A3;
     width: 100%;
 }
 
@@ -112,6 +112,52 @@ header h2 {
 margin: 10px;
 
 }
+.song-pods{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.touc{
+    display: flex;
+    gap: 1rem;
+}
+
+ 
+.img-1{
+  position: relative;
+ 
+}
+
+
+.card-but{
+    position: absolute;
+     background-color: rgba(20, 23, 24, 1);
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: serif;
+
+  left:80px;
+  top: 270px ;
+
+}
+.star{
+    display: flex;
+font-size: 16px;
+display: inline-block;
+flex-direction: column;
+}
+
+
+
+
+
+
+
+
 
 
 
