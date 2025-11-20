@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+header h2 {
+    font-size: 36px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    font-size: 1.2rem;
+
+
+}
+
+.nav-icon {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+
+.menu-btn {
+    display: none;
+}
+
+/* gulen qaqaw teref */
+
+#banner {
+    background: url(../image/gulen-qaqaw.png);
+    background-size: cover;
+    background-position: cover;
+    background-repeat: no-repeat;
+}
+
+.banner {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.right h1 {
+    font-weight: 900;
+    font-size: 90px;
+    line-height: 90px;
+    letter-spacing: -5px;
+}
+
+.right .blue {
+    color: rgba(55, 125, 255, 1);
+}
+
+.right p {
+    font-size: 20px;
+    padding-right: 120px;
+}
+
+.shop-but {
+    background-color: rgba(20, 23, 24, 1);
+    width: 200px;
+    height: 50px;
+    margin-top: 18px;
+    padding-right: 56px;
+    padding-left: 50px;
+    border-radius: 20px;
+    margin-right: 210px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: serif;
+}
+
+.ipsum {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 30px 0;
+margin: 10px;
+
+}
+
+
+
+
+/* 
+@media (max-width: 767px) {}
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-icon a:nth-child(1) {
+        display: none;
+
+    }
+
+    .nav-icon a:nth-child(2) {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        padding: 15px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        gap: 15px;
+    }
+
+    .container h2 {
+        font-size: 30px;
+        line-height: 50px;
+        font-weight: 900;
+        margin-right: 200px;
+    } */
+/* gulen qaqaw */
+
+/* @media (max-width: 767px) {
+            .banner {
+                flex-direction: column; 
+                justify-content: center;
+                align-items: center;
+                min-height: auto;
+                padding: 20px;
+            }
+        
+            .right h1 {
+                font-size: 50px;
+                line-height: 55px;
+                letter-spacing: -2px;
+                text-align: center;
+            }
+        
+            .right p {
+                font-size: 16px;
+                padding-right: 0;
+                text-align: center;
+                margin-top: 10px;
+            }
+        
+            .shop-but {
+                width: 160px;
+                height: 45px;
+                margin: 20px auto 0 auto;
+                padding: 0;
+                font-size: 20px;
+                margin-right: 0;
+            }
+        
+            #banner {
+                background-position: center; 
+                background-size: cover;
+            }
+
+            #banner {
+                background: url(../image/Paste\ image\ \(1\).png);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 50%;
+                height: 100vh;
+            }
+            
+            .banner {
+                width: 100%;
+                height: 50vh; 
+                display: flex;
+                align-items: center;
+               
+            }
+            
+        }
+        
+
+}
+ */
