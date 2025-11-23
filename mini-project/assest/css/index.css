@@ -69,6 +69,8 @@ header h2 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    display: block;
+  
 }
 
 .right {
@@ -772,15 +774,13 @@ header h2 {
 .social-icons a:hover {
     color: white;
 }
-/* ========================== */
-/* 📱 MOBİL UYĞUNLUQ — max-width: 767px — ŞƏKİL GÖRÜNÜR VƏ YUXARIDA */
-/* ========================== */
+
 
 @media (max-width: 767px) {
   .container {
     width: 100%;
     max-width: 767px;
-    padding: 0 16px;
+    padding: 0px;
     margin: 0 auto;
   }
 
@@ -845,7 +845,7 @@ header h2 {
   /* BANNER — ŞƏKİL YUXARIDA, MƏTN ALTINDA */
   #banner {
     background: transparent;
-
+min-height: 100vh;
  margin-top: -20px;
     position: relative;
   }
@@ -861,7 +861,7 @@ header h2 {
   }
 
   .right {
-   line-height: 25px;
+   line-height: 90px;
    background: linear-gradient(0deg, #FEC75A, #FEC75A),
 linear-gradient(180.02deg, #FFC95C 17.32%, rgba(255, 201, 92, 0) 29.19%);
 
@@ -917,7 +917,7 @@ linear-gradient(180.02deg, #FFC95C 17.32%, rgba(255, 201, 92, 0) 29.19%);
   }
 
   .ipsum img {
-    width: 100px;
+    width: 200px;
     height: auto;
   }
 
@@ -980,7 +980,7 @@ linear-gradient(180.02deg, #FFC95C 17.32%, rgba(255, 201, 92, 0) 29.19%);
 
   .box-img,
   .image-small {
-    width: 100%;
+    width: 90%;
     height: auto;
     object-fit: contain;
     position: static;
