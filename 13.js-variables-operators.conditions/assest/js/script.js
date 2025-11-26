@@ -1,112 +1,172 @@
 let number = 15;
 
 if (number % 2 === 0) {
-    console.log("This numer is EVEN!");
+    console.log("This numer is EVEN!");   //1
 } else {
     console.log("This number is ODD!");
 }
 
 
-function ucbucaqiYoxla(a, b, c) {
-    if (a == b && b == c) {
-        console.log("Bu bərabərtərəfli üçbucaqdr.");
-    } else {
-        console.log("Bu bərabərtərəfli üçbucaq deyil.");
-    }
-}
-ucbucaqiYoxla(7, 7, 7);  //buda bir kolkulyatordu yeni sadece reqemleri deyiwmekle bu kod tekrarlana bilecek guce sahibdi dusunduyum qeder hec bir prioblem cixarmali deyil
+let first = 7;
+let second = 7;
+let thered = 7;
 
-
-function rightTriangleCheck(cathet1, cathet2, hypotenuse) {
-    if (hypotenuse ** 2 === cathet1 ** 2 + cathet2 ** 2) {
-        console.log("Result: Right-angled triangle");
-    } else {
-        console.log("Result: Not a right-angled triangle");
-    }
-}
-
-rightTriangleCheck(3, 4, 5); //bu yoxlamaq ucun kolkulyatordu //bunu ozum inglisce yazdm ferqli olsun deye 
-//hipotenuz ** 2 → hipotenuzun kvadratı
-//katet1 ** 2 + katet2 ** 2 → katetlərin kvadratlarının cəmi
-//Bərabərlik doğru olarsa → düzbucaqlı üçbucaq
-
-
-
-
-function digitsStats(number) {
-
-    let digits = number.toString().split('').map(Number); // Ədədin rəqəmlərini stringə çevirir
-
-
-    let sum = digits.reduce((acc, val) => acc + val, 0);   // Rəqəmlərin cəmi
-
-    let product = digits.reduce((acc, val) => acc * val, 1);      // Rəqəmlərin hasili
-
-
-    let average = sum / digits.length;      // Rəqəmlərin ədədi ortası
-
-
-
-    console.log("Rəqəmlərin cəmi: " + sum);
-    console.log("Rəqəmlərin hasili: " + product);   // bunu qetiyyen basa dusmedm
-    console.log("Rəqəmlərin ədədi ortasi: " + average);
+if (first === second && second === thered) {
+    console.log("Bu bərabərtərəfli üçbucaqdır");   //2
+} else {
+    console.log("Bu bərabərtərəfli üçbucaq deyil");
 }
 
 
-digitsStats(1, 2, 3);
 
-function monthDays(month) {
-    switch(month.toLowerCase()) {  //JS METODURU STRINDE YAZILAN BUTUN HERFLERI D C BALACAYA KECIRIR USER HERFI BOYUK YA BALACADA YAZSA CAVAB CIXACAQ ESAS BOYUK VE YA BALACA YAZMAQI TELEB OLUNMUR
-        case "january":
-                           console.log("January 31 days");
-            break;
-        case "february":
-                 console.log("February only 28 days");
-            break;
-        case "march":
-                     console.log("March 31 days");
-             break;
-        case "april":
-              console.log("April 30 days");
-            break;
-        case "may":
-            console.log("May 31 days");
-            break;
-        case "june":
-            console.log("June  30 days");
-            break;
-        case "july":
-                console.log("July  31 days");
-            break;
-        case "august":
-                  console.log("August 31 days");
-            break;
-        case "september":
-            console.log("September 30 days");
-            break;
-        case "october":
-               console.log("October 31 days");
-            break;
-        case "november":
-            console.log("November 30 days");
-            break;
-        case "december":
-                           console.log("December 31 days");
-            break;
-        default:
-                               console.log("Invalid month name");
-    }
+
+let cathet1 = 3;
+let cathet2 = 4;   //3
+let hypotenuse = 5;
+
+if (hypotenuse * hypotenuse === cathet1 * cathet1 + cathet2 * cathet2) {
+    console.log("Result: Right-angled triangle");
+} else {
+    console.log("Result: Not a right-angled triangle");
 }
 
 
-monthDays("January");
-monthDays(""); 
 
 
 
-function qiymetTeyinEt(score) {
+
+
+let num = 125; // Daxil edilmiw ədəd
+let a;
+if (num >= 100) {
+    a = (num - (num % 100)) / 100;  //100lu reqemi tapmaq   //4
+} else {
+    a = 0;
+}
+let b;
+if (num >= 10) {
+    b = ((num % 100) - (num % 10)) / 10; //10luqu tapmaq
+} else {
+    b = 0;
+}
+let c = num % 10;  // Birlik rəqəmi
+
+//  cəmi
+let sum = a + b + c;
+
+//  hasili
+let product = a * b * c;
+
+// ədədi ortası
+let average = sum / 3;
+
+console.log("Reqemlerin cemi: " + sum);
+console.log("Reqemlerin hasili: " + product);
+console.log("Reqemlerin ededi ortasi: " + average);
+
+
+
+
+
+
+
+
+
+// function monthDays(month) {
+//     switch(month.toLowerCase()) {  //JS METODURU STRINDE YAZILAN BUTUN HERFLERI D C BALACAYA KECIRIR USER HERFI BOYUK YA BALACADA YAZSA CAVAB CIXACAQ ESAS BOYUK VE YA BALACA YAZMAQI TELEB OLUNMUR
+//         case "january":
+//                            console.log("January 31 days");
+//             break;
+//         case "february":
+//                  console.log("February only 28 days");
+//             break;
+//         case "march":
+//                      console.log("March 31 days");
+//              break;
+//         case "april":
+//               console.log("April 30 days");
+//             break;
+//         case "may":
+//             console.log("May 31 days");
+//             break;
+//         case "june":
+//             console.log("June  30 days");
+//             break;
+//         case "july":
+//                 console.log("July  31 days");
+//             break;
+//         case "august":
+//                   console.log("August 31 days");
+//             break;
+//         case "september":
+//             console.log("September 30 days");
+//             break;
+//         case "october":
+//                console.log("October 31 days");
+//             break;
+//         case "november":
+//             console.log("November 30 days");
+//             break;
+//         case "december":
+//                            console.log("December 31 days");
+//             break;
+//         default:
+//                                console.log("Invalid month name");
+//     }
+// }
+
+
+// monthDays("January");
+// monthDays(""); 
+
+
+let month = "January"; //5  
+
+switch(month) {
+    case "January":
+        console.log("January 31 days");
+        break;
+    case "February":
+        console.log("February only 28 days");
+        break;
+    case "March":
+        console.log("March 31 days");
+        break;
+    case "April":
+        console.log("April 30 days");
+        break;
+    case "May":
+        console.log("May 31 days");
+        break;
+    case "June":
+        console.log("June 30 days");
+        break;
+    case "July":
+        console.log("July 31 days");
+        break;
+    case "August":
+        console.log("August 31 days");
+        break;
+    case "September":
+        console.log("September 30 days");
+        break;
+    case "October":
+        console.log("October 31 days");
+        break;
+    case "November":
+        console.log("November 30 days");
+        break;
+    case "December":
+        console.log("December 31 days");
+        break;
+    default:
+        console.log("Invalid month name");
+}
+
+
+let score=100
     if (score < 0 || score > 100) {
-        console.log("Daxil edilən rəqəm 0-100 araliğinda olmalidir!");
+        console.log("Daxil edilən rəqəm 0-100 araliğinda olmalidir!"); //6
     } else if (score >= 90) {
         console.log("Qiymətiniz: A Siz yuksek-seref diplomunu qazandiniz Fatime!!");
     } else if (score >= 80) {
@@ -118,29 +178,22 @@ function qiymetTeyinEt(score) {
     } else {
         console.log("Qiymətiniz: F");
     }
+
+
+
+
+
+let d = 10;
+let f = 90;
+let g = 9;
+
+if (d >= f && d >= g) {
+    console.log(a + " ən boyuk ededdir"); //7
+} else if (f >= d && f >= g) {
+    console.log(f + " en boyuk ededdir");
+} else {
+    console.log(g + " en boyuk ededdir");
 }
-
-
-qiymetTeyinEt(95); 
-
-
-
-
-
-
-  //burda her her setrde bir deyisenin o biri deyisenlerden boyuk olmasini qqeyd etdimki isdenilen yerde yeni colculyatorda reqemlerin yeri bele deyisik yazilarsa ve yaxud boyuk kicik reqemlerin yeri ayri yazilarsa neticede kod duzgun sekilde islesin
-function enBoyuk(a, b, c) {
-    if (a >= b && a >= c) {
-        console.log(a + " ən böyük ədəddir");
-    } else if (b >= a && b >= c) {             
-        console.log(b + " ən böyük ədəddir");
-    } else {
-        console.log(c + " ən böyük ədəddir");
-    }
-}
-
-
-enBoyuk(10, 100, 9);  
 
 
 
