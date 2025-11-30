@@ -37,7 +37,7 @@ console.log(cumle);
 
 
 
-let email = "user123@gmail.com"; //verilmis olan cumledi
+let email = "fatime1930@gmail.com"; //verilmis olan cumledi
 
 let domen = email.split("@")[1]; //split @ eledim cumle iki yere ayrdi et isaresi etden evvelki 1 ci hisse ikinci ise ele ikinci hissedi menede user123 ve @ isaresi silinmelidi idi
 //burda cetin lik cekdim komeyli yazmisam
