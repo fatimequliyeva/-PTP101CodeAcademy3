@@ -1,4 +1,4 @@
-/* * {
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,6 +33,7 @@
   left: 0;
 }
 
+
 .sidebar a {
   color: white;
   text-decoration: none;
@@ -50,113 +51,4 @@
   position: absolute;
   top: 6px;
   right: 20px;
-} */
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
-
-body h1{
-    text-align: center;
-    margin-top: 30px;
-    padding-right: 35px;
-
-}
-.container{
-    width: 1200pX;
-}
-
-
-.input-box{
-
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
-
-#yazi{
-    width: 700px;
-    height: 30px;
-    padding: 20px;
-    margin-left: 175px;
-cursor: pointer;
- border-radius: 5PX;
-
-}
-
-.bas-duyme{
-    width: 60px;
- height: 40px;
- margin: 20px;
-margin-top: 20px;
- font-size: 18px;
-background-color: rgba(56, 56, 240, 0.726);
-cursor: pointer;
-}
-
-
-.btn{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding-left: 300px;
-  
-}
-.a{
-    background-color: rgb(88, 88, 192);
-    width: 100px;
-    height: 30px;
-    font-size: 16px;
-    color: white;
-border-radius: 5px;
-}
-.b{
-     background-color: rgb(29, 211, 75);
-    width: 200px;
-    height: 30px;
-    font-size: 16px;
-    color: white;
-    border-radius: 5px;
-}
-.c{
-    
-     background-color: rgb(212, 209, 11);
-    width: 200px;
-    height: 30px;
-    font-size: 16px;
-    border-radius: 5px;
-
-}
-.d{
-    
-     background-color: rgb(255, 4, 4);
-    width: 100px;
-    height: 30px;
-    font-size: 16px;
-    color: white;
-    border-radius: 5px;
-}
-#yazi {
-  border: 1px solid ;
-  border-radius: 7px;
-  transition: 0.3s;
-}
-
-#yazi:hover {
-  border-color: blue;
-}
-
-.bas-duyme {
-  border: 1px solid ;
-  border-radius: 7px;
-  transition: 0.3s;
-}
-
-.bas-duyme:hover {
-  border-color: blue;
-}
-
+} 
