@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="./styel.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Todo App</h1>
+
+    
+    <div class="add-area">
+      <input type="text" placeholder="Enter todo...">
+      <button class="btn add">ADD</button>
+    </div>
+
+    <div class="filters">
+      <button class="btn blue">All Todos</button>
+      <button class="btn green">All Completed Todos</button>
+      <button class="btn yellow">All Pending Todos</button>
+      <button class="btn red">Clear All</button>
+    </div>
+
+
+    <div class="todo-list">
+
+      <div class="todo-item">
+        <div class="left">
+          <input type="checkbox">
+          <span>Example todo, 19/12/2025, 09:13:50</span>
+        </div>
+
+        <div class="actions">
+          <button class="icon edit"></button>
+          <button class="icon delete"></button>
+        </div>
+      </div>
+
+    </div>
+
+    
+    <p class="info">You have <span>0</span> pending todos</p>
+
+  </div>
+<script src="./script.js"></script>
+</body>
+</html>
