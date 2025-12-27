@@ -1,38 +1,32 @@
-const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const wishlistProducts = document.getElementById("wishlistProducts");
+const wishCount = document.querySelector(".number");
 
-products.forEach(product => {
-     const isLiked = wishlist.includes(product.id);
+function updateWishlistCount() {
+  wishCount.textContent = wishlist.length;
+}
+
+products.forEach((product) => {
   if (wishlist.includes(product.id)) {
     wishlistProducts.innerHTML += `
-      <div class="card">
-        <img src="${product.imageUrl}" alt="${product.title}">
-        <h4>${product.title}</h4>
-        <p>${product.price} $</p>
-         <i class='bx bx-heart heart ${isLiked ? "active" : ""}' 
-           onclick="toggleWishlist(${product.id}, this)"></i>
+        <div class="card">
+          <img src="${product.imageUrl}" alt="${product.title}">
+          <h4>${product.title}</h4>
+          <p>${product.price} $</p>
+      <div class="card-footer">
+          <i class="bx bx-heart heart active"
+            onclick="toggleWishlist(${product.id}, this)"></i>
       </div>
-    `;
+        </div>
+      `;
   }
 });
 
 function toggleWishlist(id, icon) {
-  if (wishlist.includes(id)) {
-    wishlist = wishlist.filter(item => item !== id);
-    icon.classList.remove("active");
-  } else {
-    wishlist.push(id);
-    icon.classList.add("active");
-  }
-
+  wishlist = wishlist.filter((item) => item !== id);
+  icon.closest(".card").remove();
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
   updateWishlistCount();
 }
 
 updateWishlistCount();
-const wishlistLink = document.getElementById("wishlistLink");
-
-wishlistLink.addEventListener("click", function() {
-  // Səhifəni yenilə
-  location.reload();
-});

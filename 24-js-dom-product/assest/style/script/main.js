@@ -1,14 +1,14 @@
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-const productList = document.getElementById("productList");
-const wishCount = document.querySelector(".number");
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || []; //varsa versin yoxdursa boqw erry
+const productList = document.getElementById("productList"); //yaratdqm idni caqrdm
+const wishCount = document.querySelector(".number");  //span reqem
 
 function updateWishlistCount() {
-  wishCount.textContent = wishlist.length;
+  wishCount.textContent = wishlist.length; //spani deyisen xaraba
 }
 
 function toggleWishlist(id, icon) {
   if (wishlist.includes(id)) {
-    wishlist = wishlist.filter(item => item !== id);
+    wishlist = wishlist.filter((item) => item !== id);
     icon.classList.remove("active");
   } else {
     wishlist.push(id);
@@ -21,15 +21,16 @@ function toggleWishlist(id, icon) {
 
 updateWishlistCount();
 
-products.forEach(product => {
+
+products.forEach((product) => {
   const isLiked = wishlist.includes(product.id);
 
   productList.innerHTML += `
     <div class="card">
       <img src="${product.imageUrl}" alt="${product.title}">
       <h4>${product.title}</h4>
+            <p>${product.price} $</p>
       <div class="card-footer">
-        <p>${product.price} $</p>
         <i class='bx bx-heart heart ${isLiked ? "active" : ""}' 
            onclick="toggleWishlist(${product.id}, this)"></i>
       </div>
