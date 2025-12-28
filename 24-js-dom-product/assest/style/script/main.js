@@ -29,7 +29,9 @@ products.forEach((product) => {
     <div class="card">
       <img src="${product.imageUrl}" alt="${product.title}">
       <h4>${product.title}</h4>
+       <p class="destrp">${product.category}</p>
             <p>${product.price} $</p>
+            
       <div class="card-footer">
         <i class='bx bx-heart heart ${isLiked ? "active" : ""}' 
            onclick="toggleWishlist(${product.id}, this)"></i>
