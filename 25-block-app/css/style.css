@@ -8,14 +8,10 @@
 .container {
   max-width: 1250px;
   margin: 0 auto;
-    background: #46494e;
+    background: #ffffff;
       font-family: "Segoe UI", sans-serif;
 }
 
-.nav-links a.active {
-  color: #4f46e5;
-  font-weight: 600;
-}
 
 /* NAVBAR */
 .navbar {
@@ -112,8 +108,9 @@ h1 {
   padding: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
-  margin: 0;
-padding: 20px ;
+margin-left: 30px;
+margin-right: 30px;
+
 }
 
 .card:hover {

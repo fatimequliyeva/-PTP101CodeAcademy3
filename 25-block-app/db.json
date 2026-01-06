@@ -1,22 +1,28 @@
 {
   "blogs": [
     {
-      "title": "sasxas",
-      "body": "asxas",
-      "author": "sxasda",
-      "id": "CZj-LLS"
+      "title": "Devloper",
+      "body": "18 yasim var gozumu acandan helede devloperliyi oxuyuram inaniram yaxin 60 ilde bitecek",
+      "author": "Nergiz Ismiyeva",
+      "id": 1
     },
     {
-      "title": "sxswdw",
-      "body": "swsdswd",
-      "author": "kenan",
-      "id": "nsT5tV9"
+      "title": "Devloper",
+      "body": "26 Yasimda oxumaqa qerar vermisem 2 evladim var Onlarin ve oz geleceyim ucun calishiram",
+      "author": "Fatime Quliyeva",
+      "id": 2
     },
     {
-      "title": "dfdfvdf",
-      "body": "dfvbfgb",
-      "author": "fvbcfvb",
-      "id": "BughWR1"
+      "title": "Devloper",
+      "body": "Shagirdlerimin daha yuksek netice almasi ucun elimden geleni edirem umidvaram PTP-101 de neticsi yuksek shagirdlerimin sirasina dushecek))",
+      "author": "Kenan Amirov",
+      "id": 3
+    },
+    {
+      "title": "Devloper",
+      "body": "Mende PTP-101de mentor olaraq calishiram ve shagirdlerime elimden gelen en yaxshisini etmeye calishiram",
+      "author": "Fadile",
+      "id": 4
     }
   ]
 }
