@@ -23,7 +23,17 @@
 <form id="blog-form">
   <input type="text" id="title" placeholder="Title" required /><br/>
   <textarea id="body" placeholder="Body" required></textarea><br/>
-  <input type="text" id="author" placeholder="Author" required /><br/>
+<input list="authors" id="author" placeholder="Author" required />
+<datalist id="authors">
+  <option value="Nergiz">
+  <option value="Fatime">
+  <option value="Fadile">
+  <option value="Kenan">
+  <option value="Elmira">
+    <option value="Elmir"></option>
+    <option value="Meryem"></option>
+</datalist>
+
   <button type="submit">Create</button>
 </form>
 

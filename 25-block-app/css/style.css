@@ -13,7 +13,7 @@
 }
 
 
-/* NAVBAR */
+
 .navbar {
   background: #d8d9eb59;
   padding: 15px 0;
@@ -34,7 +34,7 @@
 .logo {
   font-size: 40px;
   font-weight: bold;
-  color: #4f46e5;
+  color: #292486;
   text-decoration: none;
 }
 
@@ -67,15 +67,15 @@
   width: 100%;
 }
 
-/* Page title */
+
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
+  color: #312c7a;
   font-size: 40px;
 }
 
-/* Search input */
+
 #search {
   width: 100%;
   max-width: 400px;
@@ -94,14 +94,14 @@ h1 {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
-/* Blog list grid */
+
 #blog-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* Blog card */
+
 .card {
   background: #fff;
   border-radius: 12px;
@@ -119,7 +119,7 @@ margin-right: 30px;
 }
 
 .card h3 {
-  color: #4f46e5;
+  color: #0d00ff;
   margin-bottom: 10px;
 }
 
@@ -135,7 +135,7 @@ margin-right: 30px;
   margin-bottom: 15px;
 }
 
-/* Buttons */
+
 .card button,
 .card a {
   padding: 8px 14px;
@@ -145,6 +145,15 @@ margin-right: 30px;
   cursor: pointer;
   transition: 0.3s;
 }
+
+.card .blog-body {
+  max-height: 150px;     
+  overflow: hidden;       
+  text-overflow: ellipsis; 
+  display: block;         
+  margin-bottom: 10px;
+}
+
 
 .card button {
   background: #ef4444;
@@ -158,7 +167,7 @@ margin-right: 30px;
 }
 
 .card a {
-  background: #4f46e5;
+  background: #0d00ff;
   color: #fff;
 }
 
@@ -166,7 +175,7 @@ margin-right: 30px;
   background: #4338ca;
 }
 
-/* Forms */
+
 form {
   max-width: 500px;
   margin: 0 auto;
@@ -198,7 +207,7 @@ form textarea:focus {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
-/* Submit button */
+
 form button {
   width: 100%;
   padding: 12px;
