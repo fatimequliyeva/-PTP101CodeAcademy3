@@ -1,0 +1,36 @@
+body {
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.details-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.details-container img {
+  width: 300px;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.borders {
+  margin-top: 10px;
+}
+
+.border {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 5px;
+  background: #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
