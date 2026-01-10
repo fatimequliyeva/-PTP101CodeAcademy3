@@ -69,3 +69,52 @@
   cursor: pointer;
   border-radius: 4px;
 }
+
+/* ================================ */
+/* RESPONSİV STİL */
+/* ================================ */
+
+/* Kiçik planşetlər / 768px-dən kiçik ekranlar */
+@media (max-width: 768px) {
+  .details-content {
+    flex-direction: column; /* Şəkil və info alt-üst */
+    gap: 30px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr; /* Info grid 1 sütuna düşür */
+    gap: 15px 20px;
+  }
+
+  .back-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Mobil cihazlar / 480px-dən kiçik ekranlar */
+@media (max-width: 480px) {
+  .details-flag img {
+    width: 100%; /* Şəkil tam genişlik */
+  }
+
+  .flag-theme-btn {
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .info-grid {
+    gap: 15px 10px;
+  }
+
+  .borders {
+    gap: 8px;
+  }
+
+  .border-item {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
