@@ -1,7 +1,7 @@
 const container = document.getElementById("detailsContainer");
 const themeToggle = document.getElementById("themeToggle");
 
-// Dark mode sync
+
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }

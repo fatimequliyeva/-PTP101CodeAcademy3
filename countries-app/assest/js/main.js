@@ -6,7 +6,7 @@ const themeToggle = document.getElementById("themeToggle");
 const ALL_COUNTRIES_URL =
   "https://restcountries.com/v3.1/all?fields=name,cca2,capital,region,population,flags";
 
-// Dark Mode (localStorage ilə)
+
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
@@ -19,7 +19,7 @@ themeToggle.addEventListener("click", () => {
   );
 });
 
-// Home load
+
 fetchCountries(ALL_COUNTRIES_URL);
 
 function fetchCountries(url) {
@@ -57,7 +57,7 @@ function renderCountries(countries) {
   });
 }
 
-// Search (sağ tərəf)
+
 searchInput.addEventListener("input", e => {
   const value = e.target.value.trim();
   if (value) {
@@ -67,7 +67,6 @@ searchInput.addEventListener("input", e => {
   }
 });
 
-// Filter by region
 regionSelect.addEventListener("change", e => {
   const region = e.target.value;
   if (region) {

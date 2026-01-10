@@ -17,7 +17,7 @@
   flex-wrap: wrap;
 }
 
-/* LEFT SIDE */
+
 .details-flag {
   position: relative;
 }
@@ -28,7 +28,7 @@
   border-radius: 6px;
 }
 
-/* Dark mode button on flag */
+
 .flag-theme-btn {
   position: absolute;
   top: 15px;
@@ -42,7 +42,6 @@
   gap: 6px;
 }
 
-/* RIGHT SIDE */
 .details-info {
   flex: 1;
 }
