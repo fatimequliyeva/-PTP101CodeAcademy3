@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Country Details</title>
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="./assest/css/details.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/dist/boxicons.js" integrity="sha512-Dm5UxqUSgNd93XG7eseoOrScyM1BVs65GrwmavP0D0DujOA8mjiBfyj71wmI2VQZKnnZQsSWWsxDKNiQIqk8sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./assest/css/style.css">
 </head>
 <body>
 
-<main class="details-container" id="details"></main>
+<header class="header">
+  <h1>Where in the world?</h1>
+
+  <button id="themeToggle" class="theme-btn">
+    <i class='bx bx-moon'></i>
+    Dark Mode
+  </button>
+</header>
+
+<main class="details-wrapper">
+  <button class="back-btn" onclick="history.back()">⬅ Back</button>
+
+  <section id="detailsContainer" class="details-content"></section>
+</main>
 
 <script src="./assest/js/details.js"></script>
 </body>

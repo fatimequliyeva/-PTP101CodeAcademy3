@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Countries App</title>
-  <link rel="stylesheet" href="./assest/css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/dist/boxicons.js" integrity="sha512-Dm5UxqUSgNd93XG7eseoOrScyM1BVs65GrwmavP0D0DujOA8mjiBfyj71wmI2VQZKnnZQsSWWsxDKNiQIqk8sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assest/css/style.css" />
 </head>
 <body>
 
-<header>
-  <h1>🌍 Countries</h1>
-  <button id="themeToggle">🌙 Dark Mode</button>
+<header class="header">
+  <h1>Where in the world?</h1>
+
+  <button id="themeToggle" class="theme-btn">
+    <i class='bx bx-moon' style="color:#000000"></i>
+    Dark Mode
+  </button>
 </header>
 
 <main class="container">
 
   <div class="controls">
-    <input type="text" id="searchInput" placeholder="Search country..." />
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search for a country..." />
+    </div>
 
     <select id="regionSelect">
       <option value="">Filter by Region</option>
@@ -29,7 +38,7 @@
     </select>
   </div>
 
-  <section id="countries" class="grid"></section>
+  <section id="countriesList" class="countries-grid"></section>
 
 </main>
 

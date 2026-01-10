@@ -1,83 +1,78 @@
-const countriesContainer = document.getElementById("countries");
+const countriesList = document.getElementById("countriesList");
 const searchInput = document.getElementById("searchInput");
 const regionSelect = document.getElementById("regionSelect");
+const themeToggle = document.getElementById("themeToggle");
 
-const ALL_URL =
+const ALL_COUNTRIES_URL =
   "https://restcountries.com/v3.1/all?fields=name,cca2,capital,region,population,flags";
 
-// Load Home
-fetchCountries(ALL_URL);
+// Dark Mode (localStorage ilə)
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+});
+
+// Home load
+fetchCountries(ALL_COUNTRIES_URL);
 
 function fetchCountries(url) {
-  countriesContainer.innerHTML = "Loading...";
+  countriesList.innerHTML = "Loading...";
   fetch(url)
     .then(res => res.json())
     .then(data => renderCountries(data))
-    .catch(() => countriesContainer.innerHTML = "No data found");
+    .catch(() => {
+      countriesList.innerHTML = "No country found";
+    });
 }
 
 function renderCountries(countries) {
-  countriesContainer.innerHTML = "";
+  countriesList.innerHTML = "";
+
   countries.forEach(country => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "country-card";
 
     card.innerHTML = `
       <img src="${country.flags.png}" alt="">
-      <div class="card-body">
+      <div class="country-info">
         <h3>${country.name.common}</h3>
-        <p><b>Capital:</b> ${country.capital || "-"}</p>
-        <p><b>Region:</b> ${country.region}</p>
         <p><b>Population:</b> ${country.population.toLocaleString()}</p>
+        <p><b>Region:</b> ${country.region}</p>
+        <p><b>Capital:</b> ${country.capital || "-"}</p>
       </div>
     `;
 
-    card.onclick = () => {
+    card.addEventListener("click", () => {
       window.location.href = `details.html?name=${country.name.common}`;
-    };
+    });
 
-    countriesContainer.appendChild(card);
+    countriesList.appendChild(card);
   });
 }
 
-// Search
+// Search (sağ tərəf)
 searchInput.addEventListener("input", e => {
   const value = e.target.value.trim();
   if (value) {
     fetchCountries(`https://restcountries.com/v3.1/name/${value}`);
   } else {
-    fetchCountries(ALL_URL);
+    fetchCountries(ALL_COUNTRIES_URL);
   }
 });
 
-searchInput.addEventListener("input", e => {
-  const value = e.target.value.trim().toLowerCase();
-
-  if (value === "armenia" || value === "ermenistan") {
-    countriesContainer.innerHTML =
-      "<h2>Bu ölkə haqqında məlumat yoxdur</h2>";
-    return;
-  }
-
-  if (value) {
-    fetchCountries(`https://restcountries.com/v3.1/name/${value}`);
-  } else {
-    fetchCountries(ALL_URL);
-  }
-});
-
-// Filter
+// Filter by region
 regionSelect.addEventListener("change", e => {
   const region = e.target.value;
   if (region) {
     fetchCountries(`https://restcountries.com/v3.1/region/${region}`);
   } else {
-    fetchCountries(ALL_URL);
+    fetchCountries(ALL_COUNTRIES_URL);
   }
-});
-
-const themeToggle = document.getElementById("themeToggle");
-
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
 });

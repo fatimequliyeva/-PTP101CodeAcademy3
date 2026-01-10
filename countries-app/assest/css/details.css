@@ -1,36 +1,72 @@
-body {
-  background: #f4f4f4;
-  font-family: Arial, sans-serif;
-}
-
-.details-container {
-  max-width: 900px;
+.details-wrapper {
+  max-width: 1200px;
   margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 0 20px;
 }
 
-.details-container img {
-  width: 300px;
-  max-width: 100%;
-  margin: 20px 0;
-}
-
-button {
-  padding: 10px 15px;
-  margin-bottom: 20px;
+.back-btn {
+  padding: 10px 20px;
+  margin-bottom: 40px;
   cursor: pointer;
 }
-.borders {
-  margin-top: 10px;
+
+.details-content {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
-.border {
-  display: inline-block;
-  padding: 6px 12px;
-  margin: 5px;
-  background: #ddd;
+/* LEFT SIDE */
+.details-flag {
+  position: relative;
+}
+
+.details-flag img {
+  width: 420px;
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+/* Dark mode button on flag */
+.flag-theme-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--card-bg);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* RIGHT SIDE */
+.details-info {
+  flex: 1;
+}
+
+.details-info h2 {
+  margin-bottom: 25px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 40px;
+  margin-bottom: 40px;
+}
+
+.borders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.border-item {
+  padding: 6px 14px;
+  background: var(--card-bg);
+  cursor: pointer;
   border-radius: 4px;
-  font-size: 14px;
 }
