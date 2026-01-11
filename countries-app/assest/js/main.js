@@ -3,6 +3,17 @@ const searchInput = document.getElementById("searchInput");
 const regionSelect = document.getElementById("regionSelect");
 const themeToggle = document.getElementById("themeToggle");
 
+const modal = document.getElementById("alertModal");
+const closeModalBtn = document.getElementById("closeModal");
+
+function showModal() {
+  modal.style.display = "flex";
+}
+
+closeModalBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
 const ALL_COUNTRIES_URL =
   "https://restcountries.com/v3.1/all?fields=name,cca2,capital,region,population,flags";
 
@@ -57,7 +68,6 @@ function loadRegions() {
 loadRegions();
 
 
-
 function renderCountries(countries) {
   countriesList.innerHTML = "";
 
@@ -75,9 +85,17 @@ function renderCountries(countries) {
       </div>
     `;
 
-    card.addEventListener("click", () => {
-      window.location.href = `details.html?name=${country.name.common}`;
-    });
+    const nameLower = country.name.common.toLowerCase();
+
+    if (nameLower === "armenia") {
+      card.addEventListener("click", () => {
+        showModal(); // YALNIZ alert çıxır
+      });
+    } else {
+      card.addEventListener("click", () => {
+        window.location.href = `details.html?name=${country.name.common}`;
+      });
+    }
 
     countriesList.appendChild(card);
   });

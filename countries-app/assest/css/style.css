@@ -132,3 +132,60 @@ body.dark .footer {
 body.dark .footer a {
   color: #4fc3f7;
 }
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-box h3 {
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.modal-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #0077cc;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.modal-link:hover {
+  text-decoration: underline;
+}
+
+.modal-box button {
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+  background: #0077cc;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* DARK MODE */
+body.dark .modal-box {
+  background: #2b3945;
+  color: #ff0000;
+  font-size: 40px;
+}
