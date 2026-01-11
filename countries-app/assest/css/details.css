@@ -10,6 +10,13 @@
   cursor: pointer;
 }
 
+h1{
+padding-left: 70px;
+font-size: 45px;
+}
+
+
+
 .details-content {
   display: flex;
   gap: 80px;
