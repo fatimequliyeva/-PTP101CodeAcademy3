@@ -32,6 +32,32 @@ function fetchCountries(url) {
     });
 }
 
+
+
+const regions = [
+  "Africa",
+  "Americas",
+  "Asia",
+  "Europe",
+  "Oceania",
+  "Antarctic"
+];
+
+function loadRegions() {
+  regionSelect.innerHTML = `<option value="">Filter by Region</option>`;
+
+  regions.forEach(region => {
+    const option = document.createElement("option");
+    option.value = region;
+    option.textContent = region;
+    regionSelect.appendChild(option);
+  });
+}
+
+loadRegions();
+
+
+
 function renderCountries(countries) {
   countriesList.innerHTML = "";
 

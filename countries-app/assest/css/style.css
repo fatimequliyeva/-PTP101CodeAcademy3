@@ -1,14 +1,3 @@
-:root {
-  --bg-color: #fafafa;
-  --text-color: #111;
-  --card-bg: #ffffff;
-}
-
-body.dark {
-  --bg-color: #202c37;
-  --text-color: #ffffff;
-  --card-bg: #2b3945;
-}
 
 * {
   margin: 0;
@@ -17,38 +6,49 @@ body.dark {
   font-family: Arial, sans-serif;
 }
 
+
 body {
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: #fafafa;
+  color: #111;
+}
+
+body.dark {
+  background: #202c37;
+  color: #ffffff;
 }
 
 .header {
-  background: var(--card-bg);
+  background: #ffffff;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-h1{
-padding-left: 70px;
-font-size: 45px;
+body.dark .header {
+  background: #2b3945;
 }
 
+
+h1 {
+  padding-left: 70px;
+  font-size: 40px;
+}
 
 .theme-btn {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-color);
   font-size: 20px;
+  color: inherit;
 }
+
 
 .container {
   max-width: 1200px;
   margin: 30px auto;
-
 }
+
 
 .controls {
   display: flex;
@@ -65,31 +65,26 @@ select {
   font-size: 18px;
 }
 
+
 .countries-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
 }
 
+
 .country-card {
-  background: var(--card-bg);
+  background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-}
-
-.country-card img {
-  width: 100%;
-  height: 180px;
-  object-fit:fill;
-}
-
-.country-info {
-  padding: 15px;
-}
-.country-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+body.dark .country-card {
+  background: #2b3945;
+}
+
 
 .country-card:hover {
   transform: translateY(-8px);
@@ -98,7 +93,42 @@ select {
 
 
 .country-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: fill;
   transition: transform 0.4s ease;
 }
 
 
+.country-info {
+  padding: 15px;
+}
+
+
+
+.footer {
+  margin-top: auto;
+  background: #ffffff;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+body.dark .footer {
+  background: #2b3945;
+}
+
+body.dark .footer a {
+  color: #4fc3f7;
+}

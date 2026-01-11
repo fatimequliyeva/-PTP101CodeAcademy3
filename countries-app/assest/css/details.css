@@ -1,8 +1,10 @@
+
 .details-wrapper {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
+
 
 .back-btn {
   padding: 10px 20px;
@@ -10,11 +12,11 @@
   cursor: pointer;
 }
 
-h1{
-padding-left: 70px;
-font-size: 45px;
-}
 
+h1 {
+  padding-left: 70px;
+  font-size: 40px;
+}
 
 
 .details-content {
@@ -40,7 +42,7 @@ font-size: 45px;
   position: absolute;
   top: 15px;
   left: 15px;
-  background: var(--card-bg);
+  background: #ffffff;
   border: none;
   padding: 8px 12px;
   cursor: pointer;
@@ -49,6 +51,11 @@ font-size: 45px;
   gap: 6px;
 }
 
+body.dark .flag-theme-btn {
+  background: #2b3945;
+}
+
+
 .details-info {
   flex: 1;
 }
@@ -56,6 +63,7 @@ font-size: 45px;
 .details-info h2 {
   margin-bottom: 25px;
 }
+
 
 .info-grid {
   display: grid;
@@ -72,24 +80,57 @@ font-size: 45px;
 
 .border-item {
   padding: 6px 14px;
-  background: var(--card-bg);
+  background: #ffffff;
   cursor: pointer;
   border-radius: 4px;
 }
 
-/* ================================ */
-/* RESPONSİV STİL */
-/* ================================ */
+body.dark .border-item {
+  background: #2b3945;
+}
 
-/* Kiçik planşetlər / 768px-dən kiçik ekranlar */
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  z-index: 100;
+}
+
+
+body.dark .footer {
+  background: #2b3945;
+}
+
+.footer a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+body.dark .footer a {
+  color: #4fc3f7;
+}
+
+
 @media (max-width: 768px) {
   .details-content {
-    flex-direction: column; /* Şəkil və info alt-üst */
+    flex-direction: column;
     gap: 30px;
   }
 
   .info-grid {
-    grid-template-columns: 1fr; /* Info grid 1 sütuna düşür */
+    grid-template-columns: 1fr;
     gap: 15px 20px;
   }
 
@@ -99,10 +140,10 @@ font-size: 45px;
   }
 }
 
-/* Mobil cihazlar / 480px-dən kiçik ekranlar */
+
 @media (max-width: 480px) {
   .details-flag img {
-    width: 100%; /* Şəkil tam genişlik */
+    width: 100%;
   }
 
   .flag-theme-btn {
