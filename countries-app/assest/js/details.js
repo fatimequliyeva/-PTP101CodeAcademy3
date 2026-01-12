@@ -1,12 +1,21 @@
-const container = document.getElementById("detailsContainer");  //htmldeki elemeti caqrir 
-const themeToggle = document.getElementById("themeToggle");  //eyni sekilde bunu caqrir
+const container = document.getElementById("detailsContainer");
+const themeToggle = document.getElementById("themeToggle");
+const modal = document.getElementById("alertModal");
+const closeModalBtn = document.getElementById("closeModal");
 
-
-if (localStorage.getItem("theme") === "dark") { //bruzerin yaddasinda saxlanimis TEMANI OXUYUR 
-  document.body.classList.add("dark");  //classta dark elave olunur 
+function showModal() {
+  modal.style.display = "flex";
 }
 
-themeToggle.addEventListener("click", () => {  //ekrani light dark elemek ucundu 
+closeModalBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   localStorage.setItem(
     "theme",
@@ -14,13 +23,19 @@ themeToggle.addEventListener("click", () => {  //ekrani light dark elemek ucundu
   );
 });
 
-const params = new URLSearchParams(window.location.search); //name armenia kimi 
+const params = new URLSearchParams(window.location.search);
 const countryName = params.get("name");
 
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
   .then(res => res.json())
   .then(async data => {
     const c = data[0];
+
+    const currency = c.currencies
+      ? Object.values(c.currencies)
+          .map(cur => `${cur.name} (${cur.symbol || ""})`)
+          .join(", ")
+      : "-";
 
     let bordersHTML = "<span>No borders</span>";
 
@@ -31,14 +46,18 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
       const borders = await res.json();
 
       bordersHTML = borders
-        .map(
-          b =>
-            `<span class="border-item" onclick="location.href='details.html?name=${b.name.common}'">
-              ${b.name.common}
-            </span>`
-        )
+        .map(b => {
+          const nameLower = b.name.common.toLowerCase();
+          if (nameLower === "armenia") {
+            // Borderde Armenia olarsa, modal acilsin
+            return `<span class="border-item" onclick="showModal()">${b.name.common}</span>`;
+          }
+          return `<span class="border-item" onclick="location.href='details.html?name=${b.name.common}'">${b.name.common}</span>`;
+        })
         .join("");
     }
+
+    const [lat, lng] = c.latlng;
 
     container.innerHTML = `
       <div class="details-flag">
@@ -55,12 +74,20 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
           <p><b>Sub Region:</b> ${c.subregion || "-"}</p>
           <p><b>Capital:</b> ${c.capital || "-"}</p>
           <p><b>Area:</b> ${c.area.toLocaleString()} km²</p>
+          <p><b>Currency:</b> ${currency}</p>
         </div>
 
         <h3>Border Countries</h3>
-        <div class="borders">
-          ${bordersHTML}
-        </div>
+        <div class="borders">${bordersHTML}</div>
+
+        <h3>Map</h3>
+        <iframe
+          width="100%"
+          height="300"
+          style="border:0"
+          loading="lazy"
+          src="https://www.google.com/maps?q=${lat},${lng}&output=embed">
+        </iframe>
       </div>
     `;
   })
