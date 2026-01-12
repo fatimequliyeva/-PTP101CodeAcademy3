@@ -25,6 +25,7 @@ if (localStorage.getItem("theme") === "dark") {  //dark modun yadda qalmasi ucun
 
 themeToggle.addEventListener("click", () => {  //klik edende ise reng deyisir 
   document.body.classList.toggle("dark");
+ 
   localStorage.setItem(
     "theme",
     document.body.classList.contains("dark") ? "dark" : "light" //secimi yadda saxalamaq lazmdi axi

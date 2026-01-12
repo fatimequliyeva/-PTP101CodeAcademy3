@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,50 +13,63 @@
   <link rel="stylesheet" href="./assest/css/details.css">
   <link rel="stylesheet" href="./assest/css/style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <h1>Where in the world?</h1>
 
-  <button id="themeToggle" class="theme-btn">
-    <i class='bx bx-moon'></i>
-    Dark Mode
-  </button>
-</header>
+<!-- eynen indexde olanlardi bu hissse  -->
+  <header class="header">
+    <h1>Where in the world?</h1>
 
-<main class="details-wrapper">
-  <button class="back-btn" onclick="history.back()">⬅ Back</button>
+    <button id="themeToggle" class="theme-btn">
+      <i class='bx bx-moon'></i>
+      Dark Mode
+    </button>
+  </header>
 
-  <section id="detailsContainer" class="details-content"></section>
-</main>
+  <!-- sehifenin esasini saxlayir clasda css ucun lazm olacaq mene  -->
+  <main class="details-wrapper"> 
 
-<div id="alertModal" class="modal">
-  <div class="modal-content">
-    <h3>Notice</h3>
-    <p>
-      Information about this country is restricted.  
-      If you want to learn more about historical events, you can visit:
-    </p>
-    <a id="modalLink" href="https://az.wikipedia.org/wiki/Xocal%C4%B1_soyq%C4%B1r%C4%B1m%C4%B1" target="_blank">
-      Xocalı Soyqırımı — Ətraflı məlumat
-    </a>
-    <br><br>
-    <button id="closeModal">OK</button>
+    <!-- js bu brouzeri bir geri aparacaq -->
+   <button class="back-btn" onclick="history.back()">
+  <i class="bx bx-arrow-back"></i> Back
+</button>
+
+<!-- sehifenin bir hissesidi jsde bunun icini yazacam -->
+    <section id="detailsContainer" class="details-content"></section>
+  </main>
+
+
+  <!-- ermeniler ucun usdune basanda acilan modal sehifesi ve onun linkidi qoymusam -->
+  <div id="alertModal" class="modal">
+    <div class="modal-content">
+      <h3>Notice</h3>
+      <p>
+        Information about this country is restricted.
+        If you want to learn more about historical events, you can visit:
+      </p>
+      <a id="modalLink" href="https://az.wikipedia.org/wiki/Xocal%C4%B1_soyq%C4%B1r%C4%B1m%C4%B1" target="_blank">
+        Xocalı Soyqırımı — Ətraflı məlumat
+      </a>
+      <br><br>
+      <!-- br xetdi atib ardyca baqlamaq ucun ok butonu qoymusam jsde dinamk etmeliyem -->
+      <button id="closeModal">OK</button>
+    </div>
   </div>
-</div>
+
+<!-- foter hissedi menim haqqimda melumatdi oz github linkimi yerlesdirmisem conteynrde deyil  -->
+  <footer class="footer">
+    <p>
+      Developed by
+      <a href="https://github.com/fatimequliyeva" target="_blank">
+        Fatima Guliyeva
+      </a>
+      — Full-Stack Developer
+    </p>
+  </footer>
 
 
-<footer class="footer">
-  <p>
-    Developed by
-    <a href="https://github.com/fatimequliyeva" target="_blank">
-      Fatima Guliyeva
-    </a>
-    — Full-Stack Developer
-  </p>
-</footer>
-
-
-<script src="./assest/js/details.js"></script>
+  <script src="./assest/js/details.js"></script>
 </body>
+
 </html>

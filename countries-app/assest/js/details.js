@@ -1,12 +1,12 @@
-const container = document.getElementById("detailsContainer");
-const themeToggle = document.getElementById("themeToggle");
+const container = document.getElementById("detailsContainer");  //htmldeki elemeti caqrir 
+const themeToggle = document.getElementById("themeToggle");  //eyni sekilde bunu caqrir
 
 
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
+if (localStorage.getItem("theme") === "dark") { //bruzerin yaddasinda saxlanimis TEMANI OXUYUR 
+  document.body.classList.add("dark");  //classta dark elave olunur 
 }
 
-themeToggle.addEventListener("click", () => {
+themeToggle.addEventListener("click", () => {  //ekrani light dark elemek ucundu 
   document.body.classList.toggle("dark");
   localStorage.setItem(
     "theme",
@@ -14,7 +14,7 @@ themeToggle.addEventListener("click", () => {
   );
 });
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search); //name armenia kimi 
 const countryName = params.get("name");
 
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
