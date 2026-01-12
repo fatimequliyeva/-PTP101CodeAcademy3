@@ -18,7 +18,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ================= DARK MODE =================
+//dark modee
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
@@ -48,24 +48,23 @@ themeToggle.addEventListener("click", () => {
   updateThemeButton(); //icon ve yazini deyisir
 });
 
-// ================= URL PARAM =================
+
 const params = new URLSearchParams(window.location.search);
 const countryName = params.get("name");
 
-// ================= FETCH COUNTRY =================
+
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
   .then(res => res.json())
   .then(async data => {
     const c = data[0];
 
-    // ===== Currency =====
-    const currency = c.currencies
+    const currency = c.currencies  //olkenin pulu ucun
       ? Object.values(c.currencies)
-          .map(cur => `${cur.name} (${cur.symbol || ""})`)
+          .map(cur => `${cur.name} (${cur.symbol || ""})`) //varsa cevrib stringe seliqeli qaytaracq yoxdusa xet qoyacaq
           .join(", ")
       : "-";
 
-    // ===== Borders =====
+   
     let bordersHTML = "<span>No borders</span>";
 
     if (c.borders && c.borders.length) {
@@ -88,7 +87,7 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
         .join("");
     }
 
-    // ===== Render HTML (MAP YOXDUR) =====
+  
     container.innerHTML = `
       <div class="details-flag">
         <img src="${c.flags.png}" alt="${c.name.common}">

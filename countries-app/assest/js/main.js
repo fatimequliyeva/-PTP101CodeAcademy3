@@ -16,7 +16,7 @@ closeModalBtn.addEventListener("click", () => { //butona klik elave edirikki ona
 const ALL_COUNTRIES_URL =   //butun olkeleri getiren API dir 
   "https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags";
 
-// ================= DARK MODE =================
+
 if (localStorage.getItem("theme") === "dark") {  //dark modun yadda qalmasi ucun 
   document.body.classList.add("dark");  //eger dark secilibse dark qalacaq 
 }
@@ -111,7 +111,7 @@ function renderCountries(countries) {  //olkeleri kart sekilinde gosderir
   });
 }
 
-// ================= DEBOUNCE SEARCH =================
+
 let searchTimeout = null;
 
 searchInput.addEventListener("input", e => {  //yazib bitirdikden sonra axtaris
