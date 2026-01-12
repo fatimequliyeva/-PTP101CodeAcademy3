@@ -158,14 +158,15 @@ body.dark .footer a {
 }
 
 .modal-box p {
-  font-size: 14px;
+  font-size: 18px;
   margin-bottom: 15px;
+  color: rgb(7, 1, 1);
 }
 
 .modal-link {
   display: inline-block;
   margin-bottom: 20px;
-  color: #0077cc;
+  color: #cc0000;
   font-weight: 600;
   text-decoration: none;
 }
@@ -185,9 +186,9 @@ body.dark .footer a {
 
 
 body.dark .modal-box {
-  background: #2b3945;
+ background: #e5eff7;
   color: #ff0000;
-  font-size: 40px;
+  font-size: 20px;
 }
 
 

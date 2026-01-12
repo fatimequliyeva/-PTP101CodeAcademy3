@@ -122,3 +122,111 @@ body.dark .footer a {
   color: #4fc3f7;
 }
 
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  padding: 10px;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: modalShow 0.3s forwards;
+}
+
+@keyframes modalShow {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+ color: #333; 
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.modal-content a {
+  color: #d32f2f; /* link qırmızı */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: #0077cc;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.modal-content button:hover {
+  background: #005fa3;
+}
+
+/* DARK MODE */
+body.dark .modal-content {
+  background: #e5eff7;
+  
+}
+
+body.dark .modal-content a {
+  color: #ff0000;
+}
+
+body.dark .modal-content button {
+  background: #4fc3f7;
+  color: #000000;
+}
+
+body.dark .modal-content button:hover {
+  background: #1aa1f1;
+}
+
+/* Border item styling */
+.border-item {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 5px 5px 5px 0;
+  background: #f44336; /* qırmızı */
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.border-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+body.dark .border-item {
+  background: #d32f2f;
+}

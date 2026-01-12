@@ -1,16 +1,24 @@
 const container = document.getElementById("detailsContainer");
 const themeToggle = document.getElementById("themeToggle");
-const modal = document.getElementById("alertModal");
+const alertModal = document.getElementById("alertModal");
 const closeModalBtn = document.getElementById("closeModal");
 
+// ================= MODAL =================
 function showModal() {
-  modal.style.display = "flex";
+  alertModal.style.display = "flex";
 }
 
 closeModalBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+  alertModal.style.display = "none";
 });
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    alertModal.style.display = "none";
+  }
+});
+
+// ================= DARK MODE =================
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
@@ -23,20 +31,24 @@ themeToggle.addEventListener("click", () => {
   );
 });
 
+// ================= URL PARAM =================
 const params = new URLSearchParams(window.location.search);
 const countryName = params.get("name");
 
+// ================= FETCH COUNTRY =================
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
   .then(res => res.json())
   .then(async data => {
     const c = data[0];
 
+    // ===== Currency =====
     const currency = c.currencies
       ? Object.values(c.currencies)
           .map(cur => `${cur.name} (${cur.symbol || ""})`)
           .join(", ")
       : "-";
 
+    // ===== Borders =====
     let bordersHTML = "<span>No borders</span>";
 
     if (c.borders && c.borders.length) {
@@ -48,17 +60,18 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
       bordersHTML = borders
         .map(b => {
           const nameLower = b.name.common.toLowerCase();
+
           if (nameLower === "armenia") {
-            // Borderde Armenia olarsa, modal acilsin
+            // Armenia border -> modal
             return `<span class="border-item" onclick="showModal()">${b.name.common}</span>`;
           }
+
           return `<span class="border-item" onclick="location.href='details.html?name=${b.name.common}'">${b.name.common}</span>`;
         })
         .join("");
     }
 
-    const [lat, lng] = c.latlng;
-
+    // ===== Render HTML (MAP YOXDUR) =====
     container.innerHTML = `
       <div class="details-flag">
         <img src="${c.flags.png}" alt="${c.name.common}">
@@ -79,15 +92,6 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
 
         <h3>Border Countries</h3>
         <div class="borders">${bordersHTML}</div>
-
-        <h3>Map</h3>
-        <iframe
-          width="100%"
-          height="300"
-          style="border:0"
-          loading="lazy"
-          src="https://www.google.com/maps?q=${lat},${lng}&output=embed">
-        </iframe>
       </div>
     `;
   })
