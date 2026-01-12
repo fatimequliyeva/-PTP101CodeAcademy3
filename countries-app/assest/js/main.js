@@ -89,7 +89,7 @@ function renderCountries(countries) {
 
     if (nameLower === "armenia") {
       card.addEventListener("click", () => {
-        showModal(); // YALNIZ alert çıxır
+        showModal();
       });
     } else {
       card.addEventListener("click", () => {

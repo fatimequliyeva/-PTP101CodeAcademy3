@@ -183,7 +183,7 @@ body.dark .footer a {
   border-radius: 4px;
 }
 
-/* DARK MODE */
+
 body.dark .modal-box {
   background: #2b3945;
   color: #ff0000;
@@ -193,9 +193,9 @@ body.dark .modal-box {
 
 
 
-/* ================= RESPONSIVE ================= */
 
-/* Tablet */
+
+
 @media (max-width: 992px) {
   h1 {
     padding-left: 20px;
@@ -222,7 +222,7 @@ body.dark .modal-box {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 576px) {
   .header {
     flex-direction: column;
@@ -258,7 +258,7 @@ body.dark .modal-box {
   }
 }
 
-/* Large Desktop */
+
 @media (min-width: 1400px) {
   .countries-grid {
     grid-template-columns: repeat(4, 1fr);
