@@ -110,14 +110,20 @@ function renderCountries(countries) {  //apiden gelen kart melumatini ekranda ka
   });
 }
 
+let searchTimeout = null;
 
-searchInput.addEventListener("input", e => { //axdaris butonudu isdafde herf yazanda isleyir e-ise hadise haqqinda melumat saxlayir
-  const value = e.target.value.trim(); //inputa yazilan metni gotrur bosluq varsa silir 
-  if (value) { //eger input bos deyilse 
-    fetchCountries(`https://restcountries.com/v3.1/name/${value}`); //gedib melumati urlden getirir
-  } else {
-    fetchCountries(ALL_COUNTRIES_URL); //eger input bosdusa butun olkeler yeniden gosderirlir 
-  }
+searchInput.addEventListener("input", e => {  //axdaris yeridi yazib bitirdikden sora ise dusur
+  const value = e.target.value.trim();
+
+  clearTimeout(searchTimeout);
+
+  searchTimeout = setTimeout(() => {
+    if (value) {
+      fetchCountries(`https://restcountries.com/v3.1/name/${value}`);
+    } else {
+      fetchCountries(ALL_COUNTRIES_URL);
+    }
+  }, 600);
 });
 
 
