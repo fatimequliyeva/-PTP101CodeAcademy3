@@ -23,12 +23,29 @@ if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
 
+// theme toggle icon + text deyisimi ucun funksiya
+function updateThemeButton() {
+  const icon = themeToggle.querySelector("i");
+
+  if (document.body.classList.contains("dark")) {
+    icon.className = "bx bx-sun";
+    themeToggle.lastChild.textContent = " Light Mode";
+  } else {
+    icon.className = "bx bx-moon";
+    themeToggle.lastChild.textContent = " Dark Mode";
+  }
+}
+
+updateThemeButton(); //sehife acilanda icon duz olsun
+
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   localStorage.setItem(
     "theme",
     document.body.classList.contains("dark") ? "dark" : "light"
   );
+
+  updateThemeButton(); //icon ve yazini deyisir
 });
 
 // ================= URL PARAM =================

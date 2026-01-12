@@ -16,16 +16,35 @@ closeModalBtn.addEventListener("click", () => { //butona klik elave edirikki ona
 const ALL_COUNTRIES_URL =   //butun olkeleri getiren API dir 
   "https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags";
 
+// ================= DARK MODE =================
 if (localStorage.getItem("theme") === "dark") {  //dark modun yadda qalmasi ucun 
   document.body.classList.add("dark");  //eger dark secilibse dark qalacaq 
 }
+function updateThemeButton() {
+  const icon = themeToggle.querySelector("i");
+
+  if (document.body.classList.contains("dark")) {
+    icon.className = "bx bx-sun";
+    icon.style.color = "#ffffff"; // dark modda icon AĞ
+    themeToggle.lastChild.textContent = " Light Mode";
+  } else {
+    icon.className = "bx bx-moon";
+    icon.style.color = "#000000"; // light modda icon QARA
+    themeToggle.lastChild.textContent = " Dark Mode";
+  }
+}
+
+updateThemeButton(); //sehife acilanda icon duz olsun
 
 themeToggle.addEventListener("click", () => {  //klik edende ise reng deyisir 
   document.body.classList.toggle("dark");
+
   localStorage.setItem(
     "theme",
     document.body.classList.contains("dark") ? "dark" : "light" //secimi yadda saxalamaq lazmdi axi
   );
+
+  updateThemeButton(); //icon ve yazini deyisir
 });
 
 fetchCountries(ALL_COUNTRIES_URL);  //olkeleri getiren funksiyadi sehife acilan kimi isleyir
@@ -58,6 +77,7 @@ function loadRegions() { //funksiya yaradiriq ki bu funksiya regionlari selecte 
     regionSelect.appendChild(option);  
   });
 }
+
 loadRegions(); //sehife acilan kimi yuklenir 
 
 function renderCountries(countries) {  //olkeleri kart sekilinde gosderir 
