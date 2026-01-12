@@ -1,51 +1,52 @@
-const countriesList = document.getElementById("countriesList");
-const searchInput = document.getElementById("searchInput");
-const regionSelect = document.getElementById("regionSelect");
-const themeToggle = document.getElementById("themeToggle");
+const countriesList = document.getElementById("countriesList");  //olkelern gosderdiyi hisse
+const searchInput = document.getElementById("searchInput"); //axdaris inputu
+const regionSelect = document.getElementById("regionSelect"); //region secimi
+const themeToggle = document.getElementById("themeToggle"); //darkmod duymesi
+const modal = document.getElementById("alertModal"); //ermeniye cixacaq modal
+const closeModalBtn = document.getElementById("closeModal"); //onuda baqlamaq ucun duymedi
 
-const modal = document.getElementById("alertModal");
-const closeModalBtn = document.getElementById("closeModal");
 
-function showModal() {
-  modal.style.display = "flex";
+
+function showModal() {  //modal ucun funksiyadi
+  modal.style.display = "flex"; //modali gosderir
 }
 
-closeModalBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+closeModalBtn.addEventListener("click", () => { //butona klik elave edirikki ona basanda 
+  modal.style.display = "none";  //hemin modal gorunmesin
 });
 
-const ALL_COUNTRIES_URL =
+const ALL_COUNTRIES_URL =   //butun olkeleri getiren API dir 
   "https://restcountries.com/v3.1/all?fields=name,cca2,capital,region,population,flags";
 
 
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
+if (localStorage.getItem("theme") === "dark") {  //dark modun yadda qalmasi ucun 
+  document.body.classList.add("dark");  //eger dark secilibse dark qalacaq 
 }
 
-themeToggle.addEventListener("click", () => {
+themeToggle.addEventListener("click", () => {  //klik edende ise reng deyisir 
   document.body.classList.toggle("dark");
   localStorage.setItem(
     "theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
+    document.body.classList.contains("dark") ? "dark" : "light" //secimi yadda saxalamaq lazmdi axi
   );
 });
 
 
-fetchCountries(ALL_COUNTRIES_URL);
+fetchCountries(ALL_COUNTRIES_URL);  //olkeleri getiren funksiyadi sehife acilan kimi isleyir
 
-function fetchCountries(url) {
-  countriesList.innerHTML = "Loading...";
-  fetch(url)
-    .then(res => res.json())
-    .then(data => renderCountries(data))
+function fetchCountries(url) {  //apiden melumati alir
+  countriesList.innerHTML = "Loading...";  //gozleme olarsa usere loading yazisi gelr bilsinki hele 
+  fetch(url)  //apiye sorqu gonderir serverden melumat isdeyir
+    .then(res => res.json())  //servrden gelen melumat json formatndadir jsni basa dusduyu formaya cevrir
+    .then(data => renderCountries(data)) //apiden gelen olke melumati dataya dusur bu melumat rendere gonderilir 
     .catch(() => {
-      countriesList.innerHTML = "No country found";
+      countriesList.innerHTML = "No country found";  //sehv url olarsa intrnet olmazsa bu yazi olacaq 
     });
 }
 
 
 
-const regions = [
+const regions = [  //region massivi yaradiriq cunki sonradan selectde baqlayacqyq 
   "Africa",
   "Americas",
   "Asia",
@@ -54,28 +55,34 @@ const regions = [
   "Antarctic"
 ];
 
-function loadRegions() {
-  regionSelect.innerHTML = `<option value="">Filter by Region</option>`;
+function loadRegions() { //funksiya yaradiriq ki bu funksiya regionlari selecte duzecek 
+  regionSelect.innerHTML = `<option value="">Filter by Region</option>`;  //""bu hecbir regon secilmeyib demekdi ve
+  //ilk olaarq  filter by region ya
 
-  regions.forEach(region => {
-    const option = document.createElement("option");
-    option.value = region;
-    option.textContent = region;
-    regionSelect.appendChild(option);
+  regions.forEach(region => { //hemin regionu forice saliriq tek tek region adlarn tutur
+    const option = document.createElement("option"); //yene elemnt yaradrq select ucun yeni secim 
+    option.value = region;  //valuenin deyeri region adi olur 
+    option.textContent = region;  //selectde usere goruneni yazir neye basirsa onu yazir
+    regionSelect.appendChild(option);  //yaradilan optionu append eleyirik 
   });
 }
 
-loadRegions();
+loadRegions(); //funksiyani caqririq sehfie acilanda avtomatik yuklenir 
 
 
-function renderCountries(countries) {
-  countriesList.innerHTML = "";
 
-  countries.forEach(country => {
-    const card = document.createElement("div");
-    card.className = "country-card";
 
-    card.innerHTML = `
+function renderCountries(countries) {  //apiden gelen kart melumatini ekranda kard sekilinde gosderir 
+  countriesList.innerHTML = "";  //ekranda kohne olkeleri tam siliq qarwlq olmasin diye
+
+  countries.forEach(country => {  //arreyi fora salirq country ise tek bir olke melumatdr
+    const card = document.createElement("div");  //her olke ucun bir div kard yaradiriq 
+    card.className = "country-card"; //carda dizayn css ucun clas elave edirik 
+
+
+
+    //htmlde birinci bayraqdi tolocalstrnde reqemi gozel gosderir burdada her sey apidan goturulur oradki yazi ile eyni olmalidi
+    card.innerHTML = `  
       <img src="${country.flags.png}" alt="">
       <div class="country-info">
         <h3>${country.name.common}</h3>
@@ -84,38 +91,40 @@ function renderCountries(countries) {
         <p><b>Capital:</b> ${country.capital || "-"}</p>
       </div>
     `;
-
+                       
+                 //olke adini kicik herflere cevirir axdarwda prb olmasn diye 
     const nameLower = country.name.common.toLowerCase();
 
-    if (nameLower === "armenia") {
-      card.addEventListener("click", () => {
+    if (nameLower === "armenia") {  //bu xususi sertdi 
+      card.addEventListener("click", () => {  //karda klik olunanda details acilmir modal pencere acilacaq 
         showModal();
       });
-    } else {
+    } else {  //eger olke ermeni deyilse her sey oz qaydasinda isleyecek 
       card.addEventListener("click", () => {
         window.location.href = `details.html?name=${country.name.common}`;
       });
     }
 
-    countriesList.appendChild(card);
+    countriesList.appendChild(card);  //birlesdirib ekranda gosderecek 
   });
 }
 
 
-searchInput.addEventListener("input", e => {
-  const value = e.target.value.trim();
-  if (value) {
-    fetchCountries(`https://restcountries.com/v3.1/name/${value}`);
+searchInput.addEventListener("input", e => { //axdaris butonudu isdafde herf yazanda isleyir e-ise hadise haqqinda melumat saxlayir
+  const value = e.target.value.trim(); //inputa yazilan metni gotrur bosluq varsa silir 
+  if (value) { //eger input bos deyilse 
+    fetchCountries(`https://restcountries.com/v3.1/name/${value}`); //gedib melumati urlden getirir
   } else {
-    fetchCountries(ALL_COUNTRIES_URL);
+    fetchCountries(ALL_COUNTRIES_URL); //eger input bosdusa butun olkeler yeniden gosderirlir 
   }
 });
 
-regionSelect.addEventListener("change", e => {
-  const region = e.target.value;
+
+regionSelect.addEventListener("change", e => {  //isdifadeci basqa region secilende isleyir 
+  const region = e.target.value; //secilen regionun deyerini goturur
   if (region) {
-    fetchCountries(`https://restcountries.com/v3.1/region/${region}`);
+    fetchCountries(`https://restcountries.com/v3.1/region/${region}`); //eger heqiqi nese secibse gosderir 
   } else {
-    fetchCountries(ALL_COUNTRIES_URL);
+    fetchCountries(ALL_COUNTRIES_URL);//eks halda butun olkeler yeniden ekrana getirilir 
   }
 });
