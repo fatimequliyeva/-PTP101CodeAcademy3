@@ -128,9 +128,12 @@ searchInput.addEventListener("input", e => {  //yazib bitirdikden sonra axtaris
     }
   }, 600); //600ms sonra isleyir
 });
-
 regionSelect.addEventListener("change", e => {  
   const region = e.target.value;
+
+  // Region dəyişəndə search input sıfırlansın
+  searchInput.value = "";
+  
   if (region) {
     fetchCountries(`https://restcountries.com/v3.1/region/${region}`);
   } else {
@@ -139,6 +142,8 @@ regionSelect.addEventListener("change", e => {
 });
 
 
+
 window.addEventListener("pageshow", () => {
   regionSelect.value = "";
 });
+
