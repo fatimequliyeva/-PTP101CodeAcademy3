@@ -3,7 +3,7 @@ const themeToggle = document.getElementById("themeToggle");
 const alertModal = document.getElementById("alertModal");
 const closeModalBtn = document.getElementById("closeModal");
 
-// ================= MODAL =================
+
 function showModal() {
   alertModal.style.display = "flex";
 }
@@ -86,7 +86,7 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
         })
         .join("");
     }
-
+//apiden gelen olkenin pul vahiodi uzunluqu ve haqqinda olan melumatdir mapde qoydum error verdi fikrimden dawindm
   
     container.innerHTML = `
       <div class="details-flag">
@@ -113,4 +113,4 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
   })
   .catch(() => {
     container.innerHTML = "<h2>No country information found</h2>";
-  });
+  }); //eger melumatlardan hansisa biri apide yoxdusa undifinde verib ve ya eror vermesn diye evezine bu yazini qoyacaq 
