@@ -48,7 +48,7 @@ h1 {
 .details-wrapper {
   max-width: 1200px;
   margin: 40px auto;
-  padding: 0 20px;
+
 }
 
 .back-btn {
@@ -187,6 +187,7 @@ body.dark .footer a {
   transform: translateY(-20px);
   opacity: 0;
   animation: modalShow 0.3s forwards;
+  
 }
 
 @keyframes modalShow {
@@ -218,7 +219,7 @@ body.dark .footer a {
 }
 
 .modal-content button {
-  padding: 10px 20px;
+   padding: 10px 20px;
   border: none;
   cursor: pointer;
   background: #0077cc;
