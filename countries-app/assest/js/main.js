@@ -68,6 +68,7 @@ const regions = [  //region massivi yaradiriq cunki sonradan selectde baqlayacqy
   "Antarctic"
 ];
 
+
 function loadRegions() { //funksiya yaradiriq ki bu funksiya regionlari selecte duzecek 
   regionSelect.innerHTML = `<option value="">Filter by Region</option>`;  
   regions.forEach(region => { //hemin regionu forice saliriq tek tek region adlarn tutur
@@ -135,4 +136,9 @@ regionSelect.addEventListener("change", e => {
   } else {
     fetchCountries(ALL_COUNTRIES_URL);
   }
+});
+
+
+window.addEventListener("pageshow", () => {
+  regionSelect.value = "";
 });
