@@ -5,47 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Countries App</title>
 
-  
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="./assest/css/style.css" />
 </head>
 <body>
+
 <!-- saytin adi basliqi -->
 <header class="header">
-  <h1>Where in the world?</h1>
+  <div class="container">
+    <h1>Where in the world?</h1>
 
-  <!-- dark mode ucun buttondu dinamik jsden gelecek -->
-  <button id="themeToggle" class="theme-btn">
-    <i class='bx bx-moon' style="color:#000000"></i>
-    Dark Mode
-  </button>
+    <!-- dark mode ucun buttondu dinamik jsden gelecek -->
+    <button id="themeToggle" class="theme-btn">
+      <i class='bx bx-moon' style="color:#000000"></i>
+      Dark Mode
+    </button>
+  </div>
 </header>
 
-
-
 <!-- esas kontent bura sayilir  -->
- <main class="container">     
+<main>
+  <div class="container">
 
-  <!-- olkenin adina gore axxdaris -->
-  <div class="controls">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search for a country..." />
+    <!-- olkenin adina gore axxdaris -->
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for a country..." />
+      </div>
+
+      <!-- region ucun filterdi  -->
+      <select id="regionSelect"></select>
     </div>
 
+    <!-- olkelerin siyahsidi jsde bunun ici dinamik dolacaq  -->
+    <section id="countriesList" class="countries-grid"></section>
 
- <!-- region ucun filterdi  -->
-    <select id="regionSelect">
-    
-    </select>
   </div>
-
-
-<!-- olkelerin siyahsidi jsde bunun ici dinamik dolacaq  -->
-  <section id="countriesList" class="countries-grid"></section>
-
 </main>
-
 
 <!-- bu modal xeberdalq pencersi olaacq gizli pencere ermeni ucun -->
 <div id="alertModal" class="modal">
@@ -62,26 +58,26 @@
       target="_blank"
       class="modal-link"
     >
-     Xocalı Soyqırımı — Ətraflı məlumat
+      Xocalı Soyqırımı — Ətraflı məlumat
     </a>
 
-
-<!-- hemin modulu baqlayan duymedi -->
+    <!-- hemin modulu baqlayan duymedi -->
     <button id="closeModal">Close</button>
   </div>
 </div>
 
 <!-- saytin asaqi hissesidi ve menim haqqimda melumatdir link menim git-hub profilime baqlanib -->
 <footer class="footer">
-  <p>
-    Developed by
-    <a href="https://github.com/fatimequliyeva" target="_blank">
-      Fatima Guliyeva
-    </a>
-    — Full-Stack Developer
-  </p>
+  <div class="container">
+    <p>
+      Developed by
+      <a href="https://github.com/fatimequliyeva" target="_blank">
+        Fatima Guliyeva
+      </a>
+      — Full-Stack Developer
+    </p>
+  </div>
 </footer>
-
 
 <script src="./assest/js/main.js"></script>
 </body>

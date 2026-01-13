@@ -1,12 +1,9 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
-
 
 body {
   background: #fafafa;
@@ -18,24 +15,28 @@ body.dark {
   color: #ffffff;
 }
 
+/* HEADER */
 .header {
   background: #ffffff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 5px;
 }
 
 body.dark .header {
   background: #2b3945;
 }
 
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+/* TITLE */
 h1 {
-  padding-left: 70px;
   font-size: 40px;
 }
 
+/* THEME BUTTON */
 .theme-btn {
   background: none;
   border: none;
@@ -44,13 +45,14 @@ h1 {
   color: inherit;
 }
 
-
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: 30px auto;
+  padding: 0 20px;
 }
 
-
+/* CONTROLS */
 .controls {
   display: flex;
   justify-content: space-between;
@@ -66,14 +68,14 @@ select {
   font-size: 18px;
 }
 
-
+/* GRID */
 .countries-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
 }
 
-
+/* CARD */
 .country-card {
   background: #ffffff;
   border-radius: 8px;
@@ -86,33 +88,32 @@ body.dark .country-card {
   background: #2b3945;
 }
 
-
 .country-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-
 .country-card img {
   width: 100%;
   height: 180px;
   object-fit: fill;
-  transition: transform 0.4s ease;
 }
-
 
 .country-info {
   padding: 15px;
 }
 
-
-
+/* FOOTER */
 .footer {
   margin-top: auto;
   background: #ffffff;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   font-size: 14px;
+}
+
+body.dark .footer {
+  background: #2b3945;
 }
 
 .footer a {
@@ -121,20 +122,11 @@ body.dark .country-card {
   font-weight: 600;
 }
 
-.footer a:hover {
-  text-decoration: underline;
-}
-
-
-body.dark .footer {
-  background: #2b3945;
-}
-
 body.dark .footer a {
   color: #4fc3f7;
 }
 
-
+/* MODAL */
 .modal {
   position: fixed;
   inset: 0;
@@ -146,99 +138,62 @@ body.dark .footer a {
 }
 
 .modal-box {
-  background: #ffffff;
-  padding: 25px;
+  background: #eeecf7;
+  padding: 40px;
   border-radius: 10px;
-  max-width: 380px;
+  max-width: 350px;
   width: 90%;
   text-align: center;
+  p{
+   color: #000000;
+   font-size: 20px;
+  }
+  h3{
+    color: #ff0000;
+    font-size: 30px;
+  }
 }
-
-.modal-box h3 {
-  margin-bottom: 10px;
-}
-
-.modal-box p {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: rgb(7, 1, 1);
-}
-
-.modal-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #cc0000;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.modal-link:hover {
-  text-decoration: underline;
-}
-
-.modal-box button {
-  padding: 8px 20px;
-  border: none;
-  cursor: pointer;
-  background: #0077cc;
-  color: #fff;
-  border-radius: 4px;
-}
-
 
 body.dark .modal-box {
- background: #e5eff7;
+  background: #e5eff7;
   color: #ff0000;
   font-size: 20px;
 }
 
-
-
-
-
-
-
+#closeModal{
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: #0077cc;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+/* RESPONSIVE */
 @media (max-width: 992px) {
   h1 {
-    padding-left: 20px;
     font-size: 28px;
-  }
-   select {
-    padding: 10px;
-    font-size: 16px;
-    width: 200px;
   }
 
   .controls {
     flex-direction: column;
-    align-items: stretch;
   }
 
   .search-box input,
   select {
     width: 100%;
   }
-
-  .container {
-    padding: 0 20px;
-  }
 }
 
-
 @media (max-width: 576px) {
-  .header {
+  .header .container {
     flex-direction: column;
     gap: 10px;
     text-align: center;
   }
-  select {
-    padding: 8px 10px;
-    font-size: 14px;
-    width: 180px;
-  }
 
   h1 {
-    padding-left: 0;
     font-size: 22px;
   }
 
@@ -249,17 +204,7 @@ body.dark .modal-box {
   .countries-grid {
     grid-template-columns: 1fr;
   }
-
-  .country-card img {
-    height: 160px;
-  }
-
-  .modal-box {
-    width: 95%;
-    padding: 20px;
-  }
 }
-
 
 @media (min-width: 1400px) {
   .countries-grid {

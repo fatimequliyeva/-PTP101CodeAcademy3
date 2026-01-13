@@ -1,23 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+body {
+  background: #fafafa;
+  color: #111;
+}
+
+body.dark {
+  background: #202c37;
+  color: #ffffff;
+}
+
+/* Header */
+.header {
+  background: #ffffff;
+}
+
+body.dark .header {
+  background: #2b3945;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px ;
+}
+
+h1 {
+  font-size: 40px;
+  /* padding-left ləğv edildi, container hizalama üçün lazım deyil */
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: inherit;
+}
+
+/* Main wrapper */
 .details-wrapper {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-
 .back-btn {
   padding: 10px 20px;
   margin-bottom: 40px;
   cursor: pointer;
 }
-
-
-h1 {
-  padding-left: 70px;
-  font-size: 40px;
-}
-
 
 .details-content {
   display: flex;
@@ -26,7 +64,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-
+/* Flag */
 .details-flag {
   position: relative;
 }
@@ -36,7 +74,6 @@ h1 {
   max-width: 100%;
   border-radius: 6px;
 }
-
 
 .flag-theme-btn {
   position: absolute;
@@ -55,7 +92,7 @@ body.dark .flag-theme-btn {
   background: #2b3945;
 }
 
-
+/* Info */
 .details-info {
   flex: 1;
 }
@@ -64,7 +101,6 @@ body.dark .flag-theme-btn {
   margin-bottom: 25px;
 }
 
-
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -72,6 +108,7 @@ body.dark .flag-theme-btn {
   margin-bottom: 40px;
 }
 
+/* Borders */
 .borders {
   display: flex;
   flex-wrap: wrap;
@@ -79,33 +116,38 @@ body.dark .flag-theme-btn {
 }
 
 .border-item {
+  display: inline-block;
   padding: 6px 14px;
-  background: #ffffff;
+  margin: 5px 5px 5px 0;
+  background: #f44336; /* qırmızı */
+  color: #fff;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.border-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 body.dark .border-item {
-  background: #2b3945;
+  background: #d32f2f;
 }
 
-
-
+/* Footer */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background: #ffffff;
-  padding: 12px;
-  text-align: center;
-  font-size: 14px;
-  z-index: 100;
 }
-
 
 body.dark .footer {
   background: #2b3945;
+}
+
+.footer .container {
+  text-align: center;
+
+  font-size: 14px;
 }
 
 .footer a {
@@ -121,7 +163,6 @@ body.dark .footer {
 body.dark .footer a {
   color: #4fc3f7;
 }
-
 
 /* Modal */
 .modal {
@@ -157,7 +198,7 @@ body.dark .footer a {
 
 .modal-content h3 {
   margin-bottom: 15px;
- color: #333; 
+  color: #333;
 }
 
 .modal-content p {
@@ -167,7 +208,7 @@ body.dark .footer a {
 }
 
 .modal-content a {
-  color: #d32f2f; /* link qırmızı */
+  color: #d32f2f;
   font-weight: 600;
   text-decoration: none;
 }
@@ -191,10 +232,9 @@ body.dark .footer a {
   background: #005fa3;
 }
 
-/* DARK MODE */
+/* Dark mode modal */
 body.dark .modal-content {
   background: #e5eff7;
-  
 }
 
 body.dark .modal-content a {
@@ -210,23 +250,4 @@ body.dark .modal-content button:hover {
   background: #1aa1f1;
 }
 
-
-.border-item {
-  display: inline-block;
-  padding: 6px 14px;
-  margin: 5px 5px 5px 0;
-  background: #f44336; /* qırmızı */
-  color: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.border-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-body.dark .border-item {
-  background: #d32f2f;
-}
+/* Responsive already handled in previous CSS */
