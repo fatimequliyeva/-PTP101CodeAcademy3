@@ -1,0 +1,92 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.services {
+  padding: 100px 20px;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.services h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.services-text {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 50px;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.services-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1250px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+
+.service-box {
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  transition: transform 0.4s;
+}
+
+.service-box:hover .service-icon {
+  transform: scale(1.2);
+}
+
+
+.service-box h3 {
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+
+.service-box p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
