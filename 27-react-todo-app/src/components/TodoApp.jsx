@@ -18,7 +18,7 @@ const TodoApp = () => {
       
       <div className="btns">
         <ClearAll setTodos={setTodos} todos={todos} />
-        <button className="delete-selected-btn" disabled={selectedIds.length === 0 ? true : false} onClick={handleDeleteSelectedTodos}>Delete Selected Todos</button>
+        <button className="delete-selected-btn" disabled={selectedIds.length === 0 ? true : false} onClick={handleDeleteSelectedTodos}>Secdiklerinizi silin</button>
       </div>
       <hr />
       <TodoList todos={todos} setTodos={setTodos} setSelectedIds={setSelectedIds} />

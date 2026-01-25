@@ -39,11 +39,11 @@ const TodoForm = ({ todos, setTodos }) => {
       <input
         className="todo-input"
         type="text"
-        placeholder="enter ur todo here.."
+        placeholder="Metninizi bura qeyd edin"
         onChange={(e) => setTodoText(e.target.value)}
         value={todoText}
       />
-      <button type="submit">Add Todo</button>
+      <button type="submit">Yadda saxla</button>
 
       {error && (<p className="error-message">input can not be empty!</p>)}
     </form>

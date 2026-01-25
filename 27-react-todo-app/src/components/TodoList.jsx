@@ -28,7 +28,7 @@ const TodoList = ({ todos, setTodos, setSelectedIds }) => {
 
   if (todos.length === 0) {
     return (
-      <p>No todo item yet!</p>
+      <p>Hec bir melumat qeyd olunmayib..</p>
     )
   }
 
