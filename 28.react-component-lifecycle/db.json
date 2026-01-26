@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 10.99,
+      "isDiscounted": false
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 15.99,
+      "isDiscounted": true
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": 7.99,
+      "isDiscounted": false
+    },
+    {
+      "id": "2ac5",
+      "name": "Fatima Guliyeva",
+      "price": 1136,
+      "isDiscounted": true
+    },
+    {
+      "id": "04ef",
+      "name": "Fatima Guliyeva",
+      "price": 0.03,
+      "isDiscounted": true
+    },
+    {
+      "id": "935c",
+      "name": "                4",
+      "price": 243,
+      "isDiscounted": true
+    }
+  ]
+}
