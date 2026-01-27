@@ -2,7 +2,7 @@ function Logout({ setIsLogged }) {
   return (
     <button 
       className="logout-btn" 
-      onClick={() => setIsLogged(false)}
+      onClick={() => setIsLogged(false)}  //bunada false vermsiem logindekin eksi
     >
       Logout
     </button>

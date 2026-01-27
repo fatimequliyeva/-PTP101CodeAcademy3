@@ -1,8 +1,8 @@
-function Login({ setIsLogged }) {
+function Login({ setIsLogged }) {  //destrng edib goturmusem props kimi
   return (
-    <button className="login-btn" onClick={() => setIsLogged(true)}>
+    <button className="login-btn" onClick={() => setIsLogged(true)}> 
       Login
-    </button>
+    </button>  //tooqle mentiqidi 
   );
 }
 

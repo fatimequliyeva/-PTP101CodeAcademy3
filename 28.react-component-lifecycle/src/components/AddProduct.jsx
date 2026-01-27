@@ -1,27 +1,32 @@
 import { useState } from "react";
 
 function AddProduct({ onAdd }) {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [isDiscounted, setIsDiscounted] = useState(false);
+  const [name, setName] = useState("");  //text inputu 
+  const [price, setPrice] = useState(""); //qiymet 
+  const [isDiscounted, setIsDiscounted] = useState(false); //endirim 
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = (e) => {  //form submit olanda isleyir 
+    e.preventDefault(); //refresin dayandirir 
 
-    const newProduct = {
+    const newProduct = {  //inputdan string geldiryen gore number onu numbere numbere cevrir
       name,
       price: Number(price),
       isDiscounted,
     };
 
-    onAdd(newProduct); 
+    onAdd(newProduct);  //yeni mehsulu parent companetde godnerir 
 
     // form reset
-    setName("");
+    setName("");  //mehsul elave edendne sora form tezmilenir
     setPrice("");
-    setIsDiscounted(false);
+    setIsDiscounted(false); 
   };
+  
 
+
+
+  //usere mene gorunen bolmedi sumbit olunan hisse ve required sumbit form bos ola bilmez 
+  //step en xirda reqem hasniki hardan tenzimlenecek bdie cehck box var bu qeder 
   return (
     <form className="add-product-form" onSubmit={submitHandler}>
       <h4 className="form-title">Add Product</h4>
