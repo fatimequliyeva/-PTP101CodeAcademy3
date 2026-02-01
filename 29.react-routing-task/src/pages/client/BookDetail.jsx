@@ -40,7 +40,7 @@ function BookDetail() {
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-10">
           
-          {/* IMAGE */}
+          
           <div className="relative">
             <img
               src={book.coverImageURL}
@@ -48,7 +48,7 @@ function BookDetail() {
               className="w-full h-[420px] object-cover rounded-2xl shadow-lg"
             />
 
-            {/* Favorite */}
+            
             <button
               onClick={() => toggleFavorite(book)}
               className={`absolute top-4 right-4 p-3 rounded-full backdrop-blur-md transition
@@ -61,7 +61,7 @@ function BookDetail() {
             </button>
           </div>
 
-          {/* INFO */}
+          
           <div className="flex flex-col justify-between">
             <div className="space-y-5">
               <h2 className="text-4xl font-extrabold text-slate-800">
@@ -77,7 +77,7 @@ function BookDetail() {
                 {book.description}
               </p>
 
-              {/* META GRID */}
+              
               <div className="grid grid-cols-2 gap-4 text-sm text-slate-700">
                 <span className="flex items-center gap-2">
                   <FaTag className="text-indigo-500" /> {book.genre}
@@ -94,7 +94,6 @@ function BookDetail() {
               </div>
             </div>
 
-            {/* ACTIONS */}
             <div className="flex justify-between items-center mt-8">
               <button
                 onClick={() => navigate(-1)}

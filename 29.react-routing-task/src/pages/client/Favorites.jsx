@@ -37,7 +37,7 @@ function Favorites() {
         <span className="ml-2 text-indigo-600">({favorites.length})</span>
       </h2>
 
-      {/* üst actionlar */}
+      
       <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
         <button
           onClick={() => navigate(-1)}
@@ -54,7 +54,7 @@ function Favorites() {
         </button>
       </div>
 
-      {/* Modal */}
+    
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
           <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full">
@@ -82,7 +82,7 @@ function Favorites() {
         </div>
       )}
 
-      {/* Favori kartları */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {favorites.map(book => (
           <div

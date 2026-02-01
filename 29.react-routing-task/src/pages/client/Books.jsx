@@ -35,7 +35,7 @@ function Books() {
             key={book.id}
             className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow hover:shadow-2xl transition"
           >
-            {/* Image */}
+           
             <div className="relative">
               <img
                 src={book.coverImageURL}
@@ -43,7 +43,7 @@ function Books() {
                 className="w-full h-60 object-cover transition group-hover:scale-105"
               />
 
-              {/* Favorite */}
+              
               <button
                 onClick={() => toggleFavorite(book)}
                 className={`absolute top-4 right-4 p-2 rounded-full backdrop-blur-md
@@ -56,7 +56,7 @@ function Books() {
               </button>
             </div>
 
-            {/* Content */}
+           
             <div className="p-5 space-y-3">
               <h3 className="text-lg font-bold text-slate-800 line-clamp-1">
                 {book.title}
@@ -71,7 +71,6 @@ function Books() {
                 {book.description}
               </p>
 
-              {/* Meta */}
               <div className="grid grid-cols-2 gap-2 text-xs text-slate-600">
                 <span className="flex items-center gap-1">
                   <FaTag className="text-indigo-500" /> {book.genre}
@@ -87,7 +86,7 @@ function Books() {
                 </span>
               </div>
 
-              {/* Action */}
+              
               <Link
                 to={`/books/${book.id}`}
                 className="block mt-4 text-center bg-indigo-600 text-white py-2 rounded-xl font-medium hover:bg-indigo-700 transition"

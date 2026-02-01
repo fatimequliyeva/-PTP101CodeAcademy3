@@ -1,130 +1,156 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { FaEdit, FaTrash, FaSpinner } from "react-icons/fa"
+import { FaEdit, FaTrash, FaSpinner, FaPlus } from "react-icons/fa"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 
+const BASE_URL = "https://book-store-api-liard-three.vercel.app/books"
+
 const BookSchema = Yup.object().shape({
-  title: Yup.string().trim().required("Başlıq mütləqdir"),
-  author: Yup.string().trim().required("Müəllif mütləqdir"),
-  price: Yup.number().required("Qiymət mütləqdir").positive(),
-  description: Yup.string().trim().required("Təsvir mütləqdir"),
-  stock: Yup.number().required("Stok mütləqdir").min(0),
-  genre: Yup.string().trim().required("Janr mütləqdir"),
-  language: Yup.string().trim().required("Dil mütləqdir"),
-  coverImageURL: Yup.string().url("Düzgün URL daxil edin").required(),
-  rating: Yup.number().required().min(0).max(5),
-  sold: Yup.number().required().min(0)
+  title: Yup.string().required("Başlıq mütləqdir"),
+  author: Yup.string().required("Müəllif mütləqdir"),
+  price: Yup.number().required().positive(),
+  description: Yup.string().required(),
+  stock: Yup.number().required().min(0),
+  genre: Yup.string().required(),
+  language: Yup.string().required(),
+  coverImageURL: Yup.string().url().required(),
+  rating: Yup.number().min(0).max(5).required(),
+  sold: Yup.number().min(0).required()
 })
+
+const emptyBook = {
+  title: "",
+  author: "",
+  price: "",
+  description: "",
+  stock: "",
+  genre: "",
+  language: "",
+  coverImageURL: "",
+  rating: "",
+  sold: ""
+}
 
 function AdminBooks() {
   const [books, setBooks] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [editingBook, setEditingBook] = useState(null)
+  const [search, setSearch] = useState("")
   const [status, setStatus] = useState("")
-
-  const BASE_URL = "https://book-store-api-liard-three.vercel.app/books"
+  const [showAdd, setShowAdd] = useState(false)
+  const [editingBook, setEditingBook] = useState(null)
 
   const fetchBooks = async () => {
-    try {
-      const res = await axios.get(BASE_URL)
-      setBooks(res.data)
-    } catch (err) {
-      console.error(err)
-    }
+    const res = await axios.get(BASE_URL)
+    setBooks(res.data)
   }
 
   useEffect(() => {
     fetchBooks()
   }, [])
 
+  const filteredBooks = books.filter(b =>
+    b.title.toLowerCase().includes(search.toLowerCase()) ||
+    b.author.toLowerCase().includes(search.toLowerCase())
+  )
+
   const handleDelete = async (id) => {
-    setStatus("yuklenir")
+    setStatus("loading")
     try {
       await axios.delete(`${BASE_URL}/${id}`)
     } catch (err) {
-      console.log("Delete error (normaldır):", err)
+      console.log("DELETE error (vercel normaldır):", err)
     } finally {
-      setStatus("ugurlu")
+      setStatus("success")
       fetchBooks()
       setTimeout(() => setStatus(""), 2000)
     }
   }
 
-  const filteredBooks = books.filter(book =>
-    book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    book.author.toLowerCase().includes(searchTerm.toLowerCase())
-  )
-
   return (
-    <div className="mt-10 px-4">
-      <h1 className="text-3xl font-bold text-indigo-600 mb-6">
-        Admin Kitablar
-      </h1>
+    <div className="p-6 mt-10">
 
-      {/* STATUS */}
-      {status === "yuklenir" && (
-        <p className="flex items-center gap-2 text-yellow-600 mb-4">
-          <FaSpinner className="animate-spin" />
-          Əməliyyat icra olunur...
-        </p>
-      )}
-
-      {status === "ugurlu" && (
-        <p className="text-green-600 mb-4">
-          ✔ Əməliyyat uğurla tamamlandı
-        </p>
-      )}
-
-      {/* SEARCH */}
-      <div className="mb-6 flex flex-col md:flex-row gap-4 justify-between">
-        <input
-          type="text"
-          placeholder="Kitab adı və ya müəllif axtar..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full md:max-w-md px-4 py-2 border rounded-xl focus:ring-2 focus:ring-indigo-500"
-        />
-        <span className="text-gray-600 text-sm self-center">
-          Nəticə sayı: {filteredBooks.length}
-        </span>
+      
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-indigo-600">Admin Kitablar</h1>
+        <button
+          onClick={() => {
+            setShowAdd(!showAdd)
+            setEditingBook(null)
+          }}
+          className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2 rounded-xl"
+        >
+          <FaPlus /> Add Book
+        </button>
       </div>
 
-      {/* EDIT FORM */}
-      {editingBook && (
+      
+      {status === "loading" && (
+        <p className="mb-4 flex items-center gap-2 text-yellow-600">
+          <FaSpinner className="animate-spin" /> Yüklənir...
+        </p>
+      )}
+
+      {status === "success" && (
+        <p className="mb-4 text-green-600 font-semibold">
+          ✔ Uğurlu oldu
+        </p>
+      )}
+
+      
+      <input
+        type="text"
+        placeholder="Kitab və ya müəllif axtar..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="mb-6 w-full md:w-1/2 px-4 py-2 border rounded-xl"
+      />
+
+     
+      {(showAdd || editingBook) && (
         <Formik
-          initialValues={editingBook}
+          initialValues={editingBook || emptyBook}
           validationSchema={BookSchema}
-          onSubmit={async (values, { setSubmitting }) => {
-            setStatus("yuklenir")
+          onSubmit={async (values, actions) => {
+            setStatus("loading")
             try {
-              await axios.put(`${BASE_URL}/${editingBook.id}`, values)
+              if (editingBook) {
+                await axios.put(`${BASE_URL}/${editingBook.id}`, values)
+              } else {
+                await axios.post(BASE_URL, values)
+              }
             } catch (err) {
-              console.log("Put error (normaldır):", err)
+              console.log("POST/PUT error (vercel normaldır):", err)
             } finally {
-              setStatus("ugurlu")
+              setStatus("success")
+              setShowAdd(false)
               setEditingBook(null)
+              actions.resetForm()
               fetchBooks()
-              setSubmitting(false)
               setTimeout(() => setStatus(""), 2000)
+              actions.setSubmitting(false)
             }
           }}
         >
           {({ isSubmitting }) => (
-            <Form className="mb-8 p-6 bg-white shadow-xl rounded-2xl max-w-4xl">
-              <h2 className="text-xl font-semibold mb-4">Kitabı Yenilə</h2>
+            <Form className="bg-white shadow-xl rounded-2xl p-6 mb-8">
+              <h2 className="text-xl font-bold mb-4">
+                {editingBook ? "Kitabı Yenilə" : "Yeni Kitab Əlavə Et"}
+              </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {Object.keys(BookSchema.fields).map((f) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {Object.keys(emptyBook).map((f) => (
                   <div key={f}>
-                    <label className="block mb-1 capitalize">{f}</label>
                     <Field
                       name={f}
+                      placeholder={f}
                       as={f === "description" ? "textarea" : "input"}
-                      rows={f === "description" ? 3 : undefined}
                       className="w-full border px-3 py-2 rounded"
                     />
-                    <ErrorMessage name={f} component="div" className="text-red-500 text-sm" />
+                    <ErrorMessage
+                      name={f}
+                      component="div"
+                      className="text-red-500 text-sm"
+                    />
                   </div>
                 ))}
               </div>
@@ -132,47 +158,52 @@ function AdminBooks() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-5 flex items-center gap-2 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-700"
+                className="mt-5 bg-green-600 text-white px-6 py-2 rounded-xl"
               >
-                {isSubmitting ? <FaSpinner className="animate-spin" /> : <FaEdit />}
-                Yenilə
+                {isSubmitting ? "Yüklənir..." : "Yadda saxla"}
               </button>
             </Form>
           )}
         </Formik>
       )}
 
-      {/* TABLE */}
+      
       <div className="overflow-x-auto bg-white shadow-xl rounded-2xl">
         <table className="w-full">
           <thead className="bg-gray-100">
             <tr>
               <th className="p-3">#</th>
               <th className="p-3">Şəkil</th>
-              <th className="p-3">Başlıq</th>
+              <th className="p-3">Ad</th>
               <th className="p-3">Müəllif</th>
               <th className="p-3">Qiymət</th>
-              <th className="p-3">Stock</th>
               <th className="p-3">Əməliyyat</th>
             </tr>
           </thead>
-
           <tbody>
-            {filteredBooks.map((book, i) => (
-              <tr key={book.id} className="border-t text-center hover:bg-gray-50">
+            {filteredBooks.map((b, i) => (
+              <tr key={b.id} className="border-t text-center">
                 <td className="p-3">{i + 1}</td>
                 <td className="p-3">
-                  <img src={book.coverImageURL} className="w-12 h-16 mx-auto rounded" />
+                  <img src={b.coverImageURL} className="w-12 h-16 mx-auto" />
                 </td>
-                <td className="p-3">{book.title}</td>
-                <td className="p-3">{book.author}</td>
-                <td className="p-3">${book.price}</td>
-                <td className="p-3">{book.stock}</td>
+                <td className="p-3">{b.title}</td>
+                <td className="p-3">{b.author}</td>
+                <td className="p-3">${b.price}</td>
                 <td className="p-3 flex justify-center gap-4">
-                  <button onClick={() => setEditingBook(book)} className="text-yellow-500">
+                  <button
+                    onClick={() => {
+                      setEditingBook(b)
+                      setShowAdd(false)
+                    }}
+                    className="text-yellow-500"
+                  >
                     <FaEdit />
                   </button>
-                  <button onClick={() => handleDelete(book.id)} className="text-red-500">
+                  <button
+                    onClick={() => handleDelete(b.id)}
+                    className="text-red-500"
+                  >
                     <FaTrash />
                   </button>
                 </td>
@@ -181,6 +212,7 @@ function AdminBooks() {
           </tbody>
         </table>
       </div>
+
     </div>
   )
 }

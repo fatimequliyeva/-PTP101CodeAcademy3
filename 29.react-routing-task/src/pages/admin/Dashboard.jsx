@@ -1,12 +1,13 @@
 import { FaBook, FaHeart, FaChartLine, FaCrown } from "react-icons/fa"
 import LiveSalesChart from "./LiveSalesChart"
+import AdminMood from "./AdminMood"
 
 function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 px-4 py-12">
       <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-10">
 
-        {/* HEADER */}
+        {/* ================= HEADER ================= */}
         <div className="mb-14 text-center">
           <div className="flex justify-center mb-5">
             <div className="bg-yellow-100 p-4 rounded-full shadow">
@@ -26,18 +27,16 @@ function Dashboard() {
             Fatimə xanım
           </p>
 
-          <p className="mt-5 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Bu panel vasitəsilə kitabları idarə edə,  
-            favoritləri izləyə və satış statistikalarını  
-            real vaxtda analiz edə bilərsiniz.
-          </p>
         </div>
 
-        {/* STAT CARDS */}
+        {/* ================= ADMIN MOOD ================= */}
+        <AdminMood />
+
+        {/* ================= STAT CARDS ================= */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
 
           {/* BOOKS */}
-          <div className="relative bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition group">
+          <div className="relative bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition">
             <div className="absolute -top-5 right-6 bg-indigo-600 text-white p-3 rounded-xl shadow-lg">
               <FaBook className="text-2xl" />
             </div>
@@ -51,7 +50,7 @@ function Dashboard() {
           </div>
 
           {/* FAVORITES */}
-          <div className="relative bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition group">
+          <div className="relative bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition">
             <div className="absolute -top-5 right-6 bg-pink-500 text-white p-3 rounded-xl shadow-lg">
               <FaHeart className="text-2xl" />
             </div>
@@ -65,7 +64,7 @@ function Dashboard() {
           </div>
 
           {/* SALES */}
-          <div className="relative bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition group">
+          <div className="relative bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition">
             <div className="absolute -top-5 right-6 bg-emerald-500 text-white p-3 rounded-xl shadow-lg">
               <FaChartLine className="text-2xl" />
             </div>
@@ -79,12 +78,12 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* LIVE SALES */}
+        {/* ================= LIVE SALES ================= */}
         <div className="mb-14">
           <LiveSalesChart />
         </div>
 
-        {/* FOOTER */}
+        {/* ================= FOOTER ================= */}
         <div className="text-center text-gray-400 text-sm">
           Sistem sizin nəzarətiniz altındadır ✨
           <span className="block font-semibold text-gray-500 mt-1">

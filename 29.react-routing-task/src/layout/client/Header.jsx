@@ -30,12 +30,12 @@ function Header() {
     >
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
 
-        {/* LOGO */}
+        
         <h1 className="text-2xl font-extrabold tracking-wide">
           {isAdmin ? "📊 Admin Panel" : "📚 Book Explorer"}
         </h1>
 
-        {/* NAV LINKS */}
+       
         <ul className="flex gap-6 items-center text-sm md:text-base font-medium">
 
           {isAdmin ? (

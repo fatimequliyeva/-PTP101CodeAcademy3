@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 min-h-screen">
 
-      {/* HERO */}
+      
       <section className="container mx-auto px-6 py-32 text-center text-white">
         <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight">
           Book Explorer platformasına xoş gəlmisiniz!
@@ -26,7 +26,7 @@ function Home() {
         </button>
       </section>
 
-      {/* FEATURES */}
+      
       <section className="bg-slate-100 py-20">
         <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
 
