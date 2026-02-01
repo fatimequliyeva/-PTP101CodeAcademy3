@@ -1,18 +1,35 @@
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white mt-12">
-      <div className="container mx-auto p-6 text-center space-y-3">
-        <p className="text-sm md:text-base">
-          
-          &copy; {new Date().getFullYear()}  <span className="font-semibold">Book Explorer</span>. Bütün hüquqlar qorunur.
+    <footer className="border-t bg-white text-gray-600">
+      <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+
+        {/* Left */}
+        <p className="text-sm">
+          © {new Date().getFullYear()}{" "}
+          <span className="font-semibold text-gray-800">
+            Book Explorer
+          </span>. Bütün hüquqlar qorunur.
         </p>
-        <div className="flex justify-center gap-6 text-sm">
-          <a href="/privacy" className="hover:text-blue-400 transition">Privacy Policy</a>
-          <a href="/contact" className="hover:text-blue-400 transition">Contact</a>
+
+        {/* Right */}
+        <div className="flex gap-6 text-sm">
+          <a
+            href="/privacy"
+            className="hover:text-gray-900 transition"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/contact"
+            className="hover:text-gray-900 transition"
+          >
+            Əlaqə
+          </a>
         </div>
+
       </div>
     </footer>
   )
 }
 
-export default Footer  //get ful year indiki cari ili avtomatik gossderir 
+export default Footer

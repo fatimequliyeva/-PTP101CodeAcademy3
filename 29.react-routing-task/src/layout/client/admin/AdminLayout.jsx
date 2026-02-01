@@ -1,81 +1,135 @@
-import { Outlet, Link, useNavigate } from "react-router-dom"
+import { Outlet, NavLink, useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { FaBars, FaUserShield } from "react-icons/fa"   // maraqlı ikon (admin üçün qalxan)
+import { FaBars, FaUserShield, FaSignOutAlt } from "react-icons/fa"
 
 function AdminLayout() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    // Burada logout üçün session/localStorage təmizləmə yaza bilərsən
-    navigate("/") // logout sonrası ana səhifəyə yönləndir
+    navigate("/")
   }
 
-  return (
-    <div className="flex min-h-screen">
-      {/* Sidebar */}
-      {isOpen && (
-        <aside className="w-64 bg-gray-800 text-white p-6 transition-transform duration-300">
-          <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
-          <nav className="space-y-4">
-            <Link to="/admin/dashboard" className="block hover:text-blue-400">
-              Dashboard
-            </Link>
-            <Link to="/admin/books" className="block hover:text-blue-400">
-              Books
-            </Link>
-            <Link to="/admin/add-book" className="block hover:text-blue-400">
-              Add Book
-            </Link>
-          </nav>
-        </aside>
-      )}
+  const sideLink =
+    "block px-3 py-2 rounded-md transition hover:bg-gray-700"
 
-      {/* Content */}
-      <main className="flex-1 bg-gray-100 relative">
-        {/* Topbar */}
-        <div className="flex items-center justify-between bg-white shadow px-6 py-4 mb-6">
+  const sideActive =
+    "bg-gray-700 text-yellow-300 font-semibold"
+
+  const topLink =
+    "text-gray-700 font-medium hover:text-blue-600 transition"
+
+  const topActive =
+    "text-blue-600 border-b-2 border-blue-600"
+
+  return (
+    <div className="flex min-h-screen bg-gray-100">
+
+      {/* SIDEBAR */}
+      <aside
+        className={`${
+          isOpen ? "w-64" : "w-0"
+        } bg-gray-800 text-white transition-all duration-300 overflow-hidden`}
+      >
+        <div className="p-6">
+          <h2 className="text-2xl font-bold mb-8">
+            Admin Panel
+          </h2>
+
+          <nav className="space-y-3">
+            <NavLink
+              to="/admin/dashboard"
+              className={({ isActive }) =>
+                `${sideLink} ${isActive ? sideActive : ""}`
+              }
+            >
+              Dashboard
+            </NavLink>
+
+            <NavLink
+              to="/admin/books"
+              className={({ isActive }) =>
+                `${sideLink} ${isActive ? sideActive : ""}`
+              }
+            >
+              Books
+            </NavLink>
+
+            <NavLink
+              to="/admin/add-book"
+              className={({ isActive }) =>
+                `${sideLink} ${isActive ? sideActive : ""}`
+              }
+            >
+              Add Book
+            </NavLink>
+          </nav>
+        </div>
+      </aside>
+
+      {/* MAIN */}
+      <main className="flex-1 flex flex-col">
+
+        {/* TOPBAR */}
+        <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            {/* Toggle Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="bg-blue-600 text-white px-3 py-2 rounded shadow hover:bg-blue-800 transition"
+              className="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition"
             >
               <FaBars />
             </button>
-            <h1 className="text-xl font-bold text-gray-700">Admin Panel</h1>
+
+            {/* TOP NAV */}
+            <nav className="hidden md:flex items-center gap-6">
+              <NavLink
+                to="/admin/dashboard"
+                className={({ isActive }) =>
+                  `${topLink} ${isActive ? topActive : ""}`
+                }
+              >
+                Dashboard
+              </NavLink>
+
+              <NavLink
+                to="/admin/books"
+                className={({ isActive }) =>
+                  `${topLink} ${isActive ? topActive : ""}`
+                }
+              >
+                Books
+              </NavLink>
+
+              <NavLink
+                to="/admin/add-book"
+                className={({ isActive }) =>
+                  `${topLink} ${isActive ? topActive : ""}`
+                }
+              >
+                Add Book
+              </NavLink>
+            </nav>
           </div>
 
-          {/* Yuxarıda linklər + Admin info */}
-          <nav className="flex items-center gap-6">
-            <Link to="/admin/dashboard" className="text-gray-700 hover:text-blue-600">
-              Dashboard
-            </Link>
-            <Link to="/admin/books" className="text-gray-700 hover:text-blue-600">
-              Books
-            </Link>
-            <Link to="/admin/add-book" className="text-gray-700 hover:text-blue-600">
-              Add Book
-            </Link>
-
-            {/* Admin adı + ikon */}
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-gray-700 font-semibold">
-              <FaUserShield className="text-blue-600 text-lg" />
-              Baş Admin Fatima Guliyeva
+              <FaUserShield className="text-blue-600" />
+              Fatimə Guliyeva
             </div>
 
-            {/* Logout düyməsi */}
             <button
               onClick={handleLogout}
-              className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition"
+              className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
             >
+              <FaSignOutAlt />
               Logout
             </button>
-          </nav>
-        </div>
+          </div>
+        </header>
 
-        {/* Nested route-lar */}
-        <div className="p-6">
+        {/* PAGE CONTENT */}
+        <div className="flex-1 p-6">
           <Outlet />
         </div>
       </main>

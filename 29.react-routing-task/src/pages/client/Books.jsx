@@ -1,7 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { FaHeart } from "react-icons/fa"
+import {
+  FaHeart,
+  FaUserEdit,
+  FaTag,
+  FaLanguage,
+  FaStar
+} from "react-icons/fa"
 import { FavoritesContext } from "../../context/FavoritesContext"
 
 function Books() {
@@ -9,63 +15,89 @@ function Books() {
   const { favorites, toggleFavorite } = useContext(FavoritesContext)
 
   useEffect(() => {
-    axios.get("https://book-store-api-liard-three.vercel.app/books")
+    axios
+      .get("https://book-store-api-liard-three.vercel.app/books")
       .then(res => setBooks(res.data))
       .catch(err => console.error("Kitabları yükləmək mümkün olmadı:", err))
   }, [])
 
+  const isFav = (id) => favorites.some(f => f.id === id)
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
-      {books.map(book => (
-        <div 
-          key={book.id} 
-          className="bg-white border rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:scale-105"
-        >
-          {/* Şəkil */}
-          <img 
-            src={book.coverImageURL} 
-            alt={book.title} 
-            className="w-full h-56 object-cover rounded-lg mb-4" 
-          />
+    <div className="container mx-auto px-6 mt-14">
+      <h2 className="text-4xl font-extrabold text-slate-800 mb-12 text-center">
+        Kitablar
+      </h2>
 
-          {/* bawliq */}
-          <h3 className="text-xl font-bold text-blue-700">{book.title}</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {books.map(book => (
+          <div
+            key={book.id}
+            className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow hover:shadow-2xl transition"
+          >
+            {/* Image */}
+            <div className="relative">
+              <img
+                src={book.coverImageURL}
+                alt={book.title}
+                className="w-full h-60 object-cover transition group-hover:scale-105"
+              />
 
-          {/* muellf */}
-          <p className="text-gray-600"><span className="font-semibold">Author:</span> {book.author}</p>
+              {/* Favorite */}
+              <button
+                onClick={() => toggleFavorite(book)}
+                className={`absolute top-4 right-4 p-2 rounded-full backdrop-blur-md
+                ${isFav(book.id)
+                    ? "bg-rose-600 text-white"
+                    : "bg-white/80 text-slate-500 hover:text-rose-500"
+                  }`}
+              >
+                <FaHeart size={18} />
+              </button>
+            </div>
 
-          {/* Qiymt */}
-          <p className="text-gray-600"><span className="font-semibold">Price:</span> ${book.price}</p>
+            {/* Content */}
+            <div className="p-5 space-y-3">
+              <h3 className="text-lg font-bold text-slate-800 line-clamp-1">
+                {book.title}
+              </h3>
 
-          {/* sekl */}
-          <p className="text-gray-500 mt-2 line-clamp-3">{book.description}</p>
+              <p className="flex items-center gap-2 text-sm text-slate-600">
+                <FaUserEdit className="text-indigo-500" />
+                {book.author}
+              </p>
 
-          {/* elave mlmat */}
-          <div className="mt-3 space-y-1 text-sm text-gray-600">
-            <p><span className="font-semibold">Stock:</span> {book.stock}</p>
-            <p><span className="font-semibold">Genre:</span> {book.genre}</p>
-            <p><span className="font-semibold">Language:</span> {book.language}</p>
-            <p><span className="font-semibold">Rating:</span> {book.rating}</p>
-            <p><span className="font-semibold">Sold:</span> {book.sold}</p>
+              <p className="text-sm text-slate-500 line-clamp-2">
+                {book.description}
+              </p>
+
+              {/* Meta */}
+              <div className="grid grid-cols-2 gap-2 text-xs text-slate-600">
+                <span className="flex items-center gap-1">
+                  <FaTag className="text-indigo-500" /> {book.genre}
+                </span>
+                <span className="flex items-center gap-1">
+                  <FaLanguage className="text-indigo-500" /> {book.language}
+                </span>
+                <span className="flex items-center gap-1">
+                  <FaStar className="text-yellow-500" /> {book.rating}
+                </span>
+                <span className="font-semibold text-slate-700">
+                  ${book.price}
+                </span>
+              </div>
+
+              {/* Action */}
+              <Link
+                to={`/books/${book.id}`}
+                className="block mt-4 text-center bg-indigo-600 text-white py-2 rounded-xl font-medium hover:bg-indigo-700 transition"
+              >
+                Ətraflı Bax
+              </Link>
+            </div>
           </div>
-
-          {/* etrafli melumat ve favrio duymesi */}
-          <div className="flex justify-between items-center mt-5">
-            <Link 
-              to={`/books/${book.id}`} 
-              className="px-5 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800 transition"
-            >
-              Ətraflı
-            </Link>
-            <button 
-              onClick={() => toggleFavorite(book)} 
-              className={`transition ${favorites.find(fav => fav.id === book.id) ? "text-red-500 hover:text-red-700" : "text-gray-400 hover:text-red-400"}`}
-            >
-              <FaHeart size={26} />
-            </button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

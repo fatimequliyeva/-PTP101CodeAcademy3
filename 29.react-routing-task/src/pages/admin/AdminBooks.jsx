@@ -4,18 +4,30 @@ import { FaEdit, FaTrash, FaSpinner } from "react-icons/fa"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 
-
 const BookSchema = Yup.object().shape({
   title: Yup.string().trim().required("Başlıq mütləqdir"),
   author: Yup.string().trim().required("Müəllif mütləqdir"),
-  price: Yup.number().required("Qiymət mütləqdir").positive(),
+  price: Yup.number()
+    .typeError("Qiymət rəqəm olmalıdır")
+    .required("Qiymət mütləqdir")
+    .positive(),
   description: Yup.string().trim().required("Təsvir mütləqdir"),
-  stock: Yup.number().required("Stok mütləqdir").min(0),
+  stock: Yup.number()
+    .typeError("Stok rəqəm olmalıdır")
+    .required("Stok mütləqdir")
+    .min(0),
   genre: Yup.string().trim().required("Janr mütləqdir"),
   language: Yup.string().trim().required("Dil mütləqdir"),
-  coverImageURL: Yup.string().url("Düzgün URL daxil edin").required(),
-  rating: Yup.number().required().min(0).max(5),
-  sold: Yup.number().required().min(0)
+  coverImageURL: Yup.string().url("Düzgün URL daxil edin").required("Şəkil linki mütləqdir"),
+  rating: Yup.number()
+    .typeError("Rating rəqəm olmalıdır")
+    .min(0)
+    .max(5)
+    .required(),
+  sold: Yup.number()
+    .typeError("Satış sayı rəqəm olmalıdır")
+    .min(0)
+    .required()
 })
 
 function AdminBooks() {
@@ -43,17 +55,12 @@ function AdminBooks() {
     try {
       await axios.delete(`${BASE_URL}/${id}`)
     } catch (err) {
-      console.log("Vercel delete error (normaldir):", err)
+      console.log("Delete error (normaldır):", err)
     } finally {
       setStatus("ugurlu")
       fetchBooks()
       setTimeout(() => setStatus(""), 2000)
     }
-  }
-
-
-  const handleEditClick = (book) => {
-    setEditingBook(book)
   }
 
   return (
@@ -62,7 +69,6 @@ function AdminBooks() {
         Admin Kitablar
       </h1>
 
-      {/* STATUS */}
       {status === "yuklenir" && (
         <p className="flex items-center gap-2 text-yellow-600 mb-4">
           <FaSpinner className="animate-spin" />
@@ -78,35 +84,26 @@ function AdminBooks() {
 
       {editingBook && (
         <Formik
+          enableReinitialize
           initialValues={{
-            title: editingBook.title,
-            author: editingBook.author,
-            price: editingBook.price,
-            description: editingBook.description,
-            stock: editingBook.stock,
-            genre: editingBook.genre,
-            language: editingBook.language,
-            coverImageURL: editingBook.coverImageURL,
-            rating: editingBook.rating,
-            sold: editingBook.sold
+            title: editingBook.title || "",
+            author: editingBook.author || "",
+            price: editingBook.price || 0,
+            description: editingBook.description || "",
+            stock: editingBook.stock || 0,
+            genre: editingBook.genre || "",
+            language: editingBook.language || "",
+            coverImageURL: editingBook.coverImageURL || "",
+            rating: editingBook.rating || 0,
+            sold: editingBook.sold || 0
           }}
           validationSchema={BookSchema}
           onSubmit={async (values, { setSubmitting }) => {
             setStatus("yuklenir")
-
             try {
-              const trimmedValues = Object.fromEntries(
-                Object.entries(values).map(([k, v]) =>
-                  typeof v === "string" ? [k, v.trim()] : [k, v]
-                )
-              )
-
-              await axios.put(
-                `${BASE_URL}/${editingBook.id}`,
-                trimmedValues
-              )
+              await axios.put(`${BASE_URL}/${editingBook.id}`, values)
             } catch (err) {
-              console.log("Vercel put error (normaldir):", err)
+              console.log("Update error (normaldır):", err)
             } finally {
               setStatus("ugurlu")
               setEditingBook(null)
@@ -123,20 +120,8 @@ function AdminBooks() {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-           
                 <div>
-                  {["title", "author", "price", "stock", "genre"].map((f) => (
-                    <div key={f} className="mb-4">
-                      <label className="block mb-1 capitalize">{f}</label>
-                      <Field name={f} className="w-full border px-3 py-2 rounded" />
-                      <ErrorMessage name={f} component="div" className="text-red-500 text-sm" />
-                    </div>
-                  ))}
-                </div>
-
-          
-                <div>
-                  {["language", "rating", "sold", "coverImageURL"].map((f) => (
+                  {["title", "author", "genre"].map((f) => (
                     <div key={f} className="mb-4">
                       <label className="block mb-1 capitalize">{f}</label>
                       <Field name={f} className="w-full border px-3 py-2 rounded" />
@@ -145,7 +130,45 @@ function AdminBooks() {
                   ))}
 
                   <div className="mb-4">
-                    <label className="block mb-1">Description</label>
+                    <label>Price</label>
+                    <Field name="price" type="number" className="w-full border px-3 py-2 rounded" />
+                    <ErrorMessage name="price" component="div" className="text-red-500 text-sm" />
+                  </div>
+
+                  <div className="mb-4">
+                    <label>Stock</label>
+                    <Field name="stock" type="number" className="w-full border px-3 py-2 rounded" />
+                    <ErrorMessage name="stock" component="div" className="text-red-500 text-sm" />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="mb-4">
+                    <label>Language</label>
+                    <Field name="language" className="w-full border px-3 py-2 rounded" />
+                    <ErrorMessage name="language" component="div" className="text-red-500 text-sm" />
+                  </div>
+
+                  <div className="mb-4">
+                    <label>Rating</label>
+                    <Field name="rating" type="number" className="w-full border px-3 py-2 rounded" />
+                    <ErrorMessage name="rating" component="div" className="text-red-500 text-sm" />
+                  </div>
+
+                  <div className="mb-4">
+                    <label>Sold</label>
+                    <Field name="sold" type="number" className="w-full border px-3 py-2 rounded" />
+                    <ErrorMessage name="sold" component="div" className="text-red-500 text-sm" />
+                  </div>
+
+                  <div className="mb-4">
+                    <label>Cover Image URL</label>
+                    <Field name="coverImageURL" className="w-full border px-3 py-2 rounded" />
+                    <ErrorMessage name="coverImageURL" component="div" className="text-red-500 text-sm" />
+                  </div>
+
+                  <div className="mb-4">
+                    <label>Description</label>
                     <Field
                       name="description"
                       as="textarea"
@@ -170,51 +193,41 @@ function AdminBooks() {
         </Formik>
       )}
 
-   
-      <div className="overflow-x-auto">
-        <table className="w-full border border-gray-300">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="border px-3 py-2">#</th>
-              <th className="border px-3 py-2">Şəkil</th>
-              <th className="border px-3 py-2">Başlıq</th>
-              <th className="border px-3 py-2">Müəllif</th>
-              <th className="border px-3 py-2">Qiymət</th>
-              <th className="border px-3 py-2">Stock</th>
-              <th className="border px-3 py-2">Əməliyyat</th>
+      <table className="w-full border">
+        <thead className="bg-gray-100">
+          <tr>
+            <th>#</th>
+            <th>Şəkil</th>
+            <th>Başlıq</th>
+            <th>Müəllif</th>
+            <th>Qiymət</th>
+            <th>Stock</th>
+            <th>Əməliyyat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {books.map((b, i) => (
+            <tr key={b.id} className="text-center border-t">
+              <td>{i + 1}</td>
+              <td>
+                <img src={b.coverImageURL} className="w-12 h-16 mx-auto" />
+              </td>
+              <td>{b.title}</td>
+              <td>{b.author}</td>
+              <td>${b.price}</td>
+              <td>{b.stock}</td>
+              <td className="flex justify-center gap-3 py-2">
+                <button onClick={() => setEditingBook(b)} className="text-yellow-500">
+                  <FaEdit />
+                </button>
+                <button onClick={() => handleDelete(b.id)} className="text-red-500">
+                  <FaTrash />
+                </button>
+              </td>
             </tr>
-          </thead>
-
-          <tbody>
-            {books.map((book, i) => (
-              <tr key={book.id} className="hover:bg-gray-50">
-                <td className="border px-3 py-2 text-center">{i + 1}</td>
-                <td className="border px-3 py-2 text-center">
-                  <img src={book.coverImageURL} alt="" className="w-12 h-16 mx-auto" />
-                </td>
-                <td className="border px-3 py-2">{book.title}</td>
-                <td className="border px-3 py-2">{book.author}</td>
-                <td className="border px-3 py-2">${book.price}</td>
-                <td className="border px-3 py-2">{book.stock}</td>
-                <td className="border px-3 py-2 text-center space-x-3">
-                  <button
-                    onClick={() => handleEditClick(book)}
-                    className="text-yellow-500"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(book.id)}
-                    className="text-red-500"
-                  >
-                    <FaTrash />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
