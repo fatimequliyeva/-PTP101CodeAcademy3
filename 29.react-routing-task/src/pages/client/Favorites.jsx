@@ -1,20 +1,20 @@
 import { useContext, useState } from "react"
-import { FaHeart } from "react-icons/fa"
+import { FaHeart, FaTrash } from "react-icons/fa"
 import { FavoritesContext } from "../../context/FavoritesContext"
 import { useNavigate } from "react-router-dom"
 
 function Favorites() {
-  const { favorites, removeFromFavorites, clearFavorites } = useContext(FavoritesContext)
+  const { favorites, removeFromFavorites, clearFavorites } = useContext(FavoritesContext)  //global stateden caqrdqilarmdi
   const navigate = useNavigate()
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false) //hamsni silmek ucun qoyduqum modaldi evvelce falsa vermisem 
 
-  if (favorites.length === 0) {
+  if (favorites.length === 0) {  //eger siyahi bosdusa geri qayt duymesi cixir 
     return (
-      <div className="text-center mt-10">
-        <h2 className="text-2xl font-bold text-gray-700">Favorit siyahısı boşdur</h2>
+      <div className="text-center mt-20">
+        <h2 className="text-3xl font-bold text-gray-700">Favorit siyahısı boşdur</h2> 
         <button 
           onClick={() => navigate(-1)} 
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 transition"
         >
           Geri Qayıt
         </button>
@@ -24,51 +24,53 @@ function Favorites() {
 
   const handleEmptyAll = () => {
     clearFavorites()
-    setShowModal(false)
+    setShowModal(false)  //egr varsa basildisa hamsni silir modalida baqlayir
   }
 
-  return (
-    <div className="mt-6">
-      <h2 className="text-2xl font-bold text-red-600 mb-4">
+  return ( //baslqi favriomin syaini giosderior
+    <div className="mt-10">
+      <h2 className="text-3xl font-extrabold text-red-600 mb-6 text-center">  
         Favorilərim {favorites.length}
       </h2>
 
-      {/* Geri çıxış düyməsi */}
+      
+
+   {/* {geri cixis duymesi} */}
       <button 
         onClick={() => navigate(-1)} 
-        className="mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="mb-6 bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition"
       >
         Geri Qayıt
-      </button>
+      </button> 
 
-      {/* Empty All düyməsi */}
-      <div className="flex justify-end mb-4">
+      {/* Empty All duymsi */}
+      <div className="flex justify-end mb-6">
         <button 
           onClick={() => setShowModal(true)} 
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+          className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded-lg shadow hover:bg-red-800 transition"
         >
-          Empty All
+          <FaTrash /> Empty All
         </button>
       </div>
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-md">
-          <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full animate-fadeIn">
-            <h3 className="text-lg font-bold mb-4">Əminsiniz?</h3>
-            <p className="text-gray-700 mb-6">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-md">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full animate-fadeIn">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">Əminsiniz?</h3>
+            <p className="text-gray-600 mb-6">
               Bütün favoritləri silmək istədiyinizə əminsiniz?
             </p>
             <div className="flex justify-end space-x-4">
               <button 
                 onClick={() => setShowModal(false)} 
-                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 transition"
+                className="px-5 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 transition"
               >
                 İmtina
               </button>
               <button 
                 onClick={handleEmptyAll} 
-                className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-700 transition"
+                className="px-5 py-2 rounded-lg bg-red-600 text-white hover:bg-red-800 transition"
               >
                 Bəli, sil
               </button>
@@ -77,15 +79,22 @@ function Favorites() {
         </div>
       )}
 
-      {/* Favorit kartları */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Favori kartlaridi */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {favorites.map(book => (
-          <div key={book.id} className="border rounded p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 bg-white">
-            <img src={book.coverImageURL} alt={book.title} className="w-full h-48 object-cover rounded mb-4" />
-            <h3 className="text-xl font-bold text-blue-600">{book.title}</h3>
-            <p><span className="font-semibold">Author:</span> {book.author}</p>
-            <p><span className="font-semibold">Price:</span> ${book.price}</p>
-            <p className="text-gray-600 mt-2">{book.description}</p>
+          <div 
+            key={book.id} 
+            className="bg-white border rounded-xl p-5 shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <img 
+              src={book.coverImageURL} 
+              alt={book.title} 
+              className="w-full h-56 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-xl font-bold text-blue-700">{book.title}</h3>
+            <p className="text-gray-600">{book.author}</p>
+            <p className="mt-2"><span className="font-semibold">Price:</span> ${book.price}</p>
+            <p className="text-gray-500 mt-2">{book.description}</p>
             <p><span className="font-semibold">Stock:</span> {book.stock}</p>
             <p><span className="font-semibold">Genre:</span> {book.genre}</p>
             <p><span className="font-semibold">Language:</span> {book.language}</p>
@@ -96,7 +105,7 @@ function Favorites() {
                 onClick={() => removeFromFavorites(book.id)} 
                 className="text-red-500 hover:text-red-700 cursor-pointer"
               >
-                <FaHeart size={24} />
+                <FaHeart size={26} />
               </button>
             </div>
           </div>

@@ -1,38 +1,36 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react"  //context yaratmaq ucun state saxalamq ucun
 
-// Context obyektini yarat
-export const FavoritesContext = createContext()
 
-// Provider komponenti
-export function FavoritesProvider({ children }) {
-    const [favorites, setFavorites] = useState([])
+export const FavoritesContext = createContext()  //yaradilir vefavoriler melmatni butun componnetelre oturur
 
-    // Favoritə əlavə et
-    const addToFavorites = (book) => {
+export function FavoritesProvider({ children }) {  //bu provider yaradir bu yalniz cidlrn qebyul edir 
+    const [favorites, setFavorites] = useState([])  //burda fvri kitab saxlanicaq
+
+
+    const addToFavorites = (book) => {  //favori secir eger varsa find ele yxoalyr varsa yeniden elave etmr
         if (!favorites.find(fav => fav.id === book.id)) {
             setFavorites([...favorites, book])
         }
     }
 
-    // Favoritdən çıxar
-    const removeFromFavorites = (id) => {
+   
+    const removeFromFavorites = (id) => { //silmekdi id ile filterleyirem
         setFavorites(favorites.filter(book => book.id !== id))
     }
 
-    // Hamısını sil
-    const clearFavorites = () => {
+    const clearFavorites = () => { //hamsn silir
         setFavorites([])
     }
 
-    // Toggle (ürəyə basanda əlavə/çıxar)
-    const toggleFavorite = (book) => {
+
+    const toggleFavorite = (book) => {  //togle ile favorde varsa silinir yoxdusa elave olunur
         if (favorites.find(fav => fav.id === book.id)) {
             removeFromFavorites(book.id)
         } else {
             addToFavorites(book)
         }
     }
-
+//bu provider companeteti butun usaqlara oturur yeni globalstateye benzer bir seydir her favoriye oturulur 
     return (
         <FavoritesContext.Provider value={{ favorites, addToFavorites, removeFromFavorites, clearFavorites, toggleFavorite }}>
             {children}

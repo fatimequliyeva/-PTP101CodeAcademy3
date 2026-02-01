@@ -15,59 +15,53 @@ function Books() {
   }, [])
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
       {books.map(book => (
         <div 
           key={book.id} 
-          className="border rounded p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 bg-white"
+          className="bg-white border rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:scale-105"
         >
           {/* Şəkil */}
           <img 
             src={book.coverImageURL} 
             alt={book.title} 
-            className="w-full h-48 object-cover rounded mb-4" 
+            className="w-full h-56 object-cover rounded-lg mb-4" 
           />
 
-          {/* Başlıq */}
-          <h3 className="text-xl font-bold text-blue-600">{book.title}</h3>
+          {/* bawliq */}
+          <h3 className="text-xl font-bold text-blue-700">{book.title}</h3>
 
-          {/* Müəllif */}
-          <p className="text-gray-700"><span className="font-semibold">Author:</span> {book.author}</p>
+          {/* muellf */}
+          <p className="text-gray-600"><span className="font-semibold">Author:</span> {book.author}</p>
 
-          {/* Qiymət */}
-          <p className="text-gray-700"><span className="font-semibold">Price:</span> ${book.price}</p>
+          {/* Qiymt */}
+          <p className="text-gray-600"><span className="font-semibold">Price:</span> ${book.price}</p>
 
-          {/* Təsvir */}
-          <p className="text-gray-600 mt-2">{book.description}</p>
+          {/* sekl */}
+          <p className="text-gray-500 mt-2 line-clamp-3">{book.description}</p>
 
-          {/* Stok */}
-          <p className="text-gray-700"><span className="font-semibold">Stock:</span> {book.stock}</p>
+          {/* elave mlmat */}
+          <div className="mt-3 space-y-1 text-sm text-gray-600">
+            <p><span className="font-semibold">Stock:</span> {book.stock}</p>
+            <p><span className="font-semibold">Genre:</span> {book.genre}</p>
+            <p><span className="font-semibold">Language:</span> {book.language}</p>
+            <p><span className="font-semibold">Rating:</span> {book.rating}</p>
+            <p><span className="font-semibold">Sold:</span> {book.sold}</p>
+          </div>
 
-          {/* Janr */}
-          <p className="text-gray-700"><span className="font-semibold">Genre:</span> {book.genre}</p>
-
-          {/* Dil */}
-          <p className="text-gray-700"><span className="font-semibold">Language:</span> {book.language}</p>
-
-          {/* Rating */}
-          <p className="text-gray-700"><span className="font-semibold">Rating:</span> {book.rating}</p>
-
-          {/* Satılan sayı */}
-          <p className="text-gray-700"><span className="font-semibold">Sold:</span> {book.sold}</p>
-
-          {/* Ətraflı və Favori düymələri */}
-          <div className="flex justify-between items-center mt-4">
+          {/* etrafli melumat ve favrio duymesi */}
+          <div className="flex justify-between items-center mt-5">
             <Link 
               to={`/books/${book.id}`} 
-              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700"
+              className="px-5 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800 transition"
             >
               Ətraflı
             </Link>
             <button 
               onClick={() => toggleFavorite(book)} 
-              className={favorites.find(fav => fav.id === book.id) ? "text-red-500" : "text-gray-400"}
+              className={`transition ${favorites.find(fav => fav.id === book.id) ? "text-red-500 hover:text-red-700" : "text-gray-400 hover:text-red-400"}`}
             >
-              <FaHeart size={24} />
+              <FaHeart size={26} />
             </button>
           </div>
         </div>
@@ -77,4 +71,3 @@ function Books() {
 }
 
 export default Books
-
