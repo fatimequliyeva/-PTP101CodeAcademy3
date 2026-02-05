@@ -15,8 +15,9 @@ export const CategoriesProvider = ({ children }) => { //buda asaqida otureceynm 
   };
 
   return (///buda providerimdi burdaki childiren otureceym funksiyalardi
-    <CategoriesContext.Provider value={{ categories, addCategory }}>  /
-      {children}
-    </CategoriesContext.Provider>
+  <CategoriesContext.Provider value={{ categories, setCategories, addCategory }}>
+  {children}
+</CategoriesContext.Provider>
+
   );
 };
