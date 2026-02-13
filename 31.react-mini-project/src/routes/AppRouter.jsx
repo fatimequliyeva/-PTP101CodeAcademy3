@@ -8,6 +8,9 @@ import Blog from "../pages/Blog/Blog";
 import BlogDetail from "../pages/Blog/BlogDetail";
 import ProductAdmin from "../pages/Admin/Products/ProductList";
 import BlogAdmin from "../pages/Admin/Blogs/BlogList";
+import About from "../components/About";
+import Contact from "../components/Contact";
+
 
 // Layout
 import Navbar from "../components/Navbar";
@@ -23,6 +26,9 @@ const AppRouter = () => {
         <Route path="/shop/:id" element={<ProductDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/about" element={<About />} />
+<Route path="/contact" element={<Contact />} />
+
         <Route path="/admin/products" element={<ProductAdmin />} />
         <Route path="/admin/blogs" element={<BlogAdmin />} />
       </Routes>

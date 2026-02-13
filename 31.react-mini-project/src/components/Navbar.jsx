@@ -1,59 +1,27 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="bg-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-green-600">
-          VegeFoods
-        </Link>
-
-        {/* Navigation */}
-        <nav className="space-x-6">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "text-green-600 font-semibold" : "text-gray-700"
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/shop"
-            className={({ isActive }) =>
-              isActive ? "text-green-600 font-semibold" : "text-gray-700"
-            }
-          >
-            Shop
-          </NavLink>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) =>
-              isActive ? "text-green-600 font-semibold" : "text-gray-700"
-            }
-          >
-            Blog
-          </NavLink>
-          <NavLink
-            to="/admin/products"
-            className={({ isActive }) =>
-              isActive ? "text-green-600 font-semibold" : "text-gray-700"
-            }
-          >
-            Admin Products
-          </NavLink>
-          <NavLink
-            to="/admin/blogs"
-            className={({ isActive }) =>
-              isActive ? "text-green-600 font-semibold" : "text-gray-700"
-            }
-          >
-            Admin Blogs
-          </NavLink>
-        </nav>
-      </div>
-    </header>
+    <nav className="bg-green-600 text-white px-6 py-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">Organic Shop</h1>
+      <ul className="flex gap-6">
+        <li>
+          <Link to="/" className="hover:underline">Home</Link>
+        </li>
+        <li>
+          <Link to="/shop" className="hover:underline">Shop</Link>
+        </li>
+        <li>
+          <Link to="/blog" className="hover:underline">Blog</Link>
+        </li>
+        <li>
+          <Link to="/about" className="hover:underline">About</Link>
+        </li>
+        <li>
+          <Link to="/contact" className="hover:underline">Contact</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

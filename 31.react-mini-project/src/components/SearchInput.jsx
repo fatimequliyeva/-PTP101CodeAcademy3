@@ -1,26 +1,15 @@
-// src/components/SearchInput.jsx
-import { useState } from "react";
-import useDebounce from "../hooks/useDebounce";
+import React from "react";
 
-function SearchInput({ onSearch }) {
-  const [value, setValue] = useState("");
-  const debouncedValue = useDebounce(value, 400); // 400ms debounce
-
-  // Debounced value dəyişəndə parent-ə ötürürük
-  // (Shop səhifəsində filter üçün istifadə olunacaq)
-  React.useEffect(() => {
-    onSearch(debouncedValue);
-  }, [debouncedValue, onSearch]);
-
+const SearchInput = () => {
   return (
-    <input
-      type="text"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      placeholder="Search products..."
-      className="border px-3 py-2 rounded w-64"
-    />
+    <div className="mb-4">
+      <input
+        type="text"
+        placeholder="Search products..."
+        className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+      />
+    </div>
   );
-}
+};
 
 export default SearchInput;
