@@ -1,7 +1,15 @@
-import AppRouter from "./routes/AppRouter";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Router from "./routes/Router";
 
 function App() {
-  return <AppRouter />;
+  return (
+    <>
+      <Navbar />
+      <Router />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

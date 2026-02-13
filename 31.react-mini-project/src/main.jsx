@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import "./index.css";
 import App from "./App.jsx";
-import { store } from "./store/store";
+import { store } from "./app/store.js";
 
 
 import { WishlistProvider } from "./context/WishlistContext.jsx";
