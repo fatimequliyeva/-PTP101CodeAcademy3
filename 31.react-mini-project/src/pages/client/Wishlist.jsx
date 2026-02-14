@@ -14,6 +14,18 @@ const Wishlist = () => {
     const v = Math.max(1, Number(value) || 1);
     setQty(prev => ({ ...prev, [id]: v }));
   };
+  const increase = (id) => {
+    const current = qty[id] || 1;
+    setQty(prev => ({ ...prev, [id]: current + 1 }));
+  };
+  const decrease = (id) => {
+    const current = qty[id] || 1;
+    if (current <= 1) {
+      removeFromWishlist(id);
+    } else {
+      setQty(prev => ({ ...prev, [id]: current - 1 }));
+    }
+  };
   
   const rows = useMemo(() => {
     return wishlist.map(p => {
@@ -57,20 +69,45 @@ const Wishlist = () => {
                     ×
                   </button>
                   <div className={styles["product-cell"]}>
-                    <img src={p.image} alt={p.name} />
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      onError={(e) => { e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+                    />
                     <div className={styles["product-info-col"]}>
                       <h4>{p.name}</h4>
                       <p>Far far away, behind the word mountains, from the countries</p>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                          for (let i = 0; i < p.q; i++) addToBasket(p);
+                        }}
+                        style={{ marginTop: 10, width: 140 }}
+                      >
+                        Add to Cart
+                      </button>
                     </div>
                   </div>
                   <div className={styles["price-cell"]}>${(p.price || 0).toFixed(2)}</div>
                   <div className={styles["quantity-cell"]}>
-                    <input
-                      type="number"
-                      min="1"
-                      value={p.q}
-                      onChange={(e)=>setQuantity(p.id, e.target.value)}
-                    />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <button onClick={() => decrease(p.id)}>-</button>
+                      <input
+                        type="number"
+                        min="1"
+                        value={p.q}
+                        onChange={(e) => {
+                          const n = Number(e.target.value) || 1;
+                          if (n <= 0) {
+                            removeFromWishlist(p.id);
+                          } else {
+                            setQuantity(p.id, n);
+                          }
+                        }}
+                        style={{ width: 60, textAlign: 'center' }}
+                      />
+                      <button onClick={() => increase(p.id)}>+</button>
+                    </div>
                   </div>
                   <div className={styles["total-cell"]}>${p.total.toFixed(2)}</div>
                 </div>

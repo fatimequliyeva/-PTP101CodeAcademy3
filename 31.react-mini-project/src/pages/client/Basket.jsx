@@ -36,12 +36,16 @@ const Basket = () => {
               {basket.map(p => (
                 <tr key={p.id}>
                   <td className={styles.imageCol}>
-                    <img src={p.image} alt={p.name} />
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      onError={(e) => { e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+                    />
                   </td>
                   <td>
                     <h3>{p.name}</h3>
                   </td>
-                  <td>${p.price}</td>
+                  <td>${Number(p.price || 0).toFixed(2)}</td>
                   <td>
                     <div className={styles.quantityControl}>
                       <button onClick={() => decreaseBasketItem(p.id)}>-</button>
@@ -49,7 +53,7 @@ const Basket = () => {
                       <button onClick={() => addToBasket(p)}>+</button>
                     </div>
                   </td>
-                  <td>${(p.price * p.quantity).toFixed(2)}</td>
+                  <td>${Number((p.price || 0) * (p.quantity || 0)).toFixed(2)}</td>
                   <td>
                     <button className={styles.removeBtn} onClick={() => removeFromBasket(p.id)}>×</button>
                   </td>

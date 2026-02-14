@@ -111,7 +111,11 @@ const Products = () => {
               <div key={p.id} className={styles["product-card"]}>
                 <div className={styles["product-img"]}>
                   {p.discount ? <span className={styles["status"]}>{p.discount}%</span> : null}
-                  <img src={p.image} alt={p.name} />
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    onError={(e) => { e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+                  />
                   <div className={styles["product-overlay"]}>
                     <button className={styles["overlay-btn"]} onClick={() => addToBasket(p)}>
                       <FaShoppingCart />

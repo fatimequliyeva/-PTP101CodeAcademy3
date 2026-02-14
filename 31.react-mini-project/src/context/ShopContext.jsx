@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useReducer, useEffect } from 'react';
+import { createContext, useContext, useMemo, useReducer } from 'react';
 
 const ShopContext = createContext(null);
 

@@ -295,9 +295,9 @@ const Home = () => {
 
           <div className={styles["testimony-grid"]}>
               {[
-                { id: 1, name: "Fatime Quliyeva", position: "MƏKTƏBLİNİN DOSTU", image: imgFatime, text: "Salam menim Adimi onsuzda bilirsiz. boyuk umidlere , qizlarima, ve sinifimizin gozel muellimlerine inanaraq bu yolda addim atiram usaqlarima vere bileceyim gozel gelecekde onlarinda boyuk payi var evladlarimi ve muellimlerimi sevirem en birinci ozume sora sinif yoldaslarima uqurlar arzu edirem" },
-                { id: 2, name: "Jasmin Quliyeva", position: "MARKETING MANAGER", image: imgJasmin, text: "Salam menim adim Jasmindir menim 2 yasim var yasim az olsada heyata maraqlarim cox boyukdur anami cox sevirem bacim menim ucun deyerlidi anam hal hazirda tehsil alir ve soz veribki bir muudet sonra her zaman bir yerde olacayq Men anama inaniram ve ona uqurlar arzu edirem" },
-                { id: 3, name: "Nefes Quliyeva", position: "INTERFACE DESIGNER", image: imgNefes, text: "Salam menim adim Nefesdir menim 5 yasim var bacimi ve anami cox sevirem onlar menim ucun deyerlidi bezen anamiz ucun darxsaqda ama gozel gunlerimizi fikrilesib umid edirem, dua edirem yeqin menim anamin bir birldiyi var mende anama inaniram onu cox sevirem" }
+                { id: 1, name: "Fatime Quliyeva", position: "Software developer", image: imgFatime, text: "Salam menim Adimi onsuzda bilirsiz. boyuk umidlere , qizlarima, ve sinifimizin gozel muellimlerine inanaraq bu yolda addim atiram usaqlarima vere bileceyim gozel gelecekde onlarinda boyuk payi var evladlarimi ve muellimlerimi sevirem en birinci ozume sora sinif yoldaslarima uqurlar arzu edirem" },
+                { id: 2, name: "Jasmin Quliyeva", position: "Software'in qizi", image: imgJasmin, text: "Salam menim adim Jasmindir menim 2 yasim var yasim az olsada heyata maraqlarim cox boyukdur anami cox sevirem bacim menim ucun deyerlidi anam hal hazirda tehsil alir ve soz veribki bir muudet sonra her zaman bir yerde olacayq Men anama inaniram ve ona uqurlar arzu edirem" },
+                { id: 3, name: "Nefes Quliyeva", position: "Software'in qizi", image: imgNefes, text: "Salam menim adim Nefesdir menim 5 yasim var bacimi ve anami cox sevirem onlar menim ucun deyerlidi bezen anamiz ucun darxsaqda ama gozel gunlerimizi fikrilesib umid edirem, dua edirem yeqin menim anamin bir birldiyi var mende anama inaniram onu cox sevirem" }
               ].map((item) => (
                 <div key={item.id} className={styles["testimony-item"]}>
                   <div className={styles["user-img-wrap"]}>

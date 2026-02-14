@@ -10,7 +10,7 @@ import productService from '../../services/productService';
 const ProductDetail = () => {
   const { id } = useParams();
   const location = useLocation();
-  const { addToBasket, addToWishlist } = useShop();
+  const { addToBasket } = useShop();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
@@ -28,13 +28,13 @@ const ProductDetail = () => {
       try {
         const data = await productService.getById(id);
         setProduct(data);
-      } catch (error) {
+      } catch {
         const fallback = [...(JSON.parse(localStorage.getItem('basket')) || []), ...(JSON.parse(localStorage.getItem('wishlist')) || [])]
           .find(p => String(p.id) === String(id));
         if (fallback) {
           setProduct(fallback);
         } else {
-          console.error("Error fetching product:", error);
+          console.error("Error fetching product");
         }
       } finally {
         setLoading(false);
@@ -42,9 +42,6 @@ const ProductDetail = () => {
     };
     fetchProduct();
   }, [id, location.state]);
-
-  if (loading) return <div className="container section">Loading...</div>;
-  if (!product) return <div className="container section">Product not found</div>;
 
   const handleAddToBasket = () => {
     for(let i=0; i<quantity; i++) {
@@ -62,7 +59,7 @@ const ProductDetail = () => {
       try {
         const data = await productService.getAll({ category: product.category, _limit: 4 });
         setRelated(data.filter(p => String(p.id) !== String(product.id)));
-      } catch (e) {
+      } catch {
         setRelated([]);
       }
     };
@@ -71,6 +68,10 @@ const ProductDetail = () => {
 
   return (
     <>
+      {loading && <div className="container section">Loading...</div>}
+      {!loading && !product && <div className="container section">Product not found</div>}
+      {!loading && product && (
+      <>
       <div className={homeStyles["product-banner"]}>
         <div className="container">
           <span className={homeStyles["product-breadcrumb"]}>HOME PRODUCT SINGLE</span>
@@ -80,7 +81,11 @@ const ProductDetail = () => {
       <div className="container section">
         <div className={styles.detailContainer}>
         <div className={styles.imageSection}>
-          <img src={product.image} alt={product.name} />
+          <img
+            src={product.image}
+            alt={product.name}
+            onError={(e)=>{ e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+          />
         </div>
         <div className={styles.infoSection}>
           <h2 className={styles.title}>{product.name}</h2>
@@ -147,7 +152,11 @@ const ProductDetail = () => {
               <div key={p.id} className={homeStyles["product-card"]}>
                 <div className={homeStyles["product-img"]}>
                   {p.discount ? <span className={homeStyles["status"]}>{p.discount}%</span> : null}
-                  <img src={p.image} alt={p.name} />
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    onError={(e)=>{ e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+                  />
                 </div>
                 <div className={homeStyles["product-info"]}>
                   <h3>{p.name}</h3>
@@ -161,6 +170,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      </>
+      )}
     </>
   );
 };
