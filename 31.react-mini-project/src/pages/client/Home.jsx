@@ -6,9 +6,9 @@ import { useShop } from '../../context/ShopContext';
 import { useToast } from '../../context/ToastContext';
 import { AnimatePresence, motion } from "framer-motion";
 
-import testimony1 from '../../assets/image/testimony-1.jpg';
-import testimony2 from '../../assets/image/testimony-2.jpg';
-import testimony3 from '../../assets/image/testimony-3.jpg';
+import imgFatime from '../../assets/image/fatima.jpg';
+import imgJasmin from '../../assets/image/jasmin.jpg';
+import imgNefes from '../../assets/image/nefes.jpg';
 
 const Home = () => {
   const { addToBasket, addToWishlist } = useShop();
@@ -47,26 +47,16 @@ const Home = () => {
   });
 
   useEffect(() => {
-    
-    const countDownDate = new Date("Dec 31, 2026 00:00:00").getTime();
-
+    const start = new Date(2022, 3, 22, 0, 0, 0).getTime();
     const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+      const now = Date.now();
+      const diff = Math.max(0, now - start);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
       setTimeLeft({ days, hours, minutes, seconds });
-
-      if (distance < 0) {
-        clearInterval(interval);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -174,6 +164,9 @@ const Home = () => {
               <h3>Vegetables</h3>
               <p>Protect the health of every home</p>
               <Link to="/shop" className={styles["btn"]}>Shop now</Link>
+              <div className={styles["center-visual"]}>
+                <img src="/src/assets/image/mainphoto2.jpg" alt="Vegetables basket" />
+              </div>
             </div>
 
             <div className={styles["category-card"]}>
@@ -187,12 +180,6 @@ const Home = () => {
               <div className={styles["category-img"]}>
                 <img src="/src/assets/image/ciyelek.jpg" alt="Vegetables"/>
                 <span className={styles["category-label"]}>Vegetables</span>
-              </div>
-            </div>
-
-            <div className={styles["category-card"]}>
-              <div className={styles["category-img"]}>
-                <img src="/src/assets/image/mainphoto2.jpg" alt="Basket"/>
               </div>
             </div>
 
@@ -308,24 +295,9 @@ const Home = () => {
 
           <div className={styles["testimony-grid"]}>
               {[
-                {
-                  id: 1,
-                  name: "Elmir Aslan",
-                  position: "MƏKTƏBLİNİN DOSTU",
-                  image: testimony1
-                },
-                {
-                  id: 2,
-                  name: "Elmir Aslan",
-                  position: "MARKETING MANAGER",
-                  image: testimony2
-                },
-                {
-                  id: 3,
-                  name: "Elmir Aslan",
-                  position: "INTERFACE DESIGNER",
-                  image: testimony3
-                }
+                { id: 1, name: "Fatime Quliyeva", position: "MƏKTƏBLİNİN DOSTU", image: imgFatime, text: "Salam menim Adimi onsuzda bilirsiz. boyuk umidlere , qizlarima, ve sinifimizin gozel muellimlerine inanaraq bu yolda addim atiram usaqlarima vere bileceyim gozel gelecekde onlarinda boyuk payi var evladlarimi ve muellimlerimi sevirem en birinci ozume sora sinif yoldaslarima uqurlar arzu edirem" },
+                { id: 2, name: "Jasmin Quliyeva", position: "MARKETING MANAGER", image: imgJasmin, text: "Salam menim adim Jasmindir menim 2 yasim var yasim az olsada heyata maraqlarim cox boyukdur anami cox sevirem bacim menim ucun deyerlidi anam hal hazirda tehsil alir ve soz veribki bir muudet sonra her zaman bir yerde olacayq Men anama inaniram ve ona uqurlar arzu edirem" },
+                { id: 3, name: "Nefes Quliyeva", position: "INTERFACE DESIGNER", image: imgNefes, text: "Salam menim adim Nefesdir menim 5 yasim var bacimi ve anami cox sevirem onlar menim ucun deyerlidi bezen anamiz ucun darxsaqda ama gozel gunlerimizi fikrilesib umid edirem, dua edirem yeqin menim anamin bir birldiyi var mende anama inaniram onu cox sevirem" }
               ].map((item) => (
                 <div key={item.id} className={styles["testimony-item"]}>
                   <div className={styles["user-img-wrap"]}>
@@ -340,10 +312,7 @@ const Home = () => {
                     </span>
                   </div>
                   <div className={styles["text"]}>
-                    <p className={styles["mb-4"]}>
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.
-                    </p>
+                    <p className={styles["mb-4"]}>{item.text}</p>
                     <p className={styles["name"]}>{item.name}</p>
                     <span className={styles["position"]}>{item.position}</span>
                   </div>

@@ -9,10 +9,10 @@ const Header = () => {
         <div className="header-content">
           <div className="contact-info">
             <span className="info-item">
-              <FaPhoneAlt className="icon" /> +994 50 836 36 94
+              <FaPhoneAlt className="icon" /> +994 50 663 34 02
             </span>
             <span className="info-item">
-              <FaPaperPlane className="icon" /> elmiraslanov@icloud.com
+              <FaPaperPlane className="icon" /> fatimaquliyeva@mail.com
             </span>
           </div>
           <div className="delivery-info">
