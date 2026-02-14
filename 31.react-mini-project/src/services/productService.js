@@ -1,32 +1,27 @@
 import axios from 'axios';
-import { API_BASE_URL } from '../constants/api';
+import { BASE_URL, ENDPOINTS } from '../constants/api';
 
-const client = axios.create({
-  baseURL: API_BASE_URL,
-});
-
-export const getProducts = async () => {
-  const { data } = await client.get('/products');
-  return data;
+const productService = {
+  getAll: async (params = {}) => {
+    const response = await axios.get(`${BASE_URL}${ENDPOINTS.products}`, { params });
+    return response.data;
+  },
+  getById: async (id) => {
+    const response = await axios.get(`${BASE_URL}${ENDPOINTS.products}/${id}`);
+    return response.data;
+  },
+  create: async (data) => {
+    const response = await axios.post(`${BASE_URL}${ENDPOINTS.products}`, data);
+    return response.data;
+  },
+  update: async (id, data) => {
+    const response = await axios.put(`${BASE_URL}${ENDPOINTS.products}/${id}`, data);
+    return response.data;
+  },
+  delete: async (id) => {
+    const response = await axios.delete(`${BASE_URL}${ENDPOINTS.products}/${id}`);
+    return response.data;
+  }
 };
 
-export const getProductById = async (id) => {
-  const { data } = await client.get(`/products/${id}`);
-  return data;
-};
-
-export const createProduct = async (payload) => {
-  const { data } = await client.post('/products', payload);
-  return data;
-};
-
-export const updateProduct = async (id, payload) => {
-  const { data } = await client.put(`/products/${id}`, payload);
-  return data;
-};
-
-export const deleteProduct = async (id) => {
-  const { data } = await client.delete(`/products/${id}`);
-  return data;
-};
-
+export default productService;

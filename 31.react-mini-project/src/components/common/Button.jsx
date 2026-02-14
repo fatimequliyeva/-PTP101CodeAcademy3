@@ -1,4 +1,9 @@
-export default function Button({ children, ...props }) {
-  return <button {...props}>{children}</button>;
-}
+const Button = ({ children, onClick, type = "button", className = "" }) => {
+  return (
+    <button type={type} onClick={onClick} className={`btn ${className}`}>
+      {children}
+    </button>
+  );
+};
 
+export default Button;

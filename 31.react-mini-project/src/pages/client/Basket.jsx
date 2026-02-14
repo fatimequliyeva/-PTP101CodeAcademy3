@@ -1,37 +1,83 @@
-import { useBasket } from '../../context/BasketContext';
+import { useShop } from '../../context/ShopContext';
+import styles from './Basket.module.css'; 
+import { Link } from 'react-router-dom';
 
-export default function BasketPage() {
-  const { items, setQty, remove, total, clear } = useBasket();
+const Basket = () => {
+  const { basket, removeFromBasket, addToBasket, decreaseBasketItem } = useShop();
+
+  const total = basket.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
   return (
-    <div style={{padding:16}}>
-      <h2>Basket</h2>
-      {items.length === 0 ? <div>Basket boşdur</div> : (
-        <>
-          <table style={{width:'100%',borderCollapse:'collapse'}}>
+    <div className="container section">
+      <div className="section-header">
+        <span className="sub-heading">Cart</span>
+        <h2 className="heading">Your Basket</h2>
+      </div>
+      
+      {basket.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '50px 0' }}>
+          <p>Your basket is empty.</p>
+          <Link to="/shop" className="btn btn-primary" style={{ marginTop: '20px' }}>Go to Shop</Link>
+        </div>
+      ) : (
+        <div className={styles.basketContainer}>
+          <table className={styles.basketTable}>
             <thead>
-              <tr><th align="left">Məhsul</th><th>Qiymət</th><th>Say</th><th>Cəm</th><th></th></tr>
+              <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+              </tr>
             </thead>
             <tbody>
-              {items.map(i => (
-                <tr key={i.id}>
-                  <td style={{padding:8}}>{i.name}</td>
-                  <td align="center">${i.price.toFixed(2)}</td>
-                  <td align="center">
-                    <input type="number" min="1" value={i.qty} onChange={(e)=>setQty(i.id, Number(e.target.value))} style={{width:60}}/>
+              {basket.map(p => (
+                <tr key={p.id}>
+                  <td className={styles.imageCol}>
+                    <img src={p.image} alt={p.name} />
                   </td>
-                  <td align="center">${(i.price*i.qty).toFixed(2)}</td>
-                  <td align="center"><button onClick={()=>remove(i.id)}>Sil</button></td>
+                  <td>
+                    <h3>{p.name}</h3>
+                  </td>
+                  <td>${p.price}</td>
+                  <td>
+                    <div className={styles.quantityControl}>
+                      <button onClick={() => decreaseBasketItem(p.id)}>-</button>
+                      <span>{p.quantity}</span>
+                      <button onClick={() => addToBasket(p)}>+</button>
+                    </div>
+                  </td>
+                  <td>${(p.price * p.quantity).toFixed(2)}</td>
+                  <td>
+                    <button className={styles.removeBtn} onClick={() => removeFromBasket(p.id)}>×</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div style={{display:'flex',justifyContent:'space-between',marginTop:12}}>
-            <button onClick={clear}>Səbəti təmizlə</button>
-            <div>Toplam: <strong>${total.toFixed(2)}</strong></div>
+          
+          <div className={styles.basketSummary}>
+            <h3>Cart Total</h3>
+            <div className={styles.summaryRow}>
+              <span>Subtotal</span>
+              <span>${total.toFixed(2)}</span>
+            </div>
+            <div className={styles.summaryRow}>
+              <span>Delivery</span>
+              <span>$0.00</span>
+            </div>
+            <div className={`${styles.summaryRow} ${styles.total}`}>
+              <span>Total</span>
+              <span>${total.toFixed(2)}</span>
+            </div>
+            <button className="btn btn-primary" style={{ width: '100%', marginTop: '20px' }}>Proceed to Checkout</button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
-}
+};
 
+export default Basket;
