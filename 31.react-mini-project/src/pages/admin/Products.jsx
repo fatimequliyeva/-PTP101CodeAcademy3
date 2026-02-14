@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import productService from '../../services/productService';
 import { productSchema } from '../../validation/productSchema';
 import Input from '../../components/common/Input';
+import styles from './Products.module.css';
 
 const Products = () => {
   const [items, setItems] = useState([]);
@@ -80,12 +81,12 @@ const Products = () => {
   };
 
   return (
-    <div>
-      <h1 style={{ marginBottom: 20 }}>Admin Products Management</h1>
+    <div className={styles.wrapper}>
+      <h1 className={styles.pageTitle}>Admin Products Management</h1>
 
-      <div style={{ background: '#fff', padding: 20, borderRadius: 8, boxShadow: '0 2px 5px rgba(0,0,0,0.1)', marginBottom: 30 }}>
-        <h3 style={{ marginBottom: 15 }}>{editingId ? 'Edit Product' : 'Add New Product'}</h3>
-        <form onSubmit={formik.handleSubmit} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 15 }}>
+      <div className={styles.card}>
+        <h3 className={styles.cardTitle}>{editingId ? 'Edit Product' : 'Add New Product'}</h3>
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
           <Input
             label="Product Name"
             name="name"
@@ -95,13 +96,13 @@ const Products = () => {
             error={formik.touched.name && formik.errors.name}
           />
           
-          <div className="input-group">
-            <label>Category</label>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Category</label>
             <select
               name="category"
               value={formik.values.category}
               onChange={formik.handleChange}
-              style={{ width: '100%', padding: '10px', borderRadius: 4, border: '1px solid #ddd' }}
+              className={styles.select}
             >
               <option value="Vegetables">Vegetables</option>
               <option value="Fruits">Fruits</option>
@@ -109,7 +110,7 @@ const Products = () => {
               <option value="Dried">Dried</option>
             </select>
             {formik.touched.category && formik.errors.category && (
-              <span className="error-message" style={{ color: 'red', fontSize: 12 }}>{formik.errors.category}</span>
+              <span className={styles.error}>{formik.errors.category}</span>
             )}
           </div>
 
@@ -152,12 +153,12 @@ const Products = () => {
             error={formik.touched.image && formik.errors.image}
           />
 
-          <div style={{ gridColumn: '1 / -1', display: 'flex', gap: 10, marginTop: 10 }}>
+          <div className={styles.actions}>
             <button className="btn btn-primary" type="submit">
               {editingId ? 'Update Product' : 'Add Product'}
             </button>
             {editingId && (
-              <button className="btn" type="button" onClick={handleCancel} style={{ background: '#f8f9fa', border: '1px solid #ddd' }}>
+              <button className={`btn ${styles.btnCancel}`} type="button" onClick={handleCancel}>
                 Cancel
               </button>
             )}
@@ -166,40 +167,39 @@ const Products = () => {
       </div>
 
       {loading ? <p>Loading...</p> : (
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', background: '#fff', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
-            <thead style={{ background: '#f8f9fa', borderBottom: '2px solid #dee2e6' }}>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead className={styles.thead}>
               <tr>
-                <th style={{ padding: 12, textAlign: 'left' }}>ID</th>
-                <th style={{ padding: 12, textAlign: 'left' }}>Image</th>
-                <th style={{ padding: 12, textAlign: 'left' }}>Name</th>
-                <th style={{ padding: 12, textAlign: 'left' }}>Category</th>
-                <th style={{ padding: 12, textAlign: 'left' }}>Price</th>
-                <th style={{ padding: 12, textAlign: 'left' }}>Actions</th>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {items.map(p => (
-                <tr key={p.id} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: 12 }}>{p.id}</td>
-                  <td style={{ padding: 12 }}>
-                    <img src={p.image} alt={p.name} style={{ width: 50, height: 50, objectFit: 'cover', borderRadius: 4 }} />
+                <tr key={p.id}>
+                  <td>{p.id}</td>
+                  <td>
+                    <img src={p.image} alt={p.name} className={styles.thumb} />
                   </td>
-                  <td style={{ padding: 12 }}>{p.name}</td>
-                  <td style={{ padding: 12 }}>{p.category}</td>
-                  <td style={{ padding: 12 }}>${p.price}</td>
-                  <td style={{ padding: 12 }}>
+                  <td>{p.name}</td>
+                  <td>{p.category}</td>
+                  <td>${p.price}</td>
+                  <td>
                     <button 
                       className="btn btn-primary" 
-                      onClick={() => handleEdit(p)} 
-                      style={{ marginRight: 8, padding: '5px 10px', fontSize: 12 }}
+                      onClick={() => handleEdit(p)}
+                      style={{ marginRight: 8 }}
                     >
                       Edit
                     </button>
                     <button 
-                      className="btn" 
+                      className={`btn ${styles.btnDanger}`} 
                       onClick={() => handleDelete(p.id)}
-                      style={{ padding: '5px 10px', fontSize: 12, background: '#dc3545', color: '#fff', border: 'none' }}
                     >
                       Delete
                     </button>

@@ -90,8 +90,8 @@ const Wishlist = () => {
                   </div>
                   <div className={styles["price-cell"]}>${(p.price || 0).toFixed(2)}</div>
                   <div className={styles["quantity-cell"]}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <button onClick={() => decrease(p.id)}>-</button>
+                    <div className={styles["qtyGroup"]}>
+                      <button className={styles["qtyBtn"]} onClick={() => decrease(p.id)}>-</button>
                       <input
                         type="number"
                         min="1"
@@ -104,9 +104,9 @@ const Wishlist = () => {
                             setQuantity(p.id, n);
                           }
                         }}
-                        style={{ width: 60, textAlign: 'center' }}
+                        className={styles["qtyInput"]}
                       />
-                      <button onClick={() => increase(p.id)}>+</button>
+                      <button className={styles["qtyBtn"]} onClick={() => increase(p.id)}>+</button>
                     </div>
                   </div>
                   <div className={styles["total-cell"]}>${p.total.toFixed(2)}</div>

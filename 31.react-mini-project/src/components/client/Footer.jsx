@@ -13,17 +13,16 @@ const Footer = () => {
 
   return (
     <div className={styles['footer-wrapper']}>
-   
       <section className={styles['newsletter-section']}>
         <div className="container">
           <div className={styles['newsletter-content']}>
             <div className={styles['newsletter-text']}>
-              <h2>Subcribe to our Newsletter</h2>
-              <p>Get e-mail updates about our latest shops and special offers</p>
+              <h2>Yeniliklərə abunə olun</h2>
+              <p>Mağazamız və xüsusi təkliflər haqqında e‑poçt yenilikləri alın</p>
             </div>
             <form className={styles['newsletter-form']}>
-              <input type="email" placeholder="Enter email address" />
-              <button type="submit">Subscribe</button>
+              <input type="email" placeholder="E‑poçt ünvanınızı daxil edin" />
+              <button type="submit">Abunə ol</button>
             </form>
           </div>
         </div>
@@ -31,7 +30,6 @@ const Footer = () => {
 
       <CounterSection />
       <ServicesRow />
-
 
       <footer className={styles['footer-main']}>
         <button className={styles['scroll-top-btn']} onClick={scrollToTop}>
@@ -43,7 +41,7 @@ const Footer = () => {
             <div className={styles['footer-col']}>
               <h2>Vegefoods</h2>
               <p className={styles['footer-desc']}>
-                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+                Təzə və keyfiyyətli məhsullar, sürətli çatdırılma və müştəri məmnuniyyəti bizim əsas dəyərlərimizdir.
               </p>
               <div className={styles['social-icons']}>
                 <a href="#" className={styles['social-icon']}><FaTwitter /></a>
@@ -53,45 +51,46 @@ const Footer = () => {
             </div>
 
             <div className={styles['footer-col']}>
-              <h2>Menu</h2>
+              <h2>Menyu</h2>
               <ul className={styles['footer-links']}>
-                <li><Link to="/shop">Shop</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/journal">Journal</Link></li>
-                <li><Link to="/contact">Contact Us</Link></li>
+                <li><Link to="/shop">Mağaza</Link></li>
+                <li><Link to="/about">Haqqımızda</Link></li>
+                <li><Link to="/journal">Jurnal</Link></li>
+                <li><Link to="/contact">Əlaqə</Link></li>
+                <li><Link to="/admin/login">Admin</Link></li>
               </ul>
             </div>
 
             <div className={styles['footer-col']}>
-              <h2>Help</h2>
+              <h2>Kömək</h2>
               <div style={{ display: 'flex', gap: '20px' }}>
                 <ul className={styles['footer-links']}>
-                  <li><Link to="#">Shipping Information</Link></li>
-                  <li><Link to="#">Returns & Exchange</Link></li>
-                  <li><Link to="#">Terms & Conditions</Link></li>
-                  <li><Link to="#">Privacy Policy</Link></li>
+                  <li><Link to="#">Çatdırılma məlumatı</Link></li>
+                  <li><Link to="#">Qaytarma və dəyişmə</Link></li>
+                  <li><Link to="#">Şərtlər və qaydalar</Link></li>
+                  <li><Link to="#">Məxfilik siyasəti</Link></li>
                 </ul>
                 <ul className={styles['footer-links']}>
-                  <li><Link to="#">FAQs</Link></li>
-                  <li><Link to="#">Contact</Link></li>
+                  <li><Link to="#">Tez‑tez verilən suallar</Link></li>
+                  <li><Link to="#">Əlaqə</Link></li>
                 </ul>
               </div>
             </div>
 
             <div className={styles['footer-col']}>
-              <h2>Have a Questions?</h2>
+              <h2>Ünvan və əlaqə</h2>
               <ul className={styles['contact-info']}>
                 <li>
                   <span className={styles['contact-icon']}><FaMapMarkerAlt /></span>
-                  <span className={styles['contact-text']}>203 Fake St. Mountain View, San Francisco, California, USA</span>
+                  <span className={styles['contact-text']}>İqor Ağayev küçəsi, ev 3, mənzil 4</span>
                 </li>
                 <li>
                   <span className={styles['contact-icon']}><FaPhone /></span>
-                  <span className={styles['contact-text']}><a href="tel:+23923929210">+2 392 3929 210</a></span>
+                  <span className={styles['contact-text']}><a href="tel:+994506333402">+994 50 633 34 02</a></span>
                 </li>
                 <li>
                   <span className={styles['contact-icon']}><FaEnvelope /></span>
-                  <span className={styles['contact-text']}><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></span>
+                  <span className={styles['contact-text']}><a href="mailto:fatimashg@code.edu.az">fatimashg@code.edu.az</a></span>
                 </li>
               </ul>
             </div>
@@ -99,9 +98,8 @@ const Footer = () => {
 
           <div className={styles['copyright']}>
             <p>
-              Copyright &copy;2026 All rights reserved | This template is made with 
-              <span className={styles['heart-icon']}><FaHeart /></span> by 
-              <a href="https://colorlib.com" target="_blank" rel="noopener noreferrer" className={styles['colorlib-link']}> Colorlib</a>
+              Copyright &copy;2026 Bütün hüquqlar qorunur | 
+              Bu sayt <strong>Fatimə Quliyeva</strong> tərəfindən nəzarət altındadır
             </p>
           </div>
         </div>
@@ -112,12 +110,11 @@ const Footer = () => {
 
 function CounterSection() {
   const targets = [10000, 100, 1000, 100];
-  const labels = ['HAPPY CUSTOMERS', 'BRANCHES', 'PARTNER', 'AWARDS'];
+  const labels = ['XOŞBƏXT MÜŞTƏRİLƏR', 'FİLİALLAR', 'PARTNYORLAR', 'MÜKAFATLAR'];
   const [values, setValues] = useState([0, 0, 0, 0]);
   const ref = useRef(null);
   const startedRef = useRef(false);
-  const bg =
-    'https://preview.colorlib.com/theme/vegefoods/images/bg_3.jpg';
+  const bg = 'https://preview.colorlib.com/theme/vegefoods/images/bg_3.jpg';
 
   useEffect(() => {
     const node = ref.current;
@@ -173,29 +170,29 @@ function ServicesRow() {
             <div className={`${styles["service-circle"]} ${styles["circle-pink"]}`}>
               <FaShippingFast />
             </div>
-            <h3>FREE SHIPPING</h3>
-            <p>ON ORDER OVER $100</p>
+            <h3>PULSUZ ÇATDIRILMA</h3>
+            <p>$100 üzəri sifarişlərdə</p>
           </div>
           <div className={styles["service-item"]}>
             <div className={`${styles["service-circle"]} ${styles["circle-sand"]}`}>
               <FaLeaf />
             </div>
-            <h3>ALWAYS FRESH</h3>
-            <p>PRODUCT WELL PACKAGE</p>
+            <h3>HƏMİŞƏ TƏZƏ</h3>
+            <p>Məhsullar yaxşı qablaşdırılır</p>
           </div>
           <div className={styles["service-item"]}>
             <div className={`${styles["service-circle"]} ${styles["circle-blue"]}`}>
               <FaAward />
             </div>
-            <h3>SUPERIOR QUALITY</h3>
-            <p>QUALITY PRODUCTS</p>
+            <h3>YÜKSƏK KEYFİYYƏT</h3>
+            <p>Keyfiyyətli məhsullar</p>
           </div>
           <div className={styles["service-item"]}>
             <div className={`${styles["service-circle"]} ${styles["circle-olive"]}`}>
               <FaHeadset />
             </div>
-            <h3>SUPPORT</h3>
-            <p>24/7 SUPPORT</p>
+            <h3>DƏSTƏK</h3>
+            <p>7/24 xidmət</p>
           </div>
         </div>
       </div>

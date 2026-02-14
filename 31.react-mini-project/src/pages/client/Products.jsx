@@ -11,10 +11,10 @@ const Products = () => {
   const { addToast } = useToast();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState('');
+  const [query] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [category, setCategory] = useState('All');
-  const [sortBy, setSortBy] = useState('name-asc');
+  const [sortBy] = useState('name-asc');
   const [page, setPage] = useState(1);
   const PAGE_SIZE = 8;
 

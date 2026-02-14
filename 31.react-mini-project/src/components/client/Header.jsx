@@ -9,14 +9,16 @@ const Header = () => {
         <div className="header-content">
           <div className="contact-info">
             <span className="info-item">
-              <FaPhoneAlt className="icon" /> +994 50 663 34 02
+              <FaPhoneAlt className="icon" /> 
+              <a href="tel:+994506633402" className="info-link">+994 50 633 34 02</a>
             </span>
             <span className="info-item">
-              <FaPaperPlane className="icon" /> fatimaquliyeva@mail.com
+              <FaPaperPlane className="icon" /> 
+              <a href="mailto:fatimashg@code.edu.az" className="info-link">fatimashg@code.edu.az</a>
             </span>
           </div>
           <div className="delivery-info">
-            <span>3-5 BUSINESS DAYS DELIVERY & FREE RETURNS</span>
+            <span>3-5 İŞ GÜNÜNDƏ ÇATDIRILMA & PULSUZ QAYTARMA</span>
           </div>
         </div>
       </div>

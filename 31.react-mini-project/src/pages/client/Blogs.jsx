@@ -7,7 +7,7 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState('');
-  const [sort, setSort] = useState('date_desc');
+  const [sort] = useState('date_desc');
   const [debounced, setDebounced] = useState('');
   const [category, setCategory] = useState('All');
   
@@ -16,7 +16,7 @@ const Blogs = () => {
       try {
         const data = await blogService.getAll();
         setBlogs(data);
-      } catch (e) {
+      } catch {
         setBlogs([
           { id: 1, title: 'Even the all-powerful Pointing has no control about the blind texts', description: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', date: 'July 20, 2019', position: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/image_1.jpg' },
           { id: 2, title: 'Even the all-powerful Pointing has no control about the blind texts', description: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', date: 'July 20, 2019', position: 'Fruits', image: 'https://preview.colorlib.com/theme/vegefoods/images/image_2.jpg' },

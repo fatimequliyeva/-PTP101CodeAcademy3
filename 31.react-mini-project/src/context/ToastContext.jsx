@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
 
 const ToastContext = createContext();
 
@@ -26,7 +26,7 @@ export const ToastProvider = ({ children }) => {
       <div className="toast-container">
         <AnimatePresence>
           {toasts.map(toast => (
-            <motion.div
+            <Motion.div
               key={toast.id}
               initial={{ opacity: 0, y: 50, scale: 0.3 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -36,7 +36,7 @@ export const ToastProvider = ({ children }) => {
             >
               <span>{toast.message}</span>
               <button onClick={() => removeToast(toast.id)}>&times;</button>
-            </motion.div>
+            </Motion.div>
           ))}
         </AnimatePresence>
       </div>

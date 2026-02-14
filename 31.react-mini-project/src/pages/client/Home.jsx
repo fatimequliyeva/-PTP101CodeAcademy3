@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 import { FaShippingFast, FaLeaf, FaAward, FaHeadset, FaBars, FaShoppingCart, FaHeart, FaQuoteLeft } from "react-icons/fa";
 import { useShop } from '../../context/ShopContext';
 import { useToast } from '../../context/ToastContext';
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion as Motion } from "framer-motion";
 
 import imgFatime from '../../assets/image/fatima.jpg';
 import imgJasmin from '../../assets/image/jasmin.jpg';
@@ -13,7 +13,6 @@ import imgNefes from '../../assets/image/nefes.jpg';
 const Home = () => {
   const { addToBasket, addToWishlist } = useShop();
   const { addToast } = useToast();
-
   const featuredProducts = [
     { id: 1, name: "Bell Pepper", price: 80.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg" },
     { id: 2, name: "Strawberry", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg" },
@@ -71,7 +70,7 @@ const Home = () => {
     <div className="home-page">
       <section className={styles["hero-section"]}>
         <AnimatePresence mode="wait">
-          <motion.div
+          <Motion.div
             key={index}
             className={styles["hero-bg"]}
             style={{
@@ -86,7 +85,7 @@ const Home = () => {
         <div className="container">
           <div className={styles["hero-content"]}>
             <AnimatePresence mode="wait">
-              <motion.h1
+              <Motion.h1
                 key={`title-${index}`}
                 className={styles["hero-title"]}
                 initial={{ opacity: 0 }}
@@ -95,10 +94,10 @@ const Home = () => {
                 transition={{ duration: 0.4 }}
               >
                 {slides[index].title}
-              </motion.h1>
+              </Motion.h1>
             </AnimatePresence>
             <AnimatePresence mode="wait">
-              <motion.h2
+              <Motion.h2
                 key={`sub-${index}`}
                 className={styles["hero-subtitle"]}
                 initial={{ opacity: 0 }}
@@ -107,7 +106,7 @@ const Home = () => {
                 transition={{ duration: 0.4, delay: 0.05 }}
               >
                 {slides[index].subtitle}
-              </motion.h2>
+              </Motion.h2>
             </AnimatePresence>
             <Link to="/products" className="btn btn-primary">
               View Details

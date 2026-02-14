@@ -1,0 +1,129 @@
+ .grid4 {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 20px;
+ }
+ 
+.card {
+  background: var(--panel, #1f2533);
+  color: #111827;
+  border-radius: 12px;
+  border: 1px solid #eef2f7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 16px;
+}
+ 
+ .cardTitle {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 8px;
+ }
+.cardTitle h4 {
+  margin: 0;
+  color: #111827;
+  font-weight: 600;
+}
+ 
+ .value {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 6px 0 12px;
+  color: #111827;
+  letter-spacing: .2px;
+ }
+ 
+.spark {
+  height: 60px;
+  border-radius: 8px;
+  background: linear-gradient(180deg,#6b4fd9, transparent);
+}
+ 
+.sparkPink { background: linear-gradient(180deg,#c056a1,transparent); }
+.sparkGold { background: linear-gradient(180deg,#d69e2e,transparent); }
+.sparkGray { background: #232733; }
+ 
+.twoCol {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+ 
+.box {
+  background: var(--panel, #1f2533);
+  color: #111827;
+  border-radius: 12px;
+  border: 1px solid #eef2f7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 16px;
+}
+ 
+ .table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+ 
+.thead {
+  background: #f8f9fa;
+}
+ 
+.th, .td {
+  text-align: left;
+  padding: 10px;
+  border-top: 1px solid #eef2f7;
+}
+.th {
+  color: #6b7280;
+  font-weight: 600;
+}
+.td {
+  color: #1f2937;
+}
+ 
+.threeCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+ 
+.donut {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: conic-gradient(#6b4fd9 0 35%, #c056a1 35% 60%, #63b3ed 60% 100%);
+}
+ 
+.bars {
+   display: flex;
+   gap: 12px;
+   align-items: flex-end;
+   height: 220px;
+ }
+ 
+.bar {
+  width: 26px;
+  background: var(--accent, #6b4fd9);
+  border-radius: 6px;
+}
+ 
+ .list {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: grid;
+   gap: 10px;
+ }
+ 
+ .header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 16px;
+ }
+ 
+ .title {
+   margin: 0;
+ }

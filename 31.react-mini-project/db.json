@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Bell Pepper",
       "category": "Vegetables",
       "price": 80,
@@ -10,19 +10,23 @@
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6",
       "stock": 600,
       "unit": "kg",
-      "sizes": ["Small", "Medium", "Large"]
+      "sizes": [
+        "Small",
+        "Medium",
+        "Large"
+      ]
     },
     {
-      "id": 2,
       "name": "Strawberry",
       "category": "Fruits",
-      "price": 120,
+      "price": 1555,
       "oldPrice": 120,
       "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd7"
+      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd7",
+      "id": "2"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Green Beans",
       "category": "Vegetables",
       "price": 120,
@@ -31,7 +35,7 @@
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd8"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Purple Cabbage",
       "category": "Vegetables",
       "price": 120,
@@ -40,7 +44,7 @@
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd9"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Tomato",
       "category": "Vegetables",
       "price": 80,
@@ -49,7 +53,7 @@
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbda"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Broccoli",
       "category": "Vegetables",
       "price": 120,
@@ -58,7 +62,7 @@
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbdb"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Carrots",
       "category": "Vegetables",
       "price": 120,
@@ -67,18 +71,27 @@
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbdc"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Fruit Juice",
       "category": "Juice",
       "price": 120,
       "oldPrice": 120,
       "discount": 0,
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbdd"
+    },
+    {
+      "id": "6f31",
+      "name": "Fatima Guliyeva",
+      "category": "Vegetables",
+      "price": 1234,
+      "oldPrice": 1345,
+      "discount": 1,
+      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd7"
     }
   ],
   "blogs": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Why Organic Food is Better",
       "description": "Organic foods are grown without harmful pesticides and are healthier for your body.",
       "date": "2024-05-12",
