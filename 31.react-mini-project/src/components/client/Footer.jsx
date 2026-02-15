@@ -52,7 +52,6 @@ const Footer = () => {
                 <li><Link to="/shop">Mağaza</Link></li>
                 <li><Link to="/about">Haqqımızda</Link></li>
                 <li><Link to="/journal">Jurnal</Link></li>
-                <li><Link to="/contact">Əlaqə</Link></li>
                 <li><Link to="/admin/login">Admin</Link></li>
               </ul>
             </div>
