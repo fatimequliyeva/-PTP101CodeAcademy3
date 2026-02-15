@@ -25,7 +25,7 @@ const Products = () => {
 
   useEffect(() => { load(); }, []);
 
-  const compressImage = (file, maxWidth = 20, quality = 0.05) => {
+  const compressImage = (file, maxWidth = 600, quality = 0.8) => {
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = (e) => {
