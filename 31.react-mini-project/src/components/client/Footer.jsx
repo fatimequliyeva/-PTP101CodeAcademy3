@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaTwitter, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaChevronUp, FaHeart, FaShippingFast, FaLeaf, FaAward, FaHeadset } from 'react-icons/fa';
+import { FaTwitter, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaChevronUp } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer = () => {
