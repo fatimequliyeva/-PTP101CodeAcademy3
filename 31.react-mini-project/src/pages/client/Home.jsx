@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Home.module.css";
 import { FaShippingFast, FaLeaf, FaAward, FaHeadset, FaBars, FaShoppingCart, FaHeart, FaQuoteLeft } from "react-icons/fa";
 import { useShop } from '../../context/ShopContext';
 import { useToast } from '../../context/ToastContext';
 import { AnimatePresence, motion as Motion } from "framer-motion";
+import productService from '../../services/productService';
 
 import imgFatime from '../../assets/image/fatima.jpg';
 import imgJasmin from '../../assets/image/jasmin.jpg';
@@ -13,16 +14,25 @@ import imgNefes from '../../assets/image/nefes.jpg';
 const Home = () => {
   const { addToBasket, addToWishlist } = useShop();
   const { addToast } = useToast();
-  const featuredProducts = [
-    { id: 1, name: "Bell Pepper", price: 80.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg" },
-    { id: 2, name: "Strawberry", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg" },
-    { id: 3, name: "Green Beans", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-3.jpg" },
-    { id: 4, name: "Purple Cabbage", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-4.jpg" },
-    { id: 5, name: "Tomatoe", price: 80.00, oldPrice: 120.00, discount: 30, image: "https://preview.colorlib.com/theme/vegefoods/images/product-5.jpg" },
-    { id: 6, name: "Brocolli", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-6.jpg" },
-    { id: 7, name: "Carrots", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-7.jpg" },
-    { id: 8, name: "Fruit Juice", price: 120.00, image: "https://preview.colorlib.com/theme/vegefoods/images/product-8.jpg" },
-  ];
+  const location = useLocation();
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setProductsLoading(true);
+      try {
+        const data = await productService.getAll();
+        setFeaturedProducts(data);
+      } catch (error) {
+        console.error("Error fetching featured products:", error);
+        setFeaturedProducts([]);
+      } finally {
+        setProductsLoading(false);
+      }
+    };
+    fetchProducts();
+  }, [location.key]);
 
   const slides = [
     {
@@ -203,12 +213,17 @@ const Home = () => {
             </p>
           </div>
 
+          {productsLoading ? <p>Loading products...</p> : (
           <div className={styles["products-grid"]}>
             {featuredProducts.map((p) => (
               <div key={p.id} className={styles["product-card"]}>
                 <div className={styles["product-img"]}>
-                  <img src={p.image} alt={p.name} />
-                  {p.discount && (
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    onError={(e) => { e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+                  />
+                  {p.discount > 0 && (
                     <span className={styles["status"]}>{p.discount}%</span>
                   )}
                   <div className={styles["product-overlay"]}>
@@ -233,14 +248,16 @@ const Home = () => {
                   <h3>{p.name}</h3>
                   <div className={styles["price-wrapper"]}>
                     {p.oldPrice && (
-                      <span className={styles["price-dc"]}>${p.oldPrice.toFixed(2)}</span>
+                      <span className={styles["price-dc"]}>${Number(p.oldPrice).toFixed(2)}</span>
                     )}
-                    <span className={styles["price-sale"]}>${p.price.toFixed(2)}</span>
+                    <span className={styles["price-sale"]}>${Number(p.price).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
             ))}
+            {featuredProducts.length === 0 && !productsLoading && <p>No products found.</p>}
           </div>
+          )}
         </div>
       </section>
 

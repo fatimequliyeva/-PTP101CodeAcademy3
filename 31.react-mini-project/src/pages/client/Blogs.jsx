@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import styles from './Home.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import blogService from '../../services/blogService';
 
 const Blogs = () => {
@@ -10,24 +10,22 @@ const Blogs = () => {
   const [sort] = useState('date_desc');
   const [debounced, setDebounced] = useState('');
   const [category, setCategory] = useState('All');
+  const location = useLocation();
   
   useEffect(() => {
     const run = async () => {
+      setLoading(true);
       try {
         const data = await blogService.getAll();
         setBlogs(data);
       } catch {
-        setBlogs([
-          { id: 1, title: 'Even the all-powerful Pointing has no control about the blind texts', description: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', date: 'July 20, 2019', position: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/image_1.jpg' },
-          { id: 2, title: 'Even the all-powerful Pointing has no control about the blind texts', description: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', date: 'July 20, 2019', position: 'Fruits', image: 'https://preview.colorlib.com/theme/vegefoods/images/image_2.jpg' },
-          { id: 3, title: 'Even the all-powerful Pointing has no control about the blind texts', description: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', date: 'July 20, 2019', position: 'Juice', image: 'https://preview.colorlib.com/theme/vegefoods/images/image_3.jpg' },
-        ]);
+        setBlogs([]);
       } finally {
         setLoading(false);
       }
     };
     run();
-  }, []);
+  }, [location.key]);
 
   useEffect(() => {
     const id = setTimeout(()=>setDebounced(q), 300);
