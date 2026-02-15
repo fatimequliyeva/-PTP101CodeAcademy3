@@ -18,7 +18,6 @@ export const productSchema = Yup.object().shape({
     .typeError('Discount must be a number')
     .min(0, 'Discount must be at least 0')
     .max(100, 'Discount cannot exceed 100'),
-  image: Yup.string()
-    .url('Image must be a valid URL')
-    .required('Image URL is required'),
+    image: Yup.string()
+      .required('Image is required'),
 });
