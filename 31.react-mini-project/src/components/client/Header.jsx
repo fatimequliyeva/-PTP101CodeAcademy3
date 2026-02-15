@@ -18,7 +18,7 @@ const Header = () => {
             </span>
           </div>
           <div className="delivery-info">
-            <span>3-5 İŞ GÜNÜNDƏ ÇATDIRILMA & PULSUZ QAYTARMA</span>
+            <span>3-5 Business days delivery & Free Returns</span>
           </div>
         </div>
       </div>

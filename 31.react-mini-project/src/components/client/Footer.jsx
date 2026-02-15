@@ -17,19 +17,16 @@ const Footer = () => {
         <div className="container">
           <div className={styles['newsletter-content']}>
             <div className={styles['newsletter-text']}>
-              <h2>Yeniliklərə abunə olun</h2>
-              <p>Mağazamız və xüsusi təkliflər haqqında e‑poçt yenilikləri alın</p>
+              <h2>Subcribe to our Newsletter</h2>
+              <p>Get e-mail updates about our latest shops and special offers</p>
             </div>
             <form className={styles['newsletter-form']}>
-              <input type="email" placeholder="E‑poçt ünvanınızı daxil edin" />
-              <button type="submit">Abunə ol</button>
+              <input type="email" placeholder="Enter email address" />
+              <button type="submit">Subscribe</button>
             </form>
           </div>
         </div>
       </section>
-
-      <CounterSection />
-      <ServicesRow />
 
       <footer className={styles['footer-main']}>
         <button className={styles['scroll-top-btn']} onClick={scrollToTop}>
@@ -108,96 +105,6 @@ const Footer = () => {
   );
 };
 
-function CounterSection() {
-  const targets = [10000, 100, 1000, 100];
-  const labels = ['XOŞBƏXT MÜŞTƏRİLƏR', 'FİLİALLAR', 'PARTNYORLAR', 'MÜKAFATLAR'];
-  const [values, setValues] = useState([0, 0, 0, 0]);
-  const ref = useRef(null);
-  const startedRef = useRef(false);
-  const bg = 'https://preview.colorlib.com/theme/vegefoods/images/bg_3.jpg';
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const io = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting && !startedRef.current) {
-        startedRef.current = true;
-        const duration = 4000;
-        const start = performance.now();
-        const tick = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          setValues(targets.map(t => Math.floor(t * progress)));
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            setValues(targets);
-          }
-        };
-        requestAnimationFrame(tick);
-      }
-    }, { threshold: 0.25 });
-    io.observe(node);
-    return () => io.disconnect();
-  }, []);
-
-  return (
-    <div
-      className={styles["counter-section"]}
-      ref={ref}
-      style={{ backgroundImage: `url('${bg}')` }}
-    >
-      <div className="container">
-        <div className={styles["counter-grid"]}>
-          {values.map((v, i) => (
-            <div key={i} className={styles["counter-item"]}>
-              <div className={styles["counter-num"]}>{v.toLocaleString()}</div>
-              <div className={styles["counter-label"]}>{labels[i]}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ServicesRow() {
-  return (
-    <section className={styles["services-section"]}>
-      <div className="container">
-        <div className={styles["services-grid"]}>
-          <div className={styles["service-item"]}>
-            <div className={`${styles["service-circle"]} ${styles["circle-pink"]}`}>
-              <FaShippingFast />
-            </div>
-            <h3>PULSUZ ÇATDIRILMA</h3>
-            <p>$100 üzəri sifarişlərdə</p>
-          </div>
-          <div className={styles["service-item"]}>
-            <div className={`${styles["service-circle"]} ${styles["circle-sand"]}`}>
-              <FaLeaf />
-            </div>
-            <h3>HƏMİŞƏ TƏZƏ</h3>
-            <p>Məhsullar yaxşı qablaşdırılır</p>
-          </div>
-          <div className={styles["service-item"]}>
-            <div className={`${styles["service-circle"]} ${styles["circle-blue"]}`}>
-              <FaAward />
-            </div>
-            <h3>YÜKSƏK KEYFİYYƏT</h3>
-            <p>Keyfiyyətli məhsullar</p>
-          </div>
-          <div className={styles["service-item"]}>
-            <div className={`${styles["service-circle"]} ${styles["circle-olive"]}`}>
-              <FaHeadset />
-            </div>
-            <h3>DƏSTƏK</h3>
-            <p>7/24 xidmət</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export default Footer;

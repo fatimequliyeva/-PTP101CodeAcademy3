@@ -8,7 +8,9 @@ import styles from './Products.module.css';
 const Products = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [formOpen, setFormOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
 
   const load = async () => {
     try {
@@ -22,6 +24,35 @@ const Products = () => {
   };
 
   useEffect(() => { load(); }, []);
+
+  const compressImage = (file, maxWidth = 20, quality = 0.05) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ratio = maxWidth / img.width;
+          canvas.width = maxWidth;
+          canvas.height = img.height * ratio;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const compressed = await compressImage(file);
+      setImagePreview(compressed);
+      formik.setFieldValue('image', compressed);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -44,17 +75,26 @@ const Products = () => {
       try {
         if (editingId) {
           await productService.update(editingId, payload);
-          setEditingId(null);
         } else {
           await productService.create(payload);
         }
         await load();
         resetForm();
+        setImagePreview('');
+        setFormOpen(false);
+        setEditingId(null);
       } catch (error) {
         console.error("Error saving product:", error);
       }
     },
   });
+
+  const openCreate = () => {
+    setEditingId(null);
+    formik.resetForm();
+    setImagePreview('');
+    setFormOpen(true);
+  };
 
   const handleEdit = (product) => {
     setEditingId(product.id);
@@ -64,13 +104,17 @@ const Products = () => {
       price: product.price,
       oldPrice: product.oldPrice || '',
       discount: product.discount || '',
-      image: product.image
+      image: product.image || ''
     });
+    setImagePreview(product.image || '');
+    setFormOpen(true);
   };
 
   const handleCancel = () => {
     setEditingId(null);
     formik.resetForm();
+    setImagePreview('');
+    setFormOpen(false);
   };
 
   const handleDelete = async (id) => {
@@ -82,127 +126,145 @@ const Products = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.pageTitle}>Admin Products Management</h1>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+        <h1 className={styles.pageTitle}>Admin Products</h1>
+        {!formOpen && (
+          <button className="btn btn-primary" onClick={openCreate}>Add Product</button>
+        )}
+      </div>
 
-      <div className={styles.card}>
-        <h3 className={styles.cardTitle}>{editingId ? 'Edit Product' : 'Add New Product'}</h3>
-        <form onSubmit={formik.handleSubmit} className={styles.form}>
-          <Input
-            label="Product Name"
-            name="name"
-            placeholder="Enter product name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            error={formik.touched.name && formik.errors.name}
-          />
-          
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Category</label>
-            <select
-              name="category"
-              value={formik.values.category}
+      {formOpen && (
+        <div className={styles.card}>
+          <h3 className={styles.cardTitle}>{editingId ? 'Edit Product' : 'Add New Product'}</h3>
+          <form onSubmit={formik.handleSubmit} className={styles.form}>
+            <Input
+              label="Product Name"
+              name="name"
+              placeholder="Enter product name"
+              value={formik.values.name}
               onChange={formik.handleChange}
-              className={styles.select}
-            >
-              <option value="Vegetables">Vegetables</option>
-              <option value="Fruits">Fruits</option>
-              <option value="Juice">Juice</option>
-              <option value="Dried">Dried</option>
-            </select>
-            {formik.touched.category && formik.errors.category && (
-              <span className={styles.error}>{formik.errors.category}</span>
-            )}
-          </div>
+              error={formik.touched.name && formik.errors.name}
+            />
 
-          <Input
-            label="Price"
-            type="number"
-            name="price"
-            placeholder="0.00"
-            value={formik.values.price}
-            onChange={formik.handleChange}
-            error={formik.touched.price && formik.errors.price}
-          />
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Category</label>
+              <select
+                name="category"
+                value={formik.values.category}
+                onChange={formik.handleChange}
+                className={styles.select}
+              >
+                <option value="Vegetables">Vegetables</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Juice">Juice</option>
+                <option value="Dried">Dried</option>
+              </select>
+            </div>
 
-          <Input
-            label="Old Price (Optional)"
-            type="number"
-            name="oldPrice"
-            placeholder="0.00"
-            value={formik.values.oldPrice}
-            onChange={formik.handleChange}
-            error={formik.touched.oldPrice && formik.errors.oldPrice}
-          />
+            <Input
+              label="Price"
+              type="number"
+              name="price"
+              placeholder="0.00"
+              value={formik.values.price}
+              onChange={formik.handleChange}
+              error={formik.touched.price && formik.errors.price}
+            />
 
-          <Input
-            label="Discount % (Optional)"
-            type="number"
-            name="discount"
-            placeholder="0"
-            value={formik.values.discount}
-            onChange={formik.handleChange}
-            error={formik.touched.discount && formik.errors.discount}
-          />
+            <Input
+              label="Old Price (Optional)"
+              type="number"
+              name="oldPrice"
+              placeholder="0.00"
+              value={formik.values.oldPrice}
+              onChange={formik.handleChange}
+              error={formik.touched.oldPrice && formik.errors.oldPrice}
+            />
 
-          <Input
-            label="Image URL"
-            name="image"
-            placeholder="http://example.com/image.jpg"
-            value={formik.values.image}
-            onChange={formik.handleChange}
-            error={formik.touched.image && formik.errors.image}
-          />
+            <Input
+              label="Discount % (Optional)"
+              type="number"
+              name="discount"
+              placeholder="0"
+              value={formik.values.discount}
+              onChange={formik.handleChange}
+              error={formik.touched.discount && formik.errors.discount}
+            />
 
-          <div className={styles.actions}>
-            <button className="btn btn-primary" type="submit">
-              {editingId ? 'Update Product' : 'Add Product'}
-            </button>
-            {editingId && (
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Product Image</label>
+              <label 
+                style={{
+                  display:'inline-block', 
+                  padding:'10px 20px', 
+                  background:'#82ae46', 
+                  color:'#fff', 
+                  borderRadius:6, 
+                  cursor:'pointer',
+                  marginTop:5,
+                  fontSize:14
+                }}
+              >
+                Choose Image
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  onChange={handleImageChange}
+                  style={{display:'none'}} 
+                />
+              </label>
+              {imagePreview && (
+                <div style={{marginTop:10}}>
+                  <img src={imagePreview} alt="Preview" style={{width:120, height:80, objectFit:'cover', borderRadius:6, border:'1px solid #ddd'}} />
+                </div>
+              )}
+            </div>
+
+            <div className={styles.actions}>
+              <button className="btn btn-primary" type="submit">
+                {editingId ? 'Update Product' : 'Add Product'}
+              </button>
               <button className={`btn ${styles.btnCancel}`} type="button" onClick={handleCancel}>
                 Cancel
               </button>
-            )}
-          </div>
-        </form>
-      </div>
+            </div>
+          </form>
+        </div>
+      )}
 
       {loading ? <p>Loading...</p> : (
         <div className={styles.tableWrap}>
           <table className={styles.table}>
             <thead className={styles.thead}>
               <tr>
-                <th>ID</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Discount</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {items.map(p => (
                 <tr key={p.id}>
-                  <td>{p.id}</td>
                   <td>
-                    <img src={p.image} alt={p.name} className={styles.thumb} />
+                    <img 
+                      src={p.image || 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'} 
+                      alt={p.name} 
+                      className={styles.thumb}
+                      onError={(e) => { e.currentTarget.src = 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg'; }}
+                    />
                   </td>
                   <td>{p.name}</td>
                   <td>{p.category}</td>
-                  <td>${p.price}</td>
+                  <td>${Number(p.price).toFixed(2)}</td>
+                  <td>{p.discount > 0 ? `${p.discount}%` : '—'}</td>
                   <td>
-                    <button 
-                      className="btn btn-primary" 
-                      onClick={() => handleEdit(p)}
-                      style={{ marginRight: 8 }}
-                    >
-                      Edit
-                    </button>
-                    <button 
-                      className={`btn ${styles.btnDanger}`} 
-                      onClick={() => handleDelete(p.id)}
-                    >
-                      Delete
-                    </button>
+                    <div style={{display:'flex', gap:8}}>
+                      <button className="btn btn-primary" onClick={() => handleEdit(p)}>Edit</button>
+                      <button className={`btn ${styles.btnDanger}`} onClick={() => handleDelete(p.id)}>Delete</button>
+                    </div>
                   </td>
                 </tr>
               ))}

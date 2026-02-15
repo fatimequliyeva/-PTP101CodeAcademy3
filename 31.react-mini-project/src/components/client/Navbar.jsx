@@ -30,13 +30,6 @@ const Navbar = () => {
             <li><NavLink to="/" end>HOME</NavLink></li>
             <li className={styles.dropdown}>
               <NavLink to="/shop">SHOP</NavLink>
-              <ul className={styles['dropdown-menu']}>
-                <li><Link to="/shop">Shop</Link></li>
-                <li><Link to="/wishlist">Wishlist</Link></li>
-                <li><Link to="/shop/1">Single Product</Link></li>
-                <li><Link to="/cart">Cart</Link></li>
-                <li><Link to="/checkout">Checkout</Link></li>
-              </ul>
             </li>
             <li><NavLink to="/about">ABOUT</NavLink></li>
             <li><NavLink to="/blog">BLOG</NavLink></li>

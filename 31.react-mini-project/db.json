@@ -1,101 +1,93 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Bell Pepper",
+      "name": "Bell Peppersddd111",
       "category": "Vegetables",
-      "price": 80,
+      "price": 80111,
       "oldPrice": 120,
       "discount": 30,
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6",
-      "stock": 600,
-      "unit": "kg",
-      "sizes": [
-        "Small",
-        "Medium",
-        "Large"
-      ]
+      "id": "1"
     },
     {
-      "name": "Strawberry",
+      "id": "ccd4",
+      "name": "Frances Harrell",
+      "category": "Dried",
+      "price": 824,
+      "oldPrice": 656,
+      "discount": 25,
+      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6"
+    },
+    {
+      "id": "bf13",
+      "name": "Tana Edwards",
       "category": "Fruits",
-      "price": 1555,
-      "oldPrice": 120,
-      "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd7",
-      "id": "2"
+      "price": 698,
+      "oldPrice": 987,
+      "discount": 56,
+      "image": "https://preview.colorlib.com/theme/vegefoods/images/product-3.jpg"
     },
     {
-      "id": "3",
-      "name": "Green Beans",
-      "category": "Vegetables",
-      "price": 120,
-      "oldPrice": 120,
-      "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd8"
+      "id": "66f5",
+      "name": "Fletcher Cash",
+      "category": "Dried",
+      "price": 666,
+      "oldPrice": 977,
+      "discount": 81,
+      "image": "https://preview.colorlib.com/theme/vegefoods/images/product-3.jpg"
     },
     {
-      "id": "4",
-      "name": "Purple Cabbage",
-      "category": "Vegetables",
-      "price": 120,
-      "oldPrice": 120,
-      "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd9"
+      "id": "ae39",
+      "name": "Jade Munoz",
+      "category": "Dried",
+      "price": 251,
+      "oldPrice": 155,
+      "discount": 76,
+      "image": "https://preview.colorlib.com/theme/vegefoods/images/product-7.jpg"
     },
     {
-      "id": "5",
-      "name": "Tomato",
-      "category": "Vegetables",
-      "price": 80,
-      "oldPrice": 120,
-      "discount": 30,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbda"
+      "id": "df27",
+      "name": "sdfghj",
+      "category": "Fruits",
+      "price": 21,
+      "oldPrice": 2121,
+      "discount": 12,
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAKBueIx4ZKCMgoy0qqC+8P//8Nzc8P//////////////////////////////////////////////////////////2wBDAaq0tPDS8P//////////////////////////////////////////////////////////////////////////////wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAEDAv/EAB4QAAICAAcAAAAAAAAAAAAAAAABAhESISJBUXGB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDTsjaJKcY5MydzlpT9CtLAwvkEHVJ7FSSAAMAAf//Z"
     },
     {
-      "id": "6",
-      "name": "Broccoli",
-      "category": "Vegetables",
-      "price": 120,
-      "oldPrice": 120,
-      "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbdb"
-    },
-    {
-      "id": "7",
-      "name": "Carrots",
-      "category": "Vegetables",
-      "price": 120,
-      "oldPrice": 120,
-      "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbdc"
-    },
-    {
-      "id": "8",
-      "name": "Fruit Juice",
-      "category": "Juice",
-      "price": 120,
-      "oldPrice": 120,
-      "discount": 0,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbdd"
-    },
-    {
-      "id": "6f31",
-      "name": "Fatima Guliyeva",
-      "category": "Vegetables",
-      "price": 1234,
-      "oldPrice": 1345,
-      "discount": 1,
-      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd7"
+      "id": "95c1",
+      "name": "Shafira Obrien",
+      "category": "Fruits",
+      "price": 240,
+      "oldPrice": 521,
+      "discount": 86,
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAKBueIx4ZKCMgoy0qqC+8P//8Nzc8P//////////////////////////////////////////////////////////2wBDAaq0tPDS8P//////////////////////////////////////////////////////////////////////////////wAARCAAWABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBA//EABwQAAICAwEBAAAAAAAAAAAAAAABAhEDEjEhQf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDYR1j6Yqd3wrIm+EJ1FfWwI1viB0sAVFbY1bJjDV9sAA2rAAH/2Q=="
     }
   ],
   "blogs": [
     {
-      "id": "1",
-      "title": "Why Organic Food is Better",
+      "title": "Why Organic Food is Betterfad",
       "description": "Organic foods are grown without harmful pesticides and are healthier for your body.",
       "date": "2024-05-12",
-      "position": "Health"
+      "position": "Healthffffff",
+      "image": "https://preview.colorlib.com/theme/vegefoods/images/product-7.jpg",
+      "id": "1"
+    },
+    {
+      "title": "asdffdfadile",
+      "description": "sdfghjksddfdffffffffffffffffffffffffffffff",
+      "date": "2026-02-18",
+      "position": "asedfg",
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAKBueIx4ZKCMgoy0qqC+8P//8Nzc8P//////////////////////////////////////////////////////////2wBDAaq0tPDS8P//////////////////////////////////////////////////////////////////////////////wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDAf/EABkQAAMBAQEAAAAAAAAAAAAAAAABAhEhUf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/AOzapYyt3hhLxmqe8ILBO14mCjBG+cAIsRVuXiAAH//Z",
+      "id": "6024"
+    },
+    {
+      "id": "70a7",
+      "title": "sadaf",
+      "description": "asdadaasdadasdadadadadad",
+      "date": "2026-02-25",
+      "position": "asdf",
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAKBueIx4ZKCMgoy0qqC+8P//8Nzc8P//////////////////////////////////////////////////////////2wBDAaq0tPDS8P//////////////////////////////////////////////////////////////////////////////wAARCAAWABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBA//EABwQAAICAwEBAAAAAAAAAAAAAAABAhEDEjEhQf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDYR1j6Yqd3wrIm+EJ1FfWwI1viB0sAVFbY1bJjDV9sAA2rAAH/2Q=="
     }
   ]
 }

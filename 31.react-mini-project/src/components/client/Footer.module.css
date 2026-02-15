@@ -1,3 +1,28 @@
+/* Brand logos section */
+.brands-section {
+  background: #fafaf8;
+  padding: 3em 0 2em;
+  text-align: center;
+}
+
+.brands-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.brands-logos img {
+  height: 70px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.brands-logos img:hover {
+  filter: grayscale(0%);
+}
 .footer-wrapper {
   width: 100%;
   position: relative;
