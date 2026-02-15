@@ -24,51 +24,18 @@ const Products = () => {
     return () => clearTimeout(t);
   }, [query]);
 
-  // Fetch products with server-side filtering
+  // Fetch products from API
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const params = {};
-
-        // Search by name (debounce)
-        if (debouncedQuery) {
-          params.name_like = debouncedQuery;
-        }
-
-        // Filter by category
-        if (category !== 'All') {
-          params.category = category;
-        }
-
-        // Sorting
-        if (sortBy) {
-          const [sort, order] = sortBy.split('-');
-          params._sort = sort;
-          params._order = order;
-        }
-
-        const data = await productService.getAll(params);
+        const data = await productService.getAll();
         setProducts(data);
         setPage(1);
       } catch (error) {
         console.error("Error fetching products:", error);
         addToast("Failed to load products", "error");
-        const fallback = [
-          { id: 1, name: 'Bell Pepper', price: 80.00, oldPrice: 120.00, discount: 30, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-1.jpg' },
-          { id: 2, name: 'Strawberry', price: 120.00, category: 'Fruits', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg' },
-          { id: 3, name: 'Green Beans', price: 120.00, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-3.jpg' },
-          { id: 4, name: 'Purple Cabbage', price: 120.00, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-4.jpg' },
-          { id: 5, name: 'Tomatoe', price: 80.00, oldPrice: 120.00, discount: 30, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-5.jpg' },
-          { id: 6, name: 'Brocolli', price: 120.00, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-6.jpg' },
-          { id: 7, name: 'Carrots', price: 120.00, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-7.jpg' },
-          { id: 8, name: 'Fruit Juice', price: 120.00, category: 'Juice', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-8.jpg' },
-          { id: 9, name: 'Onion', price: 80.00, oldPrice: 120.00, discount: 30, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-9.jpg' },
-          { id: 10, name: 'Apple', price: 120.00, category: 'Fruits', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-10.jpg' },
-          { id: 11, name: 'Garlic', price: 120.00, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-11.jpg' },
-          { id: 12, name: 'Chilli', price: 120.00, category: 'Vegetables', image: 'https://preview.colorlib.com/theme/vegefoods/images/product-12.jpg' },
-        ];
-        setProducts(fallback.filter(p => category === 'All' || p.category === category));
+        setProducts([]);
         setPage(1);
       } finally {
         setLoading(false);
@@ -76,7 +43,20 @@ const Products = () => {
     };
 
     fetchProducts();
-  }, [debouncedQuery, category, sortBy, addToast]);
+  }, [addToast]);
+
+  const filteredProducts = products
+    .filter(p => category === 'All' || p.category === category)
+    .filter(p => p.name.toLowerCase().includes(debouncedQuery.toLowerCase()))
+    .sort((a, b) => {
+      const [field, order] = sortBy.split('-');
+      const modifier = order === 'desc' ? -1 : 1;
+      if (field === 'name') return modifier * a.name.localeCompare(b.name);
+      if (field === 'price') return modifier * (a.price - b.price);
+      return 0;
+    });
+
+  const categories = ['All', ...new Set(products.map(p => p.category).filter(Boolean))];
 
   return (
     <div className="products-page">
@@ -92,7 +72,7 @@ const Products = () => {
           <h2 className={styles["heading"]}>All Products</h2>
         </div>
         <div className={styles["shop-tabs"]}>
-          {["All","Vegetables","Fruits","Juice","Dried"].map(c => (
+          {categories.map(c => (
             <button
               key={c}
               className={`${styles["shop-tab"]} ${category === c ? styles["active"] : ""}`}
@@ -107,7 +87,7 @@ const Products = () => {
           <p>Loading...</p>
         ) : (
           <div className={styles["products-grid"]}>
-            {products.slice((page - 1) * PAGE_SIZE, (page - 1) * PAGE_SIZE + PAGE_SIZE).map(p => (
+            {filteredProducts.slice((page - 1) * PAGE_SIZE, (page - 1) * PAGE_SIZE + PAGE_SIZE).map(p => (
               <div key={p.id} className={styles["product-card"]}>
                 <div className={styles["product-img"]}>
                   {p.discount ? <span className={styles["status"]}>{p.discount}%</span> : null}
@@ -147,10 +127,10 @@ const Products = () => {
                 </div>
               </div>
             ))}
-            {products.length === 0 && <p>No products found.</p>}
+            {filteredProducts.length === 0 && <p>No products found.</p>}
           </div>
         )}
-        {!loading && Math.ceil(products.length / PAGE_SIZE) > 1 && (
+        {!loading && Math.ceil(filteredProducts.length / PAGE_SIZE) > 1 && (
           <div className={styles["pagination"]}>
             <button
               className={styles["page-btn"]}
@@ -159,7 +139,7 @@ const Products = () => {
             >
               ‹
             </button>
-            {Array.from({ length: Math.ceil(products.length / PAGE_SIZE) }, (_, i) => i + 1).map(n => (
+            {Array.from({ length: Math.ceil(filteredProducts.length / PAGE_SIZE) }, (_, i) => i + 1).map(n => (
               <button
                 key={n}
                 className={`${styles["page-btn"]} ${page === n ? styles["active"] : ""}`}
@@ -170,8 +150,8 @@ const Products = () => {
             ))}
             <button
               className={styles["page-btn"]}
-              disabled={page === Math.ceil(products.length / PAGE_SIZE)}
-              onClick={() => setPage(p => Math.min(Math.ceil(products.length / PAGE_SIZE), p + 1))}
+              disabled={page === Math.ceil(filteredProducts.length / PAGE_SIZE)}
+              onClick={() => setPage(p => Math.min(Math.ceil(filteredProducts.length / PAGE_SIZE), p + 1))}
             >
               ›
             </button>
