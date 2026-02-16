@@ -159,6 +159,10 @@
     display: none;
     width: 100%;
   }
+  
+  .navbar-links-open {
+    display: flex;
+  }
 
   .navbar-links li a {
     padding-bottom: 2px;
