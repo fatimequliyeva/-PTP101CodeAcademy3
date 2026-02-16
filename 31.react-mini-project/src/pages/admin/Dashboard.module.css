@@ -127,3 +127,34 @@
  .title {
    margin: 0;
  }
+
+@media (max-width: 1200px) {
+  .grid4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .threeCol {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .grid4 {
+    grid-template-columns: 1fr;
+  }
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+  .threeCol {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .bars {
+    height: 160px;
+  }
+  .donut {
+    width: 180px;
+    height: 180px;
+  }
+}

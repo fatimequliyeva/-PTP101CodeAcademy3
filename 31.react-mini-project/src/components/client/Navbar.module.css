@@ -90,3 +90,50 @@
   margin-left: 6px;
   font-size: 11px;
 }
+
+@media (max-width: 992px) {
+  .navbar-content {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .cart-link {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 0;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar-links li a {
+    padding-bottom: 2px;
+  }
+
+  .cart-link {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-logo {
+    font-size: 18px;
+  }
+
+  .navbar-links {
+    gap: 10px;
+  }
+}

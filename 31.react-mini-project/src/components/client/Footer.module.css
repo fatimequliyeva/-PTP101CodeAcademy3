@@ -327,11 +327,38 @@
   .services-section {
     padding: 6em 0;
   }
+  .brands-logos {
+    gap: 36px;
+  }
+  .brands-logos img {
+    height: 54px;
+  }
+  .newsletter-section {
+    padding: 3em 0;
+  }
+  .scroll-top-btn {
+    width: 52px;
+    height: 52px;
+    top: -26px;
+  }
 }
 
 @media (max-width: 576px) {
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+  .newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .newsletter-form button {
+    height: 44px;
+  }
+  .brands-logos {
+    gap: 24px;
+  }
+  .brands-logos img {
+    height: 46px;
   }
 }
 

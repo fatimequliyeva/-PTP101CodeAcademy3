@@ -138,3 +138,42 @@
   color: #fff;
   border-color: #ff4d4d;
 }
+
+@media (max-width: 992px) {
+  .detailContainer {
+    gap: 32px;
+  }
+  .imageSection,
+  .infoSection {
+    min-width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title,
+  .price {
+    font-size: 24px;
+  }
+  .ratingRow {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .quantity {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .detailContainer {
+    gap: 24px;
+  }
+  .addBtn {
+    width: 100%;
+    text-align: center;
+  }
+}

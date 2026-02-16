@@ -1045,6 +1045,9 @@
   .services-grid { gap: 20px; }
   .service-icon { width: 80px; height: 80px; font-size: 28px; margin-bottom: 12px; }
   .hero-section { min-height: 520px; }
+  .center-visual { height: 380px; }
+  .center-info { min-height: 220px; }
+  .deal-section { padding: 4em 0; }
 }
 
 @media (max-width: 576px) {
@@ -1055,6 +1058,9 @@
   .services-grid {
     grid-template-columns: 1fr;
   }
+  .hero-title { font-size: 32px; }
+  .hero-section { min-height: 460px; }
+  .category-card { height: 220px; }
 }
 
 @media (max-width: 480px) {
@@ -1293,6 +1299,53 @@
   outline: none;
   border-color: #82ae46;
   box-shadow: 0 0 0 3px rgba(130, 174, 70, 0.15);
+}
+
+@media (max-width: 992px) {
+  .wishlist-head {
+    grid-template-columns: 1fr 100px 100px 100px;
+  }
+  .wishlist-row {
+    grid-template-columns: 32px 1fr 100px 100px 100px;
+    padding: 22px 18px;
+  }
+  .quantity-cell input {
+    width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wishlist-head {
+    display: none;
+  }
+  .wishlist-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px 16px;
+  }
+  .price-cell,
+  .quantity-cell,
+  .total-cell {
+    text-align: left;
+  }
+  .product-cell {
+    gap: 12px;
+  }
+  .qtyGroup {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .wishlist-banner {
+    padding: 120px 0;
+  }
+  .wishlist-banner h2 {
+    font-size: 28px;
+  }
+  .wishlist-row {
+    padding: 16px 14px;
+  }
 }
 
 .product-banner {

@@ -16,6 +16,7 @@ import BlogDetail from "./pages/client/BlogDetail";
 import Basket from "./pages/client/Basket";
 import Wishlist from "./pages/client/Wishlist";
 import About from "./pages/client/About";
+import Contact from "./pages/client/Contact";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="blog" element={<ClientBlogs />} />
             <Route path="blog/:id" element={<BlogDetail />} />
+            <Route path="contact" element={<Contact />} />
             <Route path="cart" element={<Basket />} />
             <Route path="wishlist" element={<Wishlist />} />
           </Route>

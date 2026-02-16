@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { FaEnvelope, FaGlobe, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import contactBg from "../../assets/image/mainphoto2.jpg";
 
 const Contact = () => {
@@ -8,6 +8,7 @@ const Contact = () => {
     initialValues: {
       fullName: "",
       email: "",
+      subject: "",
       message: ""
     },
     validationSchema: Yup.object({
@@ -15,6 +16,7 @@ const Contact = () => {
       email: Yup.string()
         .email("Email düzgün formatda olmalıdır")
         .required("Email boş ola bilməz"),
+      subject: Yup.string(),
       message: Yup.string().required("Mesaj boş ola bilməz")
     }),
     onSubmit: (values, helpers) => {
@@ -26,130 +28,170 @@ const Contact = () => {
   return (
     <>
       <section
-        className="py-[80px] text-center md:py-[120px]"
+        className="py-[90px] text-center text-white md:py-[120px]"
         style={{
-          background: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${contactBg})`,
+          background: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${contactBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}
       >
-        <div className="mx-auto max-w-[900px] px-4 text-white">
-          <h1 className="text-[32px] font-bold leading-tight md:text-[42px]">Bizimlə Əlaqə</h1>
-          <p className="mx-auto mt-4 max-w-[760px] text-[16px] leading-[1.6] text-white/90">
-            Sağlam həyat üçün hər gün təzə meyvə və tərəvəzlərdən zövq alın. Bizimlə əlaqə saxlayaraq
-            məhsullarımız haqqında daha çox məlumat əldə edə bilərsiniz.
-          </p>
+        <div className="mx-auto max-w-[900px] px-4">
+          <div className="text-[11px] font-semibold tracking-[0.2em] text-white/80">HOME&nbsp;&nbsp;CONTACT US</div>
+          <h1 className="mt-3 text-[34px] font-extrabold tracking-[0.08em] md:text-[46px]">CONTACT US</h1>
         </div>
       </section>
 
-      <section className="bg-[#f9f9f9] py-12">
-        <div className="mx-auto max-w-[1200px] px-6 md:px-8">
-          <div className="rounded-[12px] bg-[#f9f9f9] p-6 md:p-[60px]">
-            <div className="grid gap-10 md:grid-cols-2">
-              <div className="space-y-6">
-                <div className="flex items-start gap-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-[8px] bg-white shadow-sm">
-                    <FiMapPin className="text-[#2E7D32]" size={22} />
-                  </div>
-                  <div>
-                    <div className="text-[16px] font-semibold text-[#1B5E20]">Ünvan</div>
-                    <div className="mt-2 text-[16px] leading-[1.6] text-gray-700">
-                      Bakı şəhəri, İqor Ağayev küçəsi, Ev 3, Mənzil 4
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-[8px] bg-white shadow-sm">
-                    <FiPhone className="text-[#2E7D32]" size={22} />
-                  </div>
-                  <div>
-                    <div className="text-[16px] font-semibold text-[#1B5E20]">Telefon</div>
-                    <div className="mt-2 text-[16px] leading-[1.6] text-gray-700">+994 50 633 34 02</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-[8px] bg-white shadow-sm">
-                    <FiMail className="text-[#2E7D32]" size={22} />
-                  </div>
-                  <div>
-                    <div className="text-[16px] font-semibold text-[#1B5E20]">Email</div>
-                    <div className="mt-2 text-[16px] leading-[1.6] text-gray-700">hello@vegefoods.com</div>
-                  </div>
-                </div>
+      <section className="bg-white py-10 md:py-12">
+        <div className="mx-auto max-w-[1200px] px-4">
+          <div className="grid gap-8 text-center md:grid-cols-4">
+            <div className="flex flex-col items-center">
+              <div className="text-[18px] text-gray-800">
+                <FaMapMarkerAlt />
               </div>
-
-              <div className="rounded-[12px] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.1)] md:p-[40px]">
-                <h2 className="text-[22px] font-semibold text-[#1B5E20]">Mesaj Göndər</h2>
-
-                <form onSubmit={formik.handleSubmit} className="mt-6 space-y-5">
-                  <div>
-                    <label htmlFor="fullName" className="block text-[14px] font-medium text-gray-800">
-                      Ad
-                    </label>
-                    <input
-                      id="fullName"
-                      name="fullName"
-                      type="text"
-                      value={formik.values.fullName}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      className="mt-2 h-[50px] w-full rounded-[8px] border border-[#ddd] bg-white px-4 text-[14px] text-gray-900 shadow-sm outline-none transition focus:border-[#4CAF50]"
-                      placeholder="Tam adınızı daxil edin"
-                    />
-                    {formik.touched.fullName && formik.errors.fullName ? (
-                      <p className="mt-2 text-xs text-red-600">{formik.errors.fullName}</p>
-                    ) : null}
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-[14px] font-medium text-gray-800">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formik.values.email}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      className="mt-2 h-[50px] w-full rounded-[8px] border border-[#ddd] bg-white px-4 text-[14px] text-gray-900 shadow-sm outline-none transition focus:border-[#4CAF50]"
-                      placeholder="you@example.com"
-                    />
-                    {formik.touched.email && formik.errors.email ? (
-                      <p className="mt-2 text-xs text-red-600">{formik.errors.email}</p>
-                    ) : null}
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-[14px] font-medium text-gray-800">
-                      Mesaj
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={5}
-                      value={formik.values.message}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      className="mt-2 w-full rounded-[8px] border border-[#ddd] bg-white px-4 py-3 text-[14px] text-gray-900 shadow-sm outline-none transition focus:border-[#4CAF50]"
-                      placeholder="Mesajınızı yazın..."
-                    />
-                    {formik.touched.message && formik.errors.message ? (
-                      <p className="mt-2 text-xs text-red-600">{formik.errors.message}</p>
-                    ) : null}
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center rounded-[8px] bg-[#2E7D32] px-[30px] py-[14px] text-[14px] font-semibold text-white transition duration-300 hover:bg-[#1B5E20] disabled:cursor-not-allowed disabled:opacity-60"
-                    disabled={formik.isSubmitting}
-                  >
-                    Mesaj Göndər
-                  </button>
-                </form>
+              <div className="mt-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-900">Address</div>
+              <div className="mt-2 text-[13px] leading-[1.7] text-[#777]">
+                198 West 21th Street, Suite 721 New York NY 10016
               </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-[18px] text-gray-800">
+                <FaPhoneAlt />
+              </div>
+              <div className="mt-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-900">Phone</div>
+              <div className="mt-2 text-[13px] leading-[1.7] text-[#777]">+ 1235 2355 98</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-[18px] text-gray-800">
+                <FaEnvelope />
+              </div>
+              <div className="mt-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-900">Email</div>
+              <div className="mt-2 text-[13px] leading-[1.7] text-[#777]">info@yoursite.com</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-[18px] text-gray-800">
+                <FaGlobe />
+              </div>
+              <div className="mt-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-900">Website</div>
+              <div className="mt-2 text-[13px] leading-[1.7] text-[#777]">yoursite.com</div>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-2">
+            <div className="h-[280px] w-full overflow-hidden border border-[#e5e5e5] md:h-[300px]">
+              <iframe
+                title="Contact map"
+                className="h-full w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Code%20Academy%20Baku&output=embed"
+              />
+            </div>
+
+            <div className="border border-[#e5e5e5] bg-white p-6 md:p-8">
+              <form onSubmit={formik.handleSubmit} className="space-y-4" noValidate>
+                <div>
+                  <label htmlFor="fullName" className="sr-only">
+                    Your Name
+                  </label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    value={formik.values.fullName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="h-[42px] w-full rounded-[4px] border border-[#262626] bg-[#262626] px-4 text-[13px] text-white outline-none transition placeholder:text-gray-300 focus:border-[#82ae46]"
+                    aria-label="Your Name"
+                    aria-invalid={Boolean(formik.touched.fullName && formik.errors.fullName)}
+                    aria-describedby={formik.touched.fullName && formik.errors.fullName ? "fullName-error" : undefined}
+                    placeholder="Your Name"
+                  />
+                  {formik.touched.fullName && formik.errors.fullName ? (
+                    <p id="fullName-error" className="mt-2 text-xs text-red-600" role="alert">
+                      {formik.errors.fullName}
+                    </p>
+                  ) : null}
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="sr-only">
+                    Your Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="h-[42px] w-full rounded-[4px] border border-[#262626] bg-[#262626] px-4 text-[13px] text-white outline-none transition placeholder:text-gray-300 focus:border-[#82ae46]"
+                    aria-label="Your Email"
+                    aria-invalid={Boolean(formik.touched.email && formik.errors.email)}
+                    aria-describedby={formik.touched.email && formik.errors.email ? "email-error" : undefined}
+                    placeholder="Your Email"
+                  />
+                  {formik.touched.email && formik.errors.email ? (
+                    <p id="email-error" className="mt-2 text-xs text-red-600" role="alert">
+                      {formik.errors.email}
+                    </p>
+                  ) : null}
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="sr-only">
+                    Subject
+                  </label>
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    value={formik.values.subject}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="h-[42px] w-full rounded-[4px] border border-[#262626] bg-[#262626] px-4 text-[13px] text-white outline-none transition placeholder:text-gray-300 focus:border-[#82ae46]"
+                    aria-label="Subject"
+                    aria-describedby={formik.touched.subject && formik.errors.subject ? "subject-error" : undefined}
+                    placeholder="Subject"
+                  />
+                  {formik.touched.subject && formik.errors.subject ? (
+                    <p id="subject-error" className="mt-2 text-xs text-red-600" role="alert">
+                      {formik.errors.subject}
+                    </p>
+                  ) : null}
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="sr-only">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    value={formik.values.message}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="w-full resize-none rounded-[4px] border border-[#d7d7d7] px-4 py-3 text-[13px] text-gray-900 outline-none transition focus:border-[#82ae46]"
+                    aria-label="Message"
+                    aria-invalid={Boolean(formik.touched.message && formik.errors.message)}
+                    aria-describedby={formik.touched.message && formik.errors.message ? "message-error" : undefined}
+                    placeholder="Message"
+                  />
+                  {formik.touched.message && formik.errors.message ? (
+                    <p id="message-error" className="mt-2 text-xs text-red-600" role="alert">
+                      {formik.errors.message}
+                    </p>
+                  ) : null}
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex rounded-full bg-[#82ae46] px-6 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[#6f963c] disabled:cursor-not-allowed disabled:opacity-60"
+                  disabled={formik.isSubmitting}
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
         </div>
