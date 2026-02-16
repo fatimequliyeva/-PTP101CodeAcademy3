@@ -126,11 +126,13 @@ const Products = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+      <div className={styles.headerRow}>
         <h1 className={styles.pageTitle}>Admin Products</h1>
-        {!formOpen && (
-          <button className="btn btn-primary" onClick={openCreate}>Add Product</button>
-        )}
+        <div className={styles.headerActions}>
+          {!formOpen && (
+            <button className="btn btn-primary" onClick={openCreate}>Add Product</button>
+          )}
+        </div>
       </div>
 
       {formOpen && (
@@ -193,18 +195,7 @@ const Products = () => {
 
             <div className={styles.inputGroup}>
               <label className={styles.label}>Product Image</label>
-              <label 
-                style={{
-                  display:'inline-block', 
-                  padding:'10px 20px', 
-                  background:'#82ae46', 
-                  color:'#fff', 
-                  borderRadius:6, 
-                  cursor:'pointer',
-                  marginTop:5,
-                  fontSize:14
-                }}
-              >
+              <label className={styles.imagePicker}>
                 Choose Image
                 <input 
                   type="file" 
@@ -215,7 +206,7 @@ const Products = () => {
               </label>
               {imagePreview && (
                 <div style={{marginTop:10}}>
-                  <img src={imagePreview} alt="Preview" style={{width:120, height:80, objectFit:'cover', borderRadius:6, border:'1px solid #ddd'}} />
+                  <img src={imagePreview} alt="Preview" className={styles.imagePreview} />
                 </div>
               )}
             </div>
@@ -261,7 +252,7 @@ const Products = () => {
                   <td>${Number(p.price).toFixed(2)}</td>
                   <td>{p.discount > 0 ? `${p.discount}%` : '—'}</td>
                   <td>
-                    <div style={{display:'flex', gap:8}}>
+                    <div className={styles.tableActions}>
                       <button className="btn btn-primary" onClick={() => handleEdit(p)}>Edit</button>
                       <button className={`btn ${styles.btnDanger}`} onClick={() => handleDelete(p.id)}>Delete</button>
                     </div>

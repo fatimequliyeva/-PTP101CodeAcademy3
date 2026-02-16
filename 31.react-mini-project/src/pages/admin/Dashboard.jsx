@@ -2,66 +2,78 @@ import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
   return (
-    <div style={{ display: 'grid', gap: 20 }}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>E-commerce Dashboard</h1>
+    <div className={styles.dashboard}>
+      <div className={styles.dashboard__header}>
+        <h1 className={styles.dashboard__title}>E-commerce Dashboard</h1>
       </div>
 
-      <div className={styles.grid4}>
-        <div className={styles.card}>
-          <div className={styles.cardTitle}><h4>Total Orders</h4><span style={{ color: '#1e8e3e', fontSize: 12 }}>+3.2%</span></div>
-          <div className={styles.value}>59</div>
-          <div className={styles.spark} />
+      <div className={styles.dashboard__grid}>
+        <div className={styles.dashboard__card}>
+          <div className={styles.dashboard__cardTitle}>
+            <h4>Total Orders</h4>
+            <span className={`${styles.dashboard__delta} ${styles["dashboard__delta--up"]}`}>+3.2%</span>
+          </div>
+          <div className={styles.dashboard__value}>59</div>
+          <div className={styles.dashboard__spark} />
         </div>
-        <div className={styles.card}>
-          <div className={styles.cardTitle}><h4>Balance</h4><span style={{ color: '#1e8e3e', fontSize: 12 }}>+1.1%</span></div>
-          <div className={styles.value}>$187,13</div>
-          <div className={`${styles.spark} ${styles.sparkPink}`} />
+        <div className={styles.dashboard__card}>
+          <div className={styles.dashboard__cardTitle}>
+            <h4>Balance</h4>
+            <span className={`${styles.dashboard__delta} ${styles["dashboard__delta--up"]}`}>+1.1%</span>
+          </div>
+          <div className={styles.dashboard__value}>$187,13</div>
+          <div className={`${styles.dashboard__spark} ${styles["dashboard__spark--pink"]}`} />
         </div>
-        <div className={styles.card}>
-          <div className={styles.cardTitle}><h4>Sales</h4><span style={{ color: '#1e8e3e', fontSize: 12 }}>+0.7%</span></div>
-          <div className={styles.value}>4,732</div>
-          <div className={`${styles.spark} ${styles.sparkGold}`} />
+        <div className={styles.dashboard__card}>
+          <div className={styles.dashboard__cardTitle}>
+            <h4>Sales</h4>
+            <span className={`${styles.dashboard__delta} ${styles["dashboard__delta--up"]}`}>+0.7%</span>
+          </div>
+          <div className={styles.dashboard__value}>4,732</div>
+          <div className={`${styles.dashboard__spark} ${styles["dashboard__spark--gold"]}`} />
         </div>
-        <div className={styles.card}>
-          <div className={styles.cardTitle}><h4>Refunds</h4><span style={{ color: '#dc3545', fontSize: 12 }}>-0.3%</span></div>
-          <div className={styles.value}>0.00</div>
-          <div className={`${styles.spark} ${styles.sparkGray}`} />
+        <div className={styles.dashboard__card}>
+          <div className={styles.dashboard__cardTitle}>
+            <h4>Refunds</h4>
+            <span className={`${styles.dashboard__delta} ${styles["dashboard__delta--down"]}`}>-0.3%</span>
+          </div>
+          <div className={styles.dashboard__value}>0.00</div>
+          <div className={`${styles.dashboard__spark} ${styles["dashboard__spark--gray"]}`} />
         </div>
       </div>
 
-      <div className={styles.twoCol}>
-        <div className={styles.box}>
+      <div className={styles.dashboard__section}>
+        <div className={styles.dashboard__panel}>
           <h4>Recent Orders</h4>
-          <div style={{ overflowX: 'auto' }}>
-            <table className={styles.table}>
-              <thead className={styles.thead}>
+          <div className={styles.dashboard__tableWrap}>
+            <table className={styles.dashboard__table}>
+              <thead className={styles.dashboard__thead}>
                 <tr>
-                  <th className={styles.th}>#</th>
-                  <th className={styles.th}>Image</th>
-                  <th className={styles.th}>Product Name</th>
-                  <th className={styles.th}>Product id</th>
-                  <th className={styles.th}>Quantity</th>
-                  <th className={styles.th}>Price</th>
-                  <th className={styles.th}>Order Time</th>
-                  <th className={styles.th}>Customer</th>
-                  <th className={styles.th}>Status</th>
+                  <th className={styles.dashboard__th}>#</th>
+                  <th className={styles.dashboard__th}>Image</th>
+                  <th className={styles.dashboard__th}>Product Name</th>
+                  <th className={styles.dashboard__th}>Product id</th>
+                  <th className={styles.dashboard__th}>Quantity</th>
+                  <th className={styles.dashboard__th}>Price</th>
+                  <th className={styles.dashboard__th}>Order Time</th>
+                  <th className={styles.dashboard__th}>Customer</th>
+                  <th className={styles.dashboard__th}>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {[1,2,3,4].map((i)=>(
                   <tr key={i}>
-                    <td className={styles.td}>{i}</td>
-                    <td className={styles.td}><div style={{ width: 40, height: 40, borderRadius: 4, background: '#eee' }} /></td>
-                    <td className={styles.td}>Product #{i}</td>
-                    <td className={styles.td}>id00000{i}</td>
-                    <td className={styles.td}>{i*5}</td>
-                    <td className={styles.td}>${(i*80).toFixed(2)}</td>
-                    <td className={styles.td}>25-08-2018 14:27:{i}2</td>
-                    <td className={styles.td}>Customer {i}</td>
-                    <td className={styles.td}>
-                      <span style={{ padding: '4px 8px', borderRadius: 12, background: i%2? '#e6f4ea':'#e8f0fe', color: i%2? '#1e8e3e':'#1a73e8' }}>
-                        {i%2? 'Delivered':'InTransit'}
+                    <td className={styles.dashboard__td}>{i}</td>
+                    <td className={styles.dashboard__td}><div style={{ width: 40, height: 40, borderRadius: 4, background: '#eee' }} /></td>
+                    <td className={styles.dashboard__td}>Product #{i}</td>
+                    <td className={styles.dashboard__td}>id00000{i}</td>
+                    <td className={styles.dashboard__td}>{i*5}</td>
+                    <td className={styles.dashboard__td}>${(i*80).toFixed(2)}</td>
+                    <td className={styles.dashboard__td}>25-08-2018 14:27:{i}2</td>
+                    <td className={styles.dashboard__td}>Customer {i}</td>
+                    <td className={styles.dashboard__td}>
+                      <span className={`${styles.dashboard__badge} ${i%2 ? styles["dashboard__badge--success"] : styles["dashboard__badge--info"]}`}>
+                        {i%2 ? 'Delivered' : 'InTransit'}
                       </span>
                     </td>
                   </tr>
@@ -70,28 +82,28 @@ const Dashboard = () => {
             </table>
           </div>
         </div>
-        <div className={styles.box}>
+        <div className={styles.dashboard__panel}>
           <h4>Customer Acquisition</h4>
-          <div style={{ height: 220, background: 'linear-gradient(180deg,#e8f0fe,transparent)', borderRadius: 6 }} />
+          <div className={styles.dashboard__chart} />
         </div>
       </div>
 
-      <div className={styles.threeCol}>
-        <div className={styles.box}>
+      <div className={styles.dashboard__section}>
+        <div className={styles.dashboard__panel}>
           <h4>Product Category</h4>
-          <div className={styles.donut} />
+          <div className={styles.dashboard__donut} />
         </div>
-        <div className={styles.box}>
+        <div className={styles.dashboard__panel}>
           <h4>Product Sales</h4>
-          <div className={styles.bars}>
+          <div className={styles.dashboard__bars}>
             {[80,120,60,150,90].map((h,i)=>(
-              <div key={i} className={styles.bar} style={{ height: h }} />
+              <div key={i} className={styles.dashboard__bar} style={{ height: h }} />
             ))}
           </div>
         </div>
-        <div className={styles.box}>
+        <div className={styles.dashboard__panel}>
           <h4>Top 5 Products</h4>
-          <ul className={styles.list}>
+          <ul className={styles.dashboard__list}>
             {[
               { name: 'iPhone S9 Limited', sales: 68_714 },
               { name: 'iBook Pro 2018', sales: 67_133 },
@@ -99,9 +111,9 @@ const Dashboard = () => {
               { name: 'Keyboard Max', sales: 21_540 },
               { name: 'Mouse Air', sales: 18_225 },
             ].map((p)=>(
-              <li key={p.name} style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+              <li key={p.name} className={styles.dashboard__listItem}>
                 <span>{p.name}</span>
-                <span style={{ fontWeight: 600 }}>${p.sales.toLocaleString()}</span>
+                <span className={styles.dashboard__listValue}>${p.sales.toLocaleString()}</span>
               </li>
             ))}
           </ul>

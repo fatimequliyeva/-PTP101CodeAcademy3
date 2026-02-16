@@ -9,6 +9,14 @@
   min-height: 100vh;
   background: var(--bg);
   color: #111827;
+  overflow-x: hidden;
+}
+
+.layout,
+.layout *,
+.layout *::before,
+.layout *::after {
+  box-sizing: border-box;
 }
  
 .sidebar {
@@ -19,6 +27,11 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
  
 .brand {
@@ -91,6 +104,11 @@
    flex: 1;
    display: flex;
    flex-direction: column;
+  min-width: 0;
+  margin-left: 260px;
+  min-height: 100vh;
+  overflow-y: auto;
+  width: calc(100% - 260px);
  }
  
 .topbar {
@@ -165,7 +183,23 @@
 
  .content {
   padding: 20px;
+  overflow-x: hidden;
  } 
+
+@media (max-width: 1200px) {
+  .topbar {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .search {
+    flex: 1 1 320px;
+  }
+  .user {
+    flex: 1 1 220px;
+    justify-content: flex-end;
+  }
+}
 
 @media (max-width: 1024px) {
   .layout {
@@ -177,6 +211,13 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 12px;
+    overflow-x: auto;
+    position: relative;
+    height: auto;
+    overflow-y: visible;
+  }
+  .groupTitle {
+    display: none;
   }
   .menu {
     grid-auto-flow: column;
@@ -187,6 +228,11 @@
   .sidebarFooter {
     width: 100%;
     margin-top: 0;
+  }
+  .main {
+    margin-left: 0;
+    width: 100%;
+    overflow-y: visible;
   }
 }
 

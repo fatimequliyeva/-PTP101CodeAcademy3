@@ -107,19 +107,19 @@ const Blogs = () => {
 
   return (
     <div className="container section">
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+      <div className="admin-toolbar">
         <h1>Admin Blogs</h1>
         <Button className="btn-primary" onClick={openCreate}>Add Blog</Button>
       </div>
 
-      <div style={{display:'flex', gap:12, marginBottom:20}}>
+      <div className="admin-filters">
         <input
           placeholder="Search by title..."
           value={search}
           onChange={(e)=>setSearch(e.target.value)}
-          style={{padding:'8px 10px', border:'1px solid #ddd', borderRadius:6}}
+          className="admin-input"
         />
-        <select value={sort} onChange={(e)=>setSort(e.target.value)} style={{padding:'8px 10px', border:'1px solid #ddd', borderRadius:6}}>
+        <select value={sort} onChange={(e)=>setSort(e.target.value)} className="admin-select">
           <option value="date_desc">Date ↓</option>
           <option value="date_asc">Date ↑</option>
           <option value="title_asc">Title A–Z</option>
@@ -128,37 +128,41 @@ const Blogs = () => {
       </div>
 
       {loading ? <p>Loading...</p> : (
-        <table style={{width:'100%', borderCollapse:'collapse'}}>
-          <thead>
+        <div className="admin-table-wrap">
+          <table className="admin-table">
+            <thead>
             <tr>
-              <th style={{textAlign:'left', padding:10, borderBottom:'1px solid #eee'}}>Image</th>
-              <th style={{textAlign:'left', padding:10, borderBottom:'1px solid #eee'}}>Title</th>
-              <th style={{textAlign:'left', padding:10, borderBottom:'1px solid #eee'}}>Date</th>
-              <th style={{textAlign:'left', padding:10, borderBottom:'1px solid #eee'}}>Position</th>
-              <th style={{textAlign:'left', padding:10, borderBottom:'1px solid #eee'}}>Actions</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Position</th>
+              <th>Actions</th>
             </tr>
-          </thead>
-          <tbody>
+            </thead>
+            <tbody>
             {filtered.map(b => (
               <tr key={b.id}>
-                <td style={{padding:10, borderBottom:'1px solid #f5f5f5'}}>
+                <td>
                   <img 
                     src={b.image || 'https://preview.colorlib.com/theme/vegefoods/images/image_1.jpg'} 
                     alt={b.title} 
                     style={{width:60, height:60, objectFit:'cover', borderRadius:6}}
                   />
                 </td>
-                <td style={{padding:10, borderBottom:'1px solid #f5f5f5'}}>{b.title}</td>
-                <td style={{padding:10, borderBottom:'1px solid #f5f5f5'}}>{b.date}</td>
-                <td style={{padding:10, borderBottom:'1px solid #f5f5f5'}}>{b.position}</td>
-                <td style={{padding:10, borderBottom:'1px solid #f5f5f5', display:'flex', gap:8}}>
+                <td>{b.title}</td>
+                <td>{b.date}</td>
+                <td>{b.position}</td>
+                <td>
+                  <div className="admin-actions">
                   <Button onClick={()=>openEdit(b)}>Edit</Button>
                   <Button className="btn-delete" onClick={()=>remove(b.id)}>Delete</Button>
+                  </div>
                 </td>
               </tr>
             ))}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       )}
 
       <Modal isOpen={modalOpen} onClose={()=>setModalOpen(false)} title={editing ? 'Edit Blog' : 'Add Blog'}>
