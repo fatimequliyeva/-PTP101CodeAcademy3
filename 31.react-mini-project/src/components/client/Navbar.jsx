@@ -74,7 +74,6 @@ const Navbar = () => {
             </li>
             <li><NavLink to="/about">ABOUT</NavLink></li>
             <li><NavLink to="/blog">BLOG</NavLink></li>
-            <li><NavLink to="/contact">CONTACT</NavLink></li>
             <li className={styles['cart-link']}>
               <Link to="/wishlist" style={{ marginRight: 10 }}>
                 <FaHeart /> <span className={styles.count}>[{wishlist.length}]</span>
