@@ -1,29 +1,27 @@
-const Category = require("../models/categoryModel");
+const Category = require("../models/categoryModel"); //qutu modelini getirirem
 
-// Bütün kateqoriyaları gətirir
-const getCategories = async (req, res) => {
+const getCategories = async (req, res) => { //butun categryni getirir
   try {
-    const categories = await Category.find();
-    return res.status(200).json({
+    const categories = await Category.find(); //find methodudu 
+    return res.status(200).json({ //eger okeydise bu meSAJ GELECKEK 
       success: true,
-      message: "Categories fetched successfully",
+      message: "Kateqoriyalar ugurla grtirildi",
       data: categories,
     });
-  } catch (error) {
+  } catch (error) { //eror olsa bu dusecek pryekt partdamayacq 
     return res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ID-yə görə tək kateqoriya
 const getCategoryById = async (req, res) => {
   try {
-    const category = await Category.findById(req.params.id);
+    const category = await Category.findById(req.params.id); //lakin serti var ife duse o gelecek 
     if (!category) {
-      return res.status(404).json({ success: false, message: "Category not found" });
+      return res.status(404).json({ success: false, message: "Kateqoriya tapoilmadi" });  //idye gore
     }
     return res.status(200).json({
       success: true,
-      message: "Category fetched successfully",
+      message: "Kateqoriya ugurla grtirildi",
       data: category,
     });
   } catch (error) {
@@ -38,7 +36,7 @@ const createCategory = async (req, res) => {
     const savedCategory = await category.save();
     return res.status(201).json({
       success: true,
-      message: "Category created successfully",
+      message: "Kateqoriya ugurla yaradildi",
       data: savedCategory,
     });
   } catch (error) {
@@ -46,7 +44,7 @@ const createCategory = async (req, res) => {
   }
 };
 
-// Mövcud kateqoriyanı yeniləmək
+// elde olani yenilemek
 const updateCategory = async (req, res) => {
   try {
     const updatedCategory = await Category.findByIdAndUpdate(
@@ -55,11 +53,11 @@ const updateCategory = async (req, res) => {
       { new: true }
     );
     if (!updatedCategory) {
-      return res.status(404).json({ success: false, message: "Category not found" });
+      return res.status(404).json({ success: false, message: "Kateqoriya tapilmadi" });
     }
     return res.status(200).json({
       success: true,
-      message: "Category updated successfully",
+      message: "Kateqoriya ugurla yenilEndi",
       data: updatedCategory,
     });
   } catch (error) {
@@ -67,22 +65,23 @@ const updateCategory = async (req, res) => {
   }
 };
 
-// Kateqoriyanı silmək
+// silmekdi
 const deleteCategory = async (req, res) => {
   try {
     const deletedCategory = await Category.findByIdAndDelete(req.params.id);
     if (!deletedCategory) {
-      return res.status(404).json({ success: false, message: "Category not found" });
+      return res.status(404).json({ success: false, message: "Kateqoriya tapilmadi" });
     }
     return res.status(200).json({
       success: true,
-      message: "Category deleted successfully",
+      message: "Kateqoriya ugurla silindi",
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
 
+// yazdqmz crud mentiqni caqrmaqa 
 module.exports = {
   getCategories,
   getCategoryById,

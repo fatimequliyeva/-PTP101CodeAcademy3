@@ -1,13 +1,12 @@
 const Product = require("../models/productModel");
 
-// Bütün məhsulları gətirir (search və sort dəstəklənir)
 const getProducts = async (req, res) => {
   try {
     const { search, sort } = req.query;
-    let query = {};
+    let query = {}; //bos sert yoxlamaq ucun yaradilir 
 
     if (search) {
-      query.title = { $regex: search, $options: "i" }; // case-insensitive axtarış
+      query.title = { $regex: search, $options: "i" }; //herf fer q olmadan axdaris 
     }
 
     let products = Product.find(query).populate("category");
@@ -21,7 +20,7 @@ const getProducts = async (req, res) => {
     const result = await products;
     return res.status(200).json({
       success: true,
-      message: "Products fetched successfully",
+      message: "Mehsullar ugurla getirildi",
       data: result,
     });
   } catch (error) {
@@ -29,16 +28,15 @@ const getProducts = async (req, res) => {
   }
 };
 
-// ID-yə görə məhsul
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id).populate("category");
     if (!product) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res.status(404).json({ success: false, message: "Mehsul tapilmadi" });
     }
     return res.status(200).json({
       success: true,
-      message: "Product fetched successfully",
+      message: "Mehsul ugurla gEtirildi",
       data: product,
     });
   } catch (error) {
@@ -46,14 +44,14 @@ const getProductById = async (req, res) => {
   }
 };
 
-// Yeni məhsul yaratmaq
+// Yeni meHsul yaratmaqx
 const createProduct = async (req, res) => {
   try {
     const product = new Product(req.body);
     const savedProduct = await product.save();
     return res.status(201).json({
       success: true,
-      message: "Product created successfully",
+      message: "MEhsul uGurla yaradoldi",
       data: savedProduct,
     });
   } catch (error) {
@@ -61,7 +59,7 @@ const createProduct = async (req, res) => {
   }
 };
 
-// Məhsulu yeniləmək
+// mehsulucu yenilokmek
 const updateProduct = async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -71,12 +69,12 @@ const updateProduct = async (req, res) => {
     ).populate("category");
 
     if (!updatedProduct) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res.status(404).json({ success: false, message: "Mehsul tapIlmadI" });
     }
 
     return res.status(200).json({
       success: true,
-      message: "Product updated successfully",
+      message: "Mehsul ugurla yenilendi",
       data: updatedProduct,
     });
   } catch (error) {
@@ -84,16 +82,16 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// Məhsulu silmək
+// mehsi;ub silmek
 const deleteProduct = async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
     if (!deletedProduct) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res.status(404).json({ success: false, message: "Mehsul tapilmadi" });
     }
     return res.status(200).json({
       success: true,
-      message: "Product deleted successfully",
+      message: "Mehsul ugurla silindi",
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });

@@ -1,18 +1,18 @@
-// middlewares/productValidator.js
+
 const productValidator = (req, res, next) => {
   const { title, price } = req.body;
 
   if (!title || title.trim() === "") {
     return res.status(400).json({
       success: false,
-      message: "Product title is required",
+      message: "Mehsulun adi mutleqdir",
     });
   }
 
   if (price < 0) {
     return res.status(400).json({
       success: false,
-      message: "Product price cannot be negative",
+      message: "Mehsulun qiymEti menfi ola bilmez",
     });
   }
 
