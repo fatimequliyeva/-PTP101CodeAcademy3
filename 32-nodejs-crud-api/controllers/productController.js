@@ -29,7 +29,7 @@ const getProducts = async (req, res) => {
 };
 
 const getProductById = async (req, res) => {
-  try {
+  try { 
     const product = await Product.findById(req.params.id).populate("category");
     if (!product) {
       return res.status(404).json({ success: false, message: "Mehsul tapilmadi" });

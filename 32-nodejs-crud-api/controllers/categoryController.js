@@ -30,7 +30,7 @@ const getCategoryById = async (req, res) => {
 };
 
 // Yeni kateqoriya yaratmaq
-const createCategory = async (req, res) => {
+const createCategory = async (req, res) => {  
   try {
     const category = new Category(req.body);
     const savedCategory = await category.save();
